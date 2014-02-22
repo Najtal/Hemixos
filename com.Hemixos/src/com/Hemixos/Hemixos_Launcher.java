@@ -3,7 +3,6 @@ import gui_launcher.Main_guiLauncher;
 
 import java.io.IOException;
 import java.lang.Thread.UncaughtExceptionHandler;
-import java.net.URLDecoder;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,6 +29,9 @@ public class Hemixos_Launcher {
 	private static Main_guiLauncher mgl;
 		
 	
+	
+	
+	
 	/**
 	 * Main methode: lance l'application
 	 * @param args
@@ -37,9 +39,7 @@ public class Hemixos_Launcher {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		
 		setExceptionHandler();
-		
 		mgl = new Main_guiLauncher();
 		
 	}
