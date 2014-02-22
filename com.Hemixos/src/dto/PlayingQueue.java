@@ -13,9 +13,9 @@ public class PlayingQueue {
 	private Model model;
 	
 	// elements de la queue
-	private Noeud noeudLu;
-	private Noeud noeudALire;
-	private Noeud dernierNoeud;
+	private QueueElement noeudLu;
+	private QueueElement noeudALire;
+	private QueueElement dernierNoeud;
 	
 	private int nbrNoeudLu; // nbr de noeuds entre NoeudALire et NoeudLu (compris)
 	private int nbrNoeudEnAttente; // nbr de noeuds apres noeudEnLecture
@@ -38,7 +38,7 @@ public class PlayingQueue {
 	 */
 	public void ajouterUnePiste(Song s) {
 		
-		Noeud nn = new Noeud(s);
+		QueueElement nn = new QueueElement(s);
 		
 		if (noeudALire == null) {
 			noeudALire = nn;
@@ -50,21 +50,23 @@ public class PlayingQueue {
 		
 	}
 	
-	public Song trackALire() {
+	
+	
+	public String trackALire() {
 		
-		Song s = null;
+		String s = null;
 		
 		if (noeudALire == null) {
 			return null;
 		}
 		
 		if (noeudALire == dernierNoeud) {
-			s = noeudALire.getTrack();
+			s = noeudALire.getUrl();
 			noeudALire = null;
 			return s;
 		}
 		
-		s = noeudALire.getTrack();
+		s = noeudALire.getUrl();
 		noeudALire = noeudALire.getNext();
 		return s;
 		
@@ -72,51 +74,7 @@ public class PlayingQueue {
 	
 	
 	
-	/**
-	 * Classe interne destinée a construire la Playing Queue
-	 * 
-	 * @author Jean-Vital
-	 *
-	 */
-	private class Noeud {
-		
-		private Song song;
-		private Noeud next;
 
-		/**
-		 * Constructeur d'un noeud membre de la playlist en cours
-		 * @param track
-		 */
-		public Noeud(Song song) {
-			this.song = song;
-		}
-		
-	
-
-		/**
-		 * @param next the next to set
-		 */
-		public void setNext(Noeud next) {
-			this.next = next;
-		}
-
-
-		/**
-		 * @return the track
-		 */
-		public Song getTrack() {
-			return song;
-		}
-
-		/**
-		 * @return the next
-		 */
-		public Noeud getNext() {
-			return next;
-		}
-		
-		
-	}
 	
 	
 }
