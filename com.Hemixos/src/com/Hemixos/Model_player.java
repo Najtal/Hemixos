@@ -119,6 +119,8 @@ public class Model_player {
 		}
 		
 
+		queue.ajouterUnePiste(s);
+		
 		playingSong = s;
 		setEnLecture(true);
 		traiterEvent(null);

@@ -1,0 +1,679 @@
+JFDML JFormDesigner: "5.1.2.0.134" Java: "1.7.0_60-ea" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "jpHeader"
+				"preferredSize": new java.awt.Dimension( 0, 60 )
+				"background": new java.awt.Color( 245, 245, 245, 255 )
+				"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 138, 138, 138, 255 ) )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+					name: "jpLeftHeader"
+					"background": &Color0 new java.awt.Color( 245, 245, 243, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jlAppName"
+						"text": "Hemixos"
+						"foreground": sfield java.awt.Color gray
+						"font": new java.awt.Font( "Segoe UI", 0, 9 )
+						"verticalAlignment": 1
+						"border": new javax.swing.border.EmptyBorder( 0, 5, 0, 10 )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+						name: "jpPlayButMenu"
+						"preferredSize": new java.awt.Dimension( 135, 40 )
+						"background": #Color0
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "jbPrevious"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_previous.jpg" )
+							"preferredSize": new java.awt.Dimension( 45, 35 )
+							"background": &Color1 new java.awt.Color( 245, 245, 243, 255 )
+							"contentAreaFilled": false
+							"borderPainted": false
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"focusPainted": false
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "jbPausPlay"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_play.jpg" )
+							"preferredSize": new java.awt.Dimension( 45, 35 )
+							"background": #Color1
+							"contentAreaFilled": false
+							"borderPainted": false
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"focusPainted": false
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "jbNext"
+							"preferredSize": new java.awt.Dimension( 45, 35 )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_next.jpg" )
+							"background": #Color1
+							"contentAreaFilled": false
+							"borderPainted": false
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"focusPainted": false
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+					name: "jbRightHeader"
+					"background": new java.awt.Color( 245, 245, 243, 255 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button2"
+						"opaque": false
+						"preferredSize": new java.awt.Dimension( 38, 28 )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_options.jpg" )
+						"background": new java.awt.Color( 245, 245, 243, 255 )
+						"borderPainted": false
+						"border": new javax.swing.border.EmptyBorder( 0, 0, 0, 10 )
+						"contentAreaFilled": false
+						"focusPainted": false
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "jpCenterHeader"
+					"background": new java.awt.Color( 245, 245, 243, 255 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "First"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "jpPlaylistViews"
+				"background": new java.awt.Color( 229, 229, 229, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"autoscrolls": true
+				"preferredSize": new java.awt.Dimension( 200, 311 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+					name: "jpLibViewContainer"
+					"background": new java.awt.Color( 229, 229, 229, 255 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpLibraryContainers"
+						"background": new java.awt.Color( 229, 229, 229, 255 )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+							name: "jpPVBorder"
+							"background": &Color2 new java.awt.Color( 229, 229, 229, 255 )
+							"border": &AbstractBorder_menu0 new gui_generic_components.AbstractBorder_menu
+							"preferredSize": new java.awt.Dimension( 12, 12 )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "After"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "jpLibsViews"
+							"background": new java.awt.Color( 229, 229, 229, 255 )
+							"border": new javax.swing.border.EmptyBorder( 0, 0, 10, 0 )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jlTitleMusiques"
+								"text": "Mes musiques"
+								"horizontalAlignment": 2
+								"border": new javax.swing.border.EmptyBorder( 10, 15, 5, 0 )
+								"borderPainted": false
+								"requestFocusEnabled": false
+								"focusable": false
+								"font": new java.awt.Font( "Segoe UI", 0, 14 )
+								"foreground": new java.awt.Color( 75, 88, 105, 255 )
+								"contentAreaFilled": false
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								auxiliary() {
+									"JavaCodeGenerator.variableName": "jlTitleMusiques"
+								}
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "North"
+							} )
+							add( new FormComponent( "javax.swing.JList" ) {
+								name: "jlLibs"
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								"border": new javax.swing.border.EmptyBorder( 0, 20, 5, 0 )
+								"foreground": sfield java.awt.Color darkGray
+								"font": new java.awt.Font( "Segoe UI", 0, 11 )
+								"model": new javax.swing.DefaultListModel {
+									addElement( "jvdurieu@gmail.com" )
+								}
+								"requestFocusEnabled": false
+								"selectionBackground": &Color3 new java.awt.Color( 229, 229, 229, 255 )
+								"selectionForeground": sfield java.awt.Color darkGray
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "Center"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+						name: "ViewContainer"
+						"border": new javax.swing.border.MatteBorder( 1, 0, 1, 0, new java.awt.Color( 187, 187, 187, 255 ) )
+						"background": new java.awt.Color( 229, 229, 229, 255 )
+						"preferredSize": new java.awt.Dimension( 200, 42 )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+							name: "ViewsGridLayout"
+							"background": new java.awt.Color( 229, 229, 229, 255 )
+							"border": new javax.swing.border.EmptyBorder( 5, 8, 5, 0 )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbViewSimple"
+								"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_simpleListSelected.jpg" )
+								"borderPainted": false
+								"focusPainted": false
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								"margin": new java.awt.Insets( 2, 0, 2, 14 )
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbViewOneC"
+								"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_oneList.jpg" )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"borderPainted": false
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								"focusPainted": false
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbViewTwoC"
+								"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_twoList.jpg" )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"borderPainted": false
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								"focusPainted": false
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbviewThreeC"
+								"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_threeList.jpg" )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"borderPainted": false
+								"background": new java.awt.Color( 229, 229, 229, 255 )
+								"margin": new java.awt.Insets( 2, 14, 2, 0 )
+								"focusPainted": false
+							} )
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+							name: "jpPVBorder3"
+							"background": #Color2
+							"border": #AbstractBorder_menu0
+							"preferredSize": new java.awt.Dimension( 12, 12 )
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "First"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "jpPlaylistContainer"
+					"background": new java.awt.Color( 229, 229, 229, 255 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+						name: "jpPVBorder2"
+						"background": #Color2
+						"border": #AbstractBorder_menu0
+						"preferredSize": new java.awt.Dimension( 12, 12 )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "East"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
+						"gap": 2
+					} ) {
+						name: "panel2"
+						"background": new java.awt.Color( 229, 229, 229, 255 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"text": "Playlist générique"
+							"foreground": sfield java.awt.Color gray
+							"font": &Font0 new java.awt.Font( "Segoe UI", 0, 11 )
+							"background": &Color4 new java.awt.Color( 229, 229, 229, 255 )
+							"border": &EmptyBorder0 new javax.swing.border.EmptyBorder( 8, 10, 8, 0 )
+						} )
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "list1"
+							"border": &EmptyBorder1 new javax.swing.border.EmptyBorder( 0, 15, 0, 0 )
+							"font": #Font0
+							"foreground": &Color5 new java.awt.Color( 59, 60, 62, 255 )
+							"background": &Color6 new java.awt.Color( 229, 229, 229, 255 )
+							"model": new javax.swing.DefaultListModel {
+								addElement( "Très bien noté" )
+								addElement( "Derniers titres ajoutés" )
+								addElement( "Les plus écoutés" )
+							}
+							"requestFocusEnabled": false
+							"selectionBackground": #Color3
+							"selectionForeground": &Color7 new java.awt.Color( 0, 102, 153, 255 )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label2"
+							"text": "Mes playlist"
+							"foreground": sfield java.awt.Color gray
+							"font": #Font0
+							"background": #Color4
+							"border": #EmptyBorder0
+						} )
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "list2"
+							"border": #EmptyBorder1
+							"font": #Font0
+							"foreground": #Color5
+							"background": #Color6
+							"model": new javax.swing.DefaultListModel {
+								addElement( "Super patate" )
+								addElement( "Ca pulse" )
+								addElement( "Tranquillou" )
+								addElement( "Posé" )
+								addElement( "Electro patate" )
+								addElement( "Electro posé" )
+								addElement( "House" )
+								addElement( "California Dreamin" )
+							}
+							"requestFocusEnabled": false
+							"selectionBackground": #Color3
+							"selectionForeground": #Color7
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Before"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "jpPlayingInfo"
+				"minimumSize": new java.awt.Dimension( 220, 0 )
+				"preferredSize": new java.awt.Dimension( 220, 0 )
+				"background": new java.awt.Color( 245, 245, 245, 255 )
+				"maximumSize": new java.awt.Dimension( 450, 2147483647 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "jpPlaylistList"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel3"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+							name: "jpPlaylistListContainer"
+							"autoscrolls": true
+							"background": new java.awt.Color( 245, 245, 245, 255 )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+								name: "PlayingListElement"
+								"background": &Color8 new java.awt.Color( 245, 245, 245, 255 )
+								"border": &MatteBorder0 new javax.swing.border.MatteBorder( 1, 0, 1, 0, new java.awt.Color( 230, 230, 230, 255 ) )
+								add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+									name: "jpPlaylistElementBorder"
+									"preferredSize": &Dimension0 new java.awt.Dimension( 12, 0 )
+									"border": &AbstractBorder_playlist0 new gui_generic_components.AbstractBorder_playlist
+									"cursor": &Cursor0 new java.awt.Cursor( 11 )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "West"
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label5"
+									"text": "Daft Punk - One more time"
+									"font": &Font1 new java.awt.Font( "Segoe UI", 0, 11 )
+									"foreground": &Color9 new java.awt.Color( 0, 11, 42, 255 )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "Center"
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label4"
+									"text": "5:20"
+									"border": &EmptyBorder2 new javax.swing.border.EmptyBorder( 5, 10, 5, 10 )
+									"font": &Font2 new java.awt.Font( "Segoe UI", 0, 11 )
+									"foreground": &Color10 new java.awt.Color( 0, 11, 42, 255 )
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "East"
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+								name: "PlayingListElement2"
+								"background": #Color8
+								"border": #MatteBorder0
+								"preferredSize": new java.awt.Dimension( 200, 27 )
+								add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+									name: "jpPlaylistElementBorder2"
+									"preferredSize": #Dimension0
+									"border": #AbstractBorder_playlist0
+									"cursor": #Cursor0
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "West"
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label6"
+									"text": "3:32"
+									"border": #EmptyBorder2
+									"font": #Font2
+									"foreground": #Color10
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "East"
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label7"
+									"text": "Daft Punk - Aerodynamic"
+									"font": #Font1
+									"foreground": #Color9
+								}, new FormLayoutConstraints( class java.lang.String ) {
+									"value": "Center"
+								} )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpPlaylistListSpacer"
+						"background": new java.awt.Color( 245, 245, 245, 255 )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "jpPlaylistBorder"
+							"preferredSize": #Dimension0
+							"border": #AbstractBorder_playlist0
+							"cursor": #Cursor0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "West"
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "jpInfoPlayingSong"
+					"preferredSize": new java.awt.Dimension( 0, 120 )
+					"background": new java.awt.Color( 245, 245, 245, 255 )
+					"border": new javax.swing.border.MatteBorder( 1, 0, 0, 0, new java.awt.Color( 204, 204, 204, 255 ) )
+					"focusable": false
+					"requestFocusEnabled": false
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpInfoPSBorder"
+						"preferredSize": new java.awt.Dimension( 12, 0 )
+						"border": new gui_generic_components.AbstractBorder_playlist
+						"cursor": #Cursor0
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "West"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpInfoPSContainer"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "jpImageContainer"
+							"preferredSize": new java.awt.Dimension( 80, 45 )
+							"background": &Color11 new java.awt.Color( 245, 245, 245, 255 )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbImage"
+								"selectedIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/td_miniature.png" )
+								"preferredSize": new java.awt.Dimension( 50, 50 )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"background": #Color11
+								"borderPainted": false
+								"maximumSize": new java.awt.Dimension( 60, 60 )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "Center"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+								name: "jpSpaceT"
+								"preferredSize": new java.awt.Dimension( 0, 20 )
+								"background": #Color11
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "North"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+								name: "jpSpaceS"
+								"preferredSize": new java.awt.Dimension( 0, 20 )
+								"background": #Color11
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "South"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "West"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+							name: "jpInfoTxt"
+							"background": #Color11
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+								name: "jpInfoListTitle"
+								"border": new javax.swing.border.EmptyBorder( 30, 10, 25, 5 )
+								"background": #Color11
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlTitle"
+									"text": "Titre"
+									"foreground": &Color12 new java.awt.Color( 83, 101, 125, 255 )
+									"background": #Color11
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlArtist"
+									"text": "Artiste"
+									"foreground": #Color12
+									"background": #Color11
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlAlbum"
+									"text": "Album"
+									"foreground": #Color12
+									"background": #Color11
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlDuree"
+									"text": "Durée"
+									"foreground": #Color12
+									"background": #Color11
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+								name: "jpInfoListValue"
+								"border": new javax.swing.border.EmptyBorder( 30, 0, 25, 0 )
+								"background": #Color11
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlTitleValue"
+									"text": "One more time"
+									"foreground": #Color12
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlArtistValue"
+									"text": "Daft Punk"
+									"foreground": #Color12
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlAlbumValue"
+									"text": "Discovery"
+									"foreground": #Color12
+								} )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlDureeValue"
+									"text": "5:20"
+									"foreground": #Color12
+								} )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "After"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "jpCenterMain"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+					name: "jpFilterContainer"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpArtistlist"
+						"background": &Color13 new java.awt.Color( 246, 247, 249, 255 )
+						"preferredSize": &Dimension1 new java.awt.Dimension( 180, 0 )
+						"border": &MatteBorder1 new javax.swing.border.MatteBorder( 0, 0, 0, 1, new java.awt.Color( 188, 188, 188, 255 ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+							"alignment": 0
+						} ) {
+							name: "jpArtistHead"
+							"background": &Color14 new java.awt.Color( 245, 245, 245, 255 )
+							"border": &MatteBorder2 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 205, 205, 205, 255 ) )
+							"preferredSize": new java.awt.Dimension( 94, 31 )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label8"
+								"text": "Artistes"
+								"background": &Color15 new java.awt.Color( 245, 245, 245, 255 )
+								"font": &Font3 new java.awt.Font( "Segoe UI", 1, 12 )
+								"border": &EmptyBorder3 new javax.swing.border.EmptyBorder( 2, 5, 2, 5 )
+								"foreground": &Color16 new java.awt.Color( 65, 72, 80, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label9"
+								"text": "(1236)"
+								"border": &EmptyBorder4 new javax.swing.border.EmptyBorder( 1, 0, 0, 0 )
+								"foreground": &Color17 new java.awt.Color( 81, 72, 73, 255 )
+								"font": &Font4 new java.awt.Font( "Tahoma", 0, 10 )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "spArtist"
+							"background": &Color18 new java.awt.Color( 246, 247, 249, 255 )
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							add( new FormComponent( "javax.swing.JList" ) {
+								name: "jlArtistes"
+								"background": #Color18
+								"border": &EmptyBorder5 new javax.swing.border.EmptyBorder( 2, 10, 0, 0 )
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "jpArtistResize"
+							"preferredSize": &Dimension2 new java.awt.Dimension( 10, 0 )
+							"background": &Color19 new java.awt.Color( 246, 247, 249, 255 )
+							"cursor": #Cursor0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "East"
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpAlbums"
+						"background": #Color13
+						"preferredSize": #Dimension1
+						"border": #MatteBorder1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+							"alignment": 0
+						} ) {
+							name: "jpAlbumHead"
+							"background": #Color14
+							"border": #MatteBorder2
+							"preferredSize": new java.awt.Dimension( 94, 31 )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label10"
+								"text": "Albums"
+								"background": #Color15
+								"font": #Font3
+								"border": #EmptyBorder3
+								"foreground": #Color16
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label11"
+								"text": "(2311)"
+								"border": #EmptyBorder4
+								"foreground": #Color17
+								"font": #Font4
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "spAlbum"
+							"background": #Color18
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							add( new FormComponent( "javax.swing.JList" ) {
+								name: "jlAlbums"
+								"background": #Color18
+								"border": #EmptyBorder5
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "jpAlbumResize"
+							"preferredSize": #Dimension2
+							"background": #Color19
+							"cursor": #Cursor0
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "East"
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "jpTrackContainer"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"preferredSize": new java.awt.Dimension( 100, 0 )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "jpSelectedTrackMenu"
+						"preferredSize": new java.awt.Dimension( 94, 31 )
+						"background": new java.awt.Color( 245, 245, 245, 255 )
+						"border": new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 203, 203, 203, 255 ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+							name: "jpLectureMenu"
+							"border": new javax.swing.border.EmptyBorder( 0, 25, 0, 0 )
+							"background": new java.awt.Color( 245, 245, 245, 255 )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbEcoutezArtist"
+								"text": "Ecoutez Daft Punk"
+								"background": &Color20 new java.awt.Color( 245, 245, 245, 255 )
+								"borderPainted": false
+								"border": &EmptyBorder6 new javax.swing.border.EmptyBorder( 0, 5, 0, 15 )
+								"foreground": &Color21 new java.awt.Color( 78, 94, 107, 255 )
+								"contentAreaFilled": false
+								"focusPainted": false
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbEcoutezAlbum"
+								"text": "Ecoutez Discovery"
+								"background": #Color20
+								"borderPainted": false
+								"border": #EmptyBorder6
+								"foreground": #Color21
+								"contentAreaFilled": false
+								"focusPainted": false
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "West"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) ) {
+							name: "jpDisplayMenu"
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "East"
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "jspTracks"
+						"background": new java.awt.Color( 255, 255, 255, 255 )
+						"border": new javax.swing.border.EmptyBorder( 0, 0, 0, 0 )
+						"minimumSize": new java.awt.Dimension( 300, 200 )
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "jtTracks"
+							"gridColor": new java.awt.Color( 229, 229, 229, 255 )
+							"rowHeight": 18
+							"rowMargin": 3
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"preferredSize": new java.awt.Dimension( 3150, 300 )
+							"intercellSpacing": new java.awt.Dimension( 10, 3 )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 865, 445 )
+		} )
+	}
+}

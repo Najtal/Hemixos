@@ -1,5 +1,7 @@
 package gui_music_manager;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
 import properties.AbstractColors;
@@ -15,7 +17,6 @@ public class Gmm_MenuPlaylists extends JPanel {
 	public Gmm_MenuPlaylists(Model model) {
 
 		this.model = model;
-		
 		this.setBackground(AbstractColors.GUI_MN_BACKGROUND);
 		
 	}
