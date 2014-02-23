@@ -1,28 +1,46 @@
 package com.Hemixos;
 
-import gui_music_manager.Gmm_Container;
-import gui_music_manager.Gmm_OptionList;
 import gui_music_manager.Gmm_PlayerInfoLecture;
-import gui_music_manager.Gmm_PlayerInfoVolet;
 import gui_music_manager.Gmm_PlayerInfoVolume;
 import gui_music_manager.Gmm_Window;
 
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
+
+/**
+ * 
+ * Ce model connait la référence de certains éléments nécessaires a différent moment de l'exécution par des instances très variées
+ * 
+ * @author Jean-Vital
+ *
+ */
 public class Model_comp {
+
+
 
 	private Model model;
 	
 	
 	protected Gmm_PlayerInfoVolume jpVolume;
-	protected Gmm_PlayerInfoLecture jpInfo;
-	public Gmm_OptionList jpVolet;
-	public Gmm_PlayerInfoVolet playerVolet;
-	public JPanel jpContentCenter;
+	public Gmm_PlayerInfoLecture jpInfo;
 	public Gmm_Window gmm_Window;
-	public Gmm_Container gmm_Container;
-	public JList<String> listeArtiste;
+
+	public JPanel jpHeadSpacerLeft;
+	public JPanel jpHeadSpacerRight;
+
+	public JList jlArtistes;
+	public JTable jtTableTrack;
+
+	public JButton jbPlay;
+	public JButton jbNext;
+	public JButton jbPrevious;
+
+	public JButton jbRandom;
+	public JButton jbRepeat;
+
 	
 	
 	
@@ -48,25 +66,44 @@ public class Model_comp {
 		this.jpVolume = gmm_PlayerInfoVolume;
 	}
 
-	public void regJpVolet(Gmm_OptionList gmm_OptionList) {
-		this.jpVolet = gmm_OptionList;
-	}
-
-	public void regJpPlayerVolet(Gmm_PlayerInfoVolet gmm_PlayerInfoVolet) {
-		this.playerVolet = gmm_PlayerInfoVolet;
-	}
-
 	public void regJfFrame(Gmm_Window gmm_Window) {
 		this.gmm_Window = gmm_Window;		
 	}
-
-	public void regVueCenter(Gmm_Container gmm_Container) {
-		this.gmm_Container = gmm_Container;
-
+	
+	public void regJpHeadSpacerLeft(JPanel j) {
+		this.jpHeadSpacerLeft = j;
+	}
+	
+	public void regJpHeadSpacerRight(JPanel j) {
+		this.jpHeadSpacerRight = j;
 	}
 
-	public void regListArtist(JList<String> liste) {
-		this.listeArtiste = liste;
+	public void regJlArtist(JList jlArtistes) {
+		this.jlArtistes = jlArtistes;
+	}
+	
+	public void regJtTableTrack(JTable jtTableTrack) {
+		this.jtTableTrack = jtTableTrack;
+	}
+	
+	public void regJbPlay(JButton play) {
+		this.jbPlay = play;
 	}
 
+	public void regJbNext(JButton jbNext) {
+		this.jbNext = jbNext;
+	}
+
+	public void regJbPrevious(JButton jbPrevious) {
+		this.jbPrevious = jbPrevious;
+	}
+	
+	public void regJbRepeat(JButton jbRepeat) {
+		this.jbRepeat = jbRepeat;
+	}
+
+	public void regJbRandom(JButton jbRandom) {
+		this.jbRandom = jbRandom;
+	}
+	
 }

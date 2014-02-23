@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Library implements Serializable {
 
@@ -131,6 +132,8 @@ public class Library implements Serializable {
 		for (Song song : songs) {
 			addSong(song);
 		}
+		
+		 TreeMap<String, DTO_Artist> mapArtist = new TreeMap<String, DTO_Artist>(this.mapArtist);
 	}
 	
 	public void addPlaylists(Playlists playlists) {

@@ -55,7 +55,7 @@ public class Gmm_PlayerInfoVolume extends JPanel implements ChangeListener, Acti
 		
 		initComponents();
 		
-		this.add(volume);
+		//this.add(volume);
 		this.add(jbRandom);
 		this.add(jbRepeat);
 		
@@ -63,7 +63,7 @@ public class Gmm_PlayerInfoVolume extends JPanel implements ChangeListener, Acti
 
 	private void initComponents() {
 
-		volume = new GmmC_Volume(model);
+		//volume = new GmmC_Volume(model);
 		
 		// Chargement des images
 		iRandom = AbstractImages.instance.GUI_PLAYER_RANDOM;

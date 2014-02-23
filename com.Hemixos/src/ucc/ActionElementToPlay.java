@@ -10,6 +10,8 @@ import java.util.Vector;
 
 import javax.swing.JTable;
 
+import threads.LaunchPlay;
+
 import com.Hemixos.Model;
 
 public class ActionElementToPlay {
@@ -54,7 +56,8 @@ public class ActionElementToPlay {
 			
 		}*/
 		
-		model.getMp().play(s);
+		new LaunchPlay(model, s);
+		//model.getMp().play(s);
 		
 	}
 	
@@ -68,8 +71,6 @@ public class ActionElementToPlay {
 		} catch (UnselectedLibraryException e) {
 			return null;
 		}
-		
-	
 		
 		// On récupère la piste
 		Vector<String> vv = (Vector<String>) model.getMd().getListePisteData().get(tableRow);

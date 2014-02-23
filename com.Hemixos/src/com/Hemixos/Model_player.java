@@ -1,8 +1,6 @@
 package com.Hemixos;
 
 import gmusic.api.model.Song;
-import gmusic.api.skyjam.model.Track;
-import gui_generic_components.InfoLectureUpdater;
 
 import java.util.ArrayList;
 
@@ -128,7 +126,8 @@ public class Model_player {
 		pm.play(SongURL);
 		
 		if (!updateThreadLaunched) {
-			new InfoLectureUpdater(model);
+			// TODO
+			//new InfoLectureUpdater(model);
 			updateThreadLaunched = true;
 		}
 	}
@@ -309,6 +308,7 @@ public class Model_player {
 	 */
 	public void setRandom(boolean random) {
 		this.random = random;
+		traiterEvent(null);
 	}
 
 
@@ -327,6 +327,7 @@ public class Model_player {
 	 */
 	public void setRepeat(boolean repeat) {
 		this.repeat = repeat;
+		traiterEvent(null);
 	}
 
 	

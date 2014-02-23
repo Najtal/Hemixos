@@ -1,30 +1,21 @@
 package com.Hemixos;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.FileInputStream;
-import java.net.ConnectException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Properties;
-import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import layer_manager.ApiManager;
 import properties.AbstractPropKey;
 import properties.AbstractValues;
 import properties.PropertiesLoader;
 import ucc.ActionVolet;
-
-import com.vlcj.testx.PlayerManager;
-
-import dto.Library;
 import exceptions.FatalException;
-import gmusic.api.skyjam.model.Track;
-import gui_music_manager.Gmm_VueOne;
-import gui_music_manager.Gmm_VueSimple;
 
 
 public class Model_window {
@@ -67,6 +58,7 @@ public class Model_window {
 	public static final int TRIPLE_LIST = 4;
 
 	private int vueSelected;
+	private int borderTampon;
 	
 	
 	
@@ -214,6 +206,9 @@ public class Model_window {
 		
 	}
 	
+	/**
+	 * Lorsque la fenêtre est maximisée
+	 */
 	public void actionMaximize() {
 		if (!isMaximized) {
 			getFrame().setExtendedState(getFrame().getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -246,10 +241,50 @@ public class Model_window {
 
 	public void actionResize() {
 		setFrameWidth(frame.getWidth());
+		repaintHeadSpacers();
 		model.getMc().jpInfo.repaint();
 		
+		frame.revalidate();
 		traiterEvent(new ChangeEvent(this));
 	}
+
+	
+	/**
+	 * Ajuste la preferredSize des jpHeadSpacers pour centrer le HeadInfo.
+	 */
+	private void repaintHeadSpacers() {
+		JPanel jpHDL = model.getMc().jpHeadSpacerLeft;
+		JPanel jpHDR = model.getMc().jpHeadSpacerRight;
+
+		int dhWidth;
+		
+		dhWidth = ((frameWidth - 420) / 6);
+		
+		borderTampon = dhWidth;
+		
+		jpHDL.setPreferredSize(new Dimension(dhWidth, 0));
+		jpHDR.setPreferredSize(new Dimension(dhWidth, 0));
+	}
+	
+	
+	/**
+	 * informe la fenetre d'info de la taille qu'elle peut prendre
+	 * @return
+	 */
+	public int getInfoWidth() {
+			return borderTampon*4;
+	}
+
+
+
+	/**
+	 * @return the borderTampon
+	 */
+	public int getBorderTampon() {
+		return borderTampon;
+	}
+
+
 
 	public void actionVolet() {
 		new ActionVolet(model);
@@ -257,8 +292,10 @@ public class Model_window {
 
 
 	public void actionAddPlaylist() {
-		model.getMp().setAddToPL(!model.getMp().isAddToPL());
-		model.getMc().playerVolet.stateChanged(null);
+		// TODO
+		
+		//model.getMp().setAddToPL(!model.getMp().isAddToPL());
+		//model.getMc().playerVolet.stateChanged(null);
 	}
 	
 
@@ -284,13 +321,13 @@ public class Model_window {
 		this.vueSelected = SIMPLE_LIST;
 		//if (model.getMd().getSelectedArtist() != -1)
 		//	model.getMd().setSelectedArtist(-1);
-		model.getMc().gmm_Container.setViewContent(new Gmm_VueSimple(model));
+		//model.getMc().gmm_Container.setViewContent(new Gmm_VueSimple(model));
 		traiterEvent(new ChangeEvent(this));
 	}
 	
 	public void actionViewOneList() {
 		this.vueSelected = ONE_COL_LIST;
-		model.getMc().gmm_Container.setViewContent(new Gmm_VueOne(model));	
+		//model.getMc().gmm_Container.setViewContent(new Gmm_VueOne(model));	
 		traiterEvent(new ChangeEvent(this));
 	}
 
@@ -389,13 +426,6 @@ public class Model_window {
 
 	public void setFramePosition(Point location) {
 		getFrame().setLocation(location);
-	}
-
-	public int getBorderTampon() {
-		if (frame.getWidth() > 1400) {
-			return (int) (frame.getWidth()-1400)/3;
-		}
-		return 0;
 	}
 
 

@@ -1,6 +1,7 @@
 package com.Hemixos;
 
 import gmusic.api.model.Song;
+import gui_actionUpdater.ListUpdater;
 
 import java.net.ConnectException;
 import java.util.ArrayList;
@@ -88,7 +89,7 @@ public class Model_data {
 		
 		if (selectedArtist > -1) {
 			
-			JList<String> liste = model.getMc().listeArtiste;
+			JList<String> liste = model.getMc().jlArtistes;
 			an = liste.getModel().getElementAt(liste.getSelectedIndex());
 
 		}
@@ -118,7 +119,6 @@ public class Model_data {
 				vt.add(song.getId());						
 				v.add(vt);	
 			}
-
 		}
 		
 		return v;
@@ -248,9 +248,16 @@ public class Model_data {
 
 
 
-	public void setSelectedArtist(int selectedIndex) {
+	public void setSelectedArtist(int selectedIndex) {		
 		
+		// nouvel artist
 		selectedArtist = selectedIndex;
+		
+		// On filtre les albums
+		// TODO
+		
+		// On filtre les pistes
+		ListUpdater.refreshTrackTable(model);
 		
 	}
 

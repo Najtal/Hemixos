@@ -27,8 +27,53 @@ import org.jdesktop.swingx.*;
  * @author jv dudux
  */
 public class ContentContainerMain extends JPanel {
+	
 	public ContentContainerMain() {
 		initComponents();
+	}
+
+	public JPanel getJpHBMain() {
+		return jpHBMain;
+	}
+
+	public JPanel getJpCenterHeader() {
+		return jpCenterHeader;
+	}
+
+	public JPanel getJpHeaderSpacerLeft() {
+		return jpHeaderSpacerLeft;
+	}
+
+	public JPanel getJpHeaderSpacerRight() {
+		return jpHeaderSpacerRight;
+	}
+
+	public JList getJlArtistes() {
+		return jlArtistes;
+	}
+
+	public JTable getJtTracks() {
+		return jtTracks;
+	}
+
+	public JButton getJbPrevious() {
+		return jbPrevious;
+	}
+
+	public JButton getJbPausPlay() {
+		return jbPausPlay;
+	}
+
+	public JButton getJbNext() {
+		return jbNext;
+	}
+
+	public JButton getJbRandom() {
+		return jbRandom;
+	}
+
+	public JButton getJbRepeat() {
+		return jbRepeat;
 	}
 
 	private void initComponents() {
@@ -44,6 +89,17 @@ public class ContentContainerMain extends JPanel {
 		jbRightHeader = new JPanel();
 		button2 = new JButton();
 		jpCenterHeader = new JPanel();
+		jpHeaderSpacerLeft = new JPanel();
+		jpHeaderSpacerRight = new JPanel();
+		jpHeaderBoard = new JPanel();
+		jpHBLectureOptions = new JPanel();
+		jbRandom = new JButton();
+		jbRepeat = new JButton();
+		jpHBCustomOptions = new JPanel();
+		jbVolet = new JButton();
+		jbPlAdd = new JButton();
+		jpHBMain = new JPanel();
+		scrollPane1 = new JScrollPane();
 		jpPlaylistViews = new JPanel();
 		jpLibViewContainer = new JPanel();
 		jpLibraryContainers = new JPanel();
@@ -152,6 +208,7 @@ public class ContentContainerMain extends JPanel {
 				jlAppName.setFont(new Font("Segoe UI", Font.PLAIN, 9));
 				jlAppName.setVerticalAlignment(SwingConstants.TOP);
 				jlAppName.setBorder(new EmptyBorder(0, 5, 0, 10));
+				jlAppName.setPreferredSize(new Dimension(50, 13));
 				jpLeftHeader.add(jlAppName);
 
 				//======== jpPlayButMenu ========
@@ -216,229 +273,317 @@ public class ContentContainerMain extends JPanel {
 			{
 				jpCenterHeader.setBackground(new Color(245, 245, 243));
 				jpCenterHeader.setLayout(new BorderLayout());
+
+				//======== jpHeaderSpacerLeft ========
+				{
+					jpHeaderSpacerLeft.setBackground(new Color(245, 245, 243));
+					jpHeaderSpacerLeft.setLayout(new BorderLayout());
+				}
+				jpCenterHeader.add(jpHeaderSpacerLeft, BorderLayout.WEST);
+
+				//======== jpHeaderSpacerRight ========
+				{
+					jpHeaderSpacerRight.setBackground(new Color(245, 245, 243));
+					jpHeaderSpacerRight.setBorder(new EmptyBorder(0, 0, 0, 100));
+					jpHeaderSpacerRight.setPreferredSize(new Dimension(147, 0));
+					jpHeaderSpacerRight.setLayout(new BorderLayout());
+				}
+				jpCenterHeader.add(jpHeaderSpacerRight, BorderLayout.EAST);
+
+				//======== jpHeaderBoard ========
+				{
+					jpHeaderBoard.setBackground(new Color(245, 245, 243));
+					jpHeaderBoard.setLayout(new BorderLayout());
+
+					//======== jpHBLectureOptions ========
+					{
+						jpHBLectureOptions.setBackground(new Color(245, 245, 243));
+						jpHBLectureOptions.setLayout(new HorizontalLayout());
+
+						//---- jbRandom ----
+						jbRandom.setIcon(new ImageIcon(getClass().getResource("/images/ico_random.jpg")));
+						jbRandom.setBackground(new Color(245, 245, 243));
+						jbRandom.setBorderPainted(false);
+						jbRandom.setBorder(new EmptyBorder(0, 5, 0, 5));
+						jbRandom.setContentAreaFilled(false);
+						jbRandom.setFocusPainted(false);
+						jpHBLectureOptions.add(jbRandom);
+
+						//---- jbRepeat ----
+						jbRepeat.setIcon(new ImageIcon(getClass().getResource("/images/ico_repeat.jpg")));
+						jbRepeat.setBackground(new Color(245, 245, 243));
+						jbRepeat.setBorderPainted(false);
+						jbRepeat.setBorder(new EmptyBorder(0, 5, 0, 5));
+						jbRepeat.setContentAreaFilled(false);
+						jbRepeat.setFocusPainted(false);
+						jpHBLectureOptions.add(jbRepeat);
+					}
+					jpHeaderBoard.add(jpHBLectureOptions, BorderLayout.WEST);
+
+					//======== jpHBCustomOptions ========
+					{
+						jpHBCustomOptions.setBackground(new Color(245, 245, 243));
+						jpHBCustomOptions.setLayout(new HorizontalLayout());
+
+						//---- jbVolet ----
+						jbVolet.setIcon(new ImageIcon(getClass().getResource("/images/ico_volet.jpg")));
+						jbVolet.setBorderPainted(false);
+						jbVolet.setBorder(new EmptyBorder(0, 5, 0, 5));
+						jbVolet.setContentAreaFilled(false);
+						jbVolet.setFocusPainted(false);
+						jpHBCustomOptions.add(jbVolet);
+
+						//---- jbPlAdd ----
+						jbPlAdd.setIcon(new ImageIcon(getClass().getResource("/images/ico_addplaylist.jpg")));
+						jbPlAdd.setBorderPainted(false);
+						jbPlAdd.setBorder(new EmptyBorder(0, 5, 0, 5));
+						jbPlAdd.setContentAreaFilled(false);
+						jbPlAdd.setFocusPainted(false);
+						jpHBCustomOptions.add(jbPlAdd);
+					}
+					jpHeaderBoard.add(jpHBCustomOptions, BorderLayout.EAST);
+
+					//======== jpHBMain ========
+					{
+						jpHBMain.setBackground(new Color(245, 245, 243));
+						jpHBMain.setLayout(new BorderLayout());
+					}
+					jpHeaderBoard.add(jpHBMain, BorderLayout.CENTER);
+				}
+				jpCenterHeader.add(jpHeaderBoard, BorderLayout.CENTER);
 			}
 			jpHeader.add(jpCenterHeader, BorderLayout.CENTER);
 		}
-		add(jpHeader, BorderLayout.PAGE_START);
+		add(jpHeader, BorderLayout.NORTH);
 
-		//======== jpPlaylistViews ========
+		//======== scrollPane1 ========
 		{
-			jpPlaylistViews.setBackground(new Color(229, 229, 229));
-			jpPlaylistViews.setBorder(null);
-			jpPlaylistViews.setAutoscrolls(true);
-			jpPlaylistViews.setPreferredSize(new Dimension(200, 311));
-			jpPlaylistViews.setLayout(new BorderLayout());
+			scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			scrollPane1.setBackground(new Color(229, 229, 229));
+			scrollPane1.setBorder(BorderFactory.createEmptyBorder());
+			scrollPane1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+			scrollPane1.setRequestFocusEnabled(false);
 
-			//======== jpLibViewContainer ========
+			//======== jpPlaylistViews ========
 			{
-				jpLibViewContainer.setBackground(new Color(229, 229, 229));
-				jpLibViewContainer.setLayout(new VerticalLayout());
+				jpPlaylistViews.setBackground(new Color(229, 229, 229));
+				jpPlaylistViews.setBorder(null);
+				jpPlaylistViews.setAutoscrolls(true);
+				jpPlaylistViews.setPreferredSize(new Dimension(200, 311));
+				jpPlaylistViews.setLayout(new BorderLayout());
 
-				//======== jpLibraryContainers ========
+				//======== jpLibViewContainer ========
 				{
-					jpLibraryContainers.setBackground(new Color(229, 229, 229));
-					jpLibraryContainers.setLayout(new BorderLayout());
+					jpLibViewContainer.setBackground(new Color(229, 229, 229));
+					jpLibViewContainer.setLayout(new VerticalLayout());
 
-					//======== jpPVBorder ========
+					//======== jpLibraryContainers ========
 					{
-						jpPVBorder.setBackground(new Color(229, 229, 229));
-						jpPVBorder.setBorder(new AbstractBorder_menu());
-						jpPVBorder.setPreferredSize(new Dimension(12, 12));
-						jpPVBorder.setLayout(new VerticalLayout());
+						jpLibraryContainers.setBackground(new Color(229, 229, 229));
+						jpLibraryContainers.setLayout(new BorderLayout());
+
+						//======== jpPVBorder ========
+						{
+							jpPVBorder.setBackground(new Color(229, 229, 229));
+							jpPVBorder.setBorder(new AbstractBorder_menu());
+							jpPVBorder.setPreferredSize(new Dimension(12, 12));
+							jpPVBorder.setLayout(new VerticalLayout());
+						}
+						jpLibraryContainers.add(jpPVBorder, BorderLayout.LINE_END);
+
+						//======== jpLibsViews ========
+						{
+							jpLibsViews.setBackground(new Color(229, 229, 229));
+							jpLibsViews.setBorder(new EmptyBorder(0, 0, 10, 0));
+							jpLibsViews.setLayout(new BorderLayout());
+
+							//---- jlTitleMusiques ----
+							jlTitleMusiques.setText("Mes musiques");
+							jlTitleMusiques.setHorizontalAlignment(SwingConstants.LEFT);
+							jlTitleMusiques.setBorder(new EmptyBorder(10, 15, 5, 0));
+							jlTitleMusiques.setBorderPainted(false);
+							jlTitleMusiques.setRequestFocusEnabled(false);
+							jlTitleMusiques.setFocusable(false);
+							jlTitleMusiques.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+							jlTitleMusiques.setForeground(new Color(75, 88, 105));
+							jlTitleMusiques.setContentAreaFilled(false);
+							jlTitleMusiques.setBackground(new Color(229, 229, 229));
+							jpLibsViews.add(jlTitleMusiques, BorderLayout.NORTH);
+
+							//---- jlLibs ----
+							jlLibs.setBackground(new Color(229, 229, 229));
+							jlLibs.setBorder(new EmptyBorder(0, 20, 5, 0));
+							jlLibs.setForeground(Color.darkGray);
+							jlLibs.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+							jlLibs.setModel(new AbstractListModel<String>() {
+								String[] values = {
+									"jvdurieu@gmail.com"
+								};
+								@Override
+								public int getSize() { return values.length; }
+								@Override
+								public String getElementAt(int i) { return values[i]; }
+							});
+							jlLibs.setRequestFocusEnabled(false);
+							jlLibs.setSelectionBackground(new Color(229, 229, 229));
+							jlLibs.setSelectionForeground(Color.darkGray);
+							jpLibsViews.add(jlLibs, BorderLayout.CENTER);
+						}
+						jpLibraryContainers.add(jpLibsViews, BorderLayout.CENTER);
 					}
-					jpLibraryContainers.add(jpPVBorder, BorderLayout.LINE_END);
+					jpLibViewContainer.add(jpLibraryContainers);
 
-					//======== jpLibsViews ========
+					//======== ViewContainer ========
 					{
-						jpLibsViews.setBackground(new Color(229, 229, 229));
-						jpLibsViews.setBorder(new EmptyBorder(0, 0, 10, 0));
-						jpLibsViews.setLayout(new BorderLayout());
+						ViewContainer.setBorder(new MatteBorder(1, 0, 1, 0, new Color(187, 187, 187)));
+						ViewContainer.setBackground(new Color(229, 229, 229));
+						ViewContainer.setPreferredSize(new Dimension(200, 42));
+						ViewContainer.setLayout(new HorizontalLayout());
 
-						//---- jlTitleMusiques ----
-						jlTitleMusiques.setText("Mes musiques");
-						jlTitleMusiques.setHorizontalAlignment(SwingConstants.LEFT);
-						jlTitleMusiques.setBorder(new EmptyBorder(10, 15, 5, 0));
-						jlTitleMusiques.setBorderPainted(false);
-						jlTitleMusiques.setRequestFocusEnabled(false);
-						jlTitleMusiques.setFocusable(false);
-						jlTitleMusiques.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-						jlTitleMusiques.setForeground(new Color(75, 88, 105));
-						jlTitleMusiques.setContentAreaFilled(false);
-						jlTitleMusiques.setBackground(new Color(229, 229, 229));
-						jpLibsViews.add(jlTitleMusiques, BorderLayout.NORTH);
+						//======== ViewsGridLayout ========
+						{
+							ViewsGridLayout.setBackground(new Color(229, 229, 229));
+							ViewsGridLayout.setBorder(new EmptyBorder(5, 8, 5, 0));
+							ViewsGridLayout.setLayout(new GridLayout());
 
-						//---- jlLibs ----
-						jlLibs.setBackground(new Color(229, 229, 229));
-						jlLibs.setBorder(new EmptyBorder(0, 20, 5, 0));
-						jlLibs.setForeground(Color.darkGray);
-						jlLibs.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-						jlLibs.setModel(new AbstractListModel<String>() {
+							//---- jbViewSimple ----
+							jbViewSimple.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_simpleListSelected.jpg"));
+							jbViewSimple.setBorderPainted(false);
+							jbViewSimple.setFocusPainted(false);
+							jbViewSimple.setBorder(null);
+							jbViewSimple.setBackground(new Color(229, 229, 229));
+							jbViewSimple.setMargin(new Insets(2, 0, 2, 14));
+							ViewsGridLayout.add(jbViewSimple);
+
+							//---- jbViewOneC ----
+							jbViewOneC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_oneList.jpg"));
+							jbViewOneC.setBorder(null);
+							jbViewOneC.setBorderPainted(false);
+							jbViewOneC.setBackground(new Color(229, 229, 229));
+							jbViewOneC.setFocusPainted(false);
+							ViewsGridLayout.add(jbViewOneC);
+
+							//---- jbViewTwoC ----
+							jbViewTwoC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_twoList.jpg"));
+							jbViewTwoC.setBorder(null);
+							jbViewTwoC.setBorderPainted(false);
+							jbViewTwoC.setBackground(new Color(229, 229, 229));
+							jbViewTwoC.setFocusPainted(false);
+							ViewsGridLayout.add(jbViewTwoC);
+
+							//---- jbviewThreeC ----
+							jbviewThreeC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_threeList.jpg"));
+							jbviewThreeC.setBorder(null);
+							jbviewThreeC.setBorderPainted(false);
+							jbviewThreeC.setBackground(new Color(229, 229, 229));
+							jbviewThreeC.setMargin(new Insets(2, 14, 2, 0));
+							jbviewThreeC.setFocusPainted(false);
+							ViewsGridLayout.add(jbviewThreeC);
+						}
+						ViewContainer.add(ViewsGridLayout);
+
+						//======== jpPVBorder3 ========
+						{
+							jpPVBorder3.setBackground(new Color(229, 229, 229));
+							jpPVBorder3.setBorder(new AbstractBorder_menu());
+							jpPVBorder3.setPreferredSize(new Dimension(12, 12));
+							jpPVBorder3.setLayout(new VerticalLayout());
+						}
+						ViewContainer.add(jpPVBorder3);
+					}
+					jpLibViewContainer.add(ViewContainer);
+				}
+				jpPlaylistViews.add(jpLibViewContainer, BorderLayout.PAGE_START);
+
+				//======== jpPlaylistContainer ========
+				{
+					jpPlaylistContainer.setBackground(new Color(229, 229, 229));
+					jpPlaylistContainer.setLayout(new BorderLayout());
+
+					//======== jpPVBorder2 ========
+					{
+						jpPVBorder2.setBackground(new Color(229, 229, 229));
+						jpPVBorder2.setBorder(new AbstractBorder_menu());
+						jpPVBorder2.setPreferredSize(new Dimension(12, 12));
+						jpPVBorder2.setLayout(new VerticalLayout());
+					}
+					jpPlaylistContainer.add(jpPVBorder2, BorderLayout.EAST);
+
+					//======== panel2 ========
+					{
+						panel2.setBackground(new Color(229, 229, 229));
+						panel2.setLayout(new VerticalLayout(2));
+
+						//---- label3 ----
+						label3.setText("Playlist g\u00e9n\u00e9rique");
+						label3.setForeground(Color.gray);
+						label3.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+						label3.setBackground(new Color(229, 229, 229));
+						label3.setBorder(new EmptyBorder(8, 10, 8, 0));
+						panel2.add(label3);
+
+						//---- list1 ----
+						list1.setBorder(new EmptyBorder(0, 15, 0, 0));
+						list1.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+						list1.setForeground(new Color(59, 60, 62));
+						list1.setBackground(new Color(229, 229, 229));
+						list1.setModel(new AbstractListModel<String>() {
 							String[] values = {
-								"jvdurieu@gmail.com"
+								"Tr\u00e8s bien not\u00e9",
+								"Derniers titres ajout\u00e9s",
+								"Les plus \u00e9cout\u00e9s"
 							};
 							@Override
 							public int getSize() { return values.length; }
 							@Override
 							public String getElementAt(int i) { return values[i]; }
 						});
-						jlLibs.setRequestFocusEnabled(false);
-						jlLibs.setSelectionBackground(new Color(229, 229, 229));
-						jlLibs.setSelectionForeground(Color.darkGray);
-						jpLibsViews.add(jlLibs, BorderLayout.CENTER);
+						list1.setRequestFocusEnabled(false);
+						list1.setSelectionBackground(new Color(229, 229, 229));
+						list1.setSelectionForeground(new Color(0, 102, 153));
+						panel2.add(list1);
+
+						//---- label2 ----
+						label2.setText("Mes playlist");
+						label2.setForeground(Color.gray);
+						label2.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+						label2.setBackground(new Color(229, 229, 229));
+						label2.setBorder(new EmptyBorder(8, 10, 8, 0));
+						panel2.add(label2);
+
+						//---- list2 ----
+						list2.setBorder(new EmptyBorder(0, 15, 0, 0));
+						list2.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+						list2.setForeground(new Color(59, 60, 62));
+						list2.setBackground(new Color(229, 229, 229));
+						list2.setModel(new AbstractListModel<String>() {
+							String[] values = {
+								"Super patate",
+								"Ca pulse",
+								"Tranquillou",
+								"Pos\u00e9",
+								"Electro patate",
+								"Electro pos\u00e9",
+								"House",
+								"California Dreamin"
+							};
+							@Override
+							public int getSize() { return values.length; }
+							@Override
+							public String getElementAt(int i) { return values[i]; }
+						});
+						list2.setRequestFocusEnabled(false);
+						list2.setSelectionBackground(new Color(229, 229, 229));
+						list2.setSelectionForeground(new Color(0, 102, 153));
+						panel2.add(list2);
 					}
-					jpLibraryContainers.add(jpLibsViews, BorderLayout.CENTER);
+					jpPlaylistContainer.add(panel2, BorderLayout.CENTER);
 				}
-				jpLibViewContainer.add(jpLibraryContainers);
-
-				//======== ViewContainer ========
-				{
-					ViewContainer.setBorder(new MatteBorder(1, 0, 1, 0, new Color(187, 187, 187)));
-					ViewContainer.setBackground(new Color(229, 229, 229));
-					ViewContainer.setPreferredSize(new Dimension(200, 42));
-					ViewContainer.setLayout(new HorizontalLayout());
-
-					//======== ViewsGridLayout ========
-					{
-						ViewsGridLayout.setBackground(new Color(229, 229, 229));
-						ViewsGridLayout.setBorder(new EmptyBorder(5, 8, 5, 0));
-						ViewsGridLayout.setLayout(new GridLayout());
-
-						//---- jbViewSimple ----
-						jbViewSimple.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_simpleListSelected.jpg"));
-						jbViewSimple.setBorderPainted(false);
-						jbViewSimple.setFocusPainted(false);
-						jbViewSimple.setBorder(null);
-						jbViewSimple.setBackground(new Color(229, 229, 229));
-						jbViewSimple.setMargin(new Insets(2, 0, 2, 14));
-						ViewsGridLayout.add(jbViewSimple);
-
-						//---- jbViewOneC ----
-						jbViewOneC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_oneList.jpg"));
-						jbViewOneC.setBorder(null);
-						jbViewOneC.setBorderPainted(false);
-						jbViewOneC.setBackground(new Color(229, 229, 229));
-						jbViewOneC.setFocusPainted(false);
-						ViewsGridLayout.add(jbViewOneC);
-
-						//---- jbViewTwoC ----
-						jbViewTwoC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_twoList.jpg"));
-						jbViewTwoC.setBorder(null);
-						jbViewTwoC.setBorderPainted(false);
-						jbViewTwoC.setBackground(new Color(229, 229, 229));
-						jbViewTwoC.setFocusPainted(false);
-						ViewsGridLayout.add(jbViewTwoC);
-
-						//---- jbviewThreeC ----
-						jbviewThreeC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_threeList.jpg"));
-						jbviewThreeC.setBorder(null);
-						jbviewThreeC.setBorderPainted(false);
-						jbviewThreeC.setBackground(new Color(229, 229, 229));
-						jbviewThreeC.setMargin(new Insets(2, 14, 2, 0));
-						jbviewThreeC.setFocusPainted(false);
-						ViewsGridLayout.add(jbviewThreeC);
-					}
-					ViewContainer.add(ViewsGridLayout);
-
-					//======== jpPVBorder3 ========
-					{
-						jpPVBorder3.setBackground(new Color(229, 229, 229));
-						jpPVBorder3.setBorder(new AbstractBorder_menu());
-						jpPVBorder3.setPreferredSize(new Dimension(12, 12));
-						jpPVBorder3.setLayout(new VerticalLayout());
-					}
-					ViewContainer.add(jpPVBorder3);
-				}
-				jpLibViewContainer.add(ViewContainer);
+				jpPlaylistViews.add(jpPlaylistContainer, BorderLayout.CENTER);
 			}
-			jpPlaylistViews.add(jpLibViewContainer, BorderLayout.PAGE_START);
-
-			//======== jpPlaylistContainer ========
-			{
-				jpPlaylistContainer.setBackground(new Color(229, 229, 229));
-				jpPlaylistContainer.setLayout(new BorderLayout());
-
-				//======== jpPVBorder2 ========
-				{
-					jpPVBorder2.setBackground(new Color(229, 229, 229));
-					jpPVBorder2.setBorder(new AbstractBorder_menu());
-					jpPVBorder2.setPreferredSize(new Dimension(12, 12));
-					jpPVBorder2.setLayout(new VerticalLayout());
-				}
-				jpPlaylistContainer.add(jpPVBorder2, BorderLayout.EAST);
-
-				//======== panel2 ========
-				{
-					panel2.setBackground(new Color(229, 229, 229));
-					panel2.setLayout(new VerticalLayout(2));
-
-					//---- label3 ----
-					label3.setText("Playlist g\u00e9n\u00e9rique");
-					label3.setForeground(Color.gray);
-					label3.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-					label3.setBackground(new Color(229, 229, 229));
-					label3.setBorder(new EmptyBorder(8, 10, 8, 0));
-					panel2.add(label3);
-
-					//---- list1 ----
-					list1.setBorder(new EmptyBorder(0, 15, 0, 0));
-					list1.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-					list1.setForeground(new Color(59, 60, 62));
-					list1.setBackground(new Color(229, 229, 229));
-					list1.setModel(new AbstractListModel<String>() {
-						String[] values = {
-							"Tr\u00e8s bien not\u00e9",
-							"Derniers titres ajout\u00e9s",
-							"Les plus \u00e9cout\u00e9s"
-						};
-						@Override
-						public int getSize() { return values.length; }
-						@Override
-						public String getElementAt(int i) { return values[i]; }
-					});
-					list1.setRequestFocusEnabled(false);
-					list1.setSelectionBackground(new Color(229, 229, 229));
-					list1.setSelectionForeground(new Color(0, 102, 153));
-					panel2.add(list1);
-
-					//---- label2 ----
-					label2.setText("Mes playlist");
-					label2.setForeground(Color.gray);
-					label2.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-					label2.setBackground(new Color(229, 229, 229));
-					label2.setBorder(new EmptyBorder(8, 10, 8, 0));
-					panel2.add(label2);
-
-					//---- list2 ----
-					list2.setBorder(new EmptyBorder(0, 15, 0, 0));
-					list2.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-					list2.setForeground(new Color(59, 60, 62));
-					list2.setBackground(new Color(229, 229, 229));
-					list2.setModel(new AbstractListModel<String>() {
-						String[] values = {
-							"Super patate",
-							"Ca pulse",
-							"Tranquillou",
-							"Pos\u00e9",
-							"Electro patate",
-							"Electro pos\u00e9",
-							"House",
-							"California Dreamin"
-						};
-						@Override
-						public int getSize() { return values.length; }
-						@Override
-						public String getElementAt(int i) { return values[i]; }
-					});
-					list2.setRequestFocusEnabled(false);
-					list2.setSelectionBackground(new Color(229, 229, 229));
-					list2.setSelectionForeground(new Color(0, 102, 153));
-					panel2.add(list2);
-				}
-				jpPlaylistContainer.add(panel2, BorderLayout.CENTER);
-			}
-			jpPlaylistViews.add(jpPlaylistContainer, BorderLayout.CENTER);
+			scrollPane1.setViewportView(jpPlaylistViews);
 		}
-		add(jpPlaylistViews, BorderLayout.LINE_START);
+		add(scrollPane1, BorderLayout.WEST);
 
 		//======== jpPlayingInfo ========
 		{
@@ -614,26 +759,30 @@ public class ContentContainerMain extends JPanel {
 
 							//---- jlTitle ----
 							jlTitle.setText("Titre");
-							jlTitle.setForeground(new Color(83, 101, 125));
+							jlTitle.setForeground(new Color(71, 94, 124));
 							jlTitle.setBackground(new Color(245, 245, 245));
+							jlTitle.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListTitle.add(jlTitle);
 
 							//---- jlArtist ----
 							jlArtist.setText("Artiste");
-							jlArtist.setForeground(new Color(83, 101, 125));
+							jlArtist.setForeground(new Color(71, 94, 124));
 							jlArtist.setBackground(new Color(245, 245, 245));
+							jlArtist.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListTitle.add(jlArtist);
 
 							//---- jlAlbum ----
 							jlAlbum.setText("Album");
-							jlAlbum.setForeground(new Color(83, 101, 125));
+							jlAlbum.setForeground(new Color(71, 94, 124));
 							jlAlbum.setBackground(new Color(245, 245, 245));
+							jlAlbum.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListTitle.add(jlAlbum);
 
 							//---- jlDuree ----
 							jlDuree.setText("Dur\u00e9e");
-							jlDuree.setForeground(new Color(83, 101, 125));
+							jlDuree.setForeground(new Color(71, 94, 124));
 							jlDuree.setBackground(new Color(245, 245, 245));
+							jlDuree.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListTitle.add(jlDuree);
 						}
 						jpInfoTxt.add(jpInfoListTitle);
@@ -646,22 +795,26 @@ public class ContentContainerMain extends JPanel {
 
 							//---- jlTitleValue ----
 							jlTitleValue.setText("One more time");
-							jlTitleValue.setForeground(new Color(83, 101, 125));
+							jlTitleValue.setForeground(new Color(71, 94, 124));
+							jlTitleValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListValue.add(jlTitleValue);
 
 							//---- jlArtistValue ----
 							jlArtistValue.setText("Daft Punk");
-							jlArtistValue.setForeground(new Color(83, 101, 125));
+							jlArtistValue.setForeground(new Color(71, 94, 124));
+							jlArtistValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListValue.add(jlArtistValue);
 
 							//---- jlAlbumValue ----
 							jlAlbumValue.setText("Discovery");
-							jlAlbumValue.setForeground(new Color(83, 101, 125));
+							jlAlbumValue.setForeground(new Color(71, 94, 124));
+							jlAlbumValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListValue.add(jlAlbumValue);
 
 							//---- jlDureeValue ----
 							jlDureeValue.setText("5:20");
-							jlDureeValue.setForeground(new Color(83, 101, 125));
+							jlDureeValue.setForeground(new Color(71, 94, 124));
+							jlDureeValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 							jpInfoListValue.add(jlDureeValue);
 						}
 						jpInfoTxt.add(jpInfoListValue);
@@ -672,7 +825,7 @@ public class ContentContainerMain extends JPanel {
 			}
 			jpPlayingInfo.add(jpInfoPlayingSong, BorderLayout.SOUTH);
 		}
-		add(jpPlayingInfo, BorderLayout.LINE_END);
+		add(jpPlayingInfo, BorderLayout.EAST);
 
 		//======== jpCenterMain ========
 		{
@@ -686,7 +839,7 @@ public class ContentContainerMain extends JPanel {
 				//======== jpArtistlist ========
 				{
 					jpArtistlist.setBackground(new Color(246, 247, 249));
-					jpArtistlist.setPreferredSize(new Dimension(180, 0));
+					jpArtistlist.setPreferredSize(new Dimension(220, 0));
 					jpArtistlist.setBorder(new MatteBorder(0, 0, 0, 1, new Color(188, 188, 188)));
 					jpArtistlist.setLayout(new BorderLayout());
 
@@ -718,17 +871,20 @@ public class ContentContainerMain extends JPanel {
 					{
 						spArtist.setBackground(new Color(246, 247, 249));
 						spArtist.setBorder(null);
+						spArtist.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
 						//---- jlArtistes ----
 						jlArtistes.setBackground(new Color(246, 247, 249));
 						jlArtistes.setBorder(new EmptyBorder(2, 10, 0, 0));
+						jlArtistes.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+						jlArtistes.setFixedCellHeight(16);
 						spArtist.setViewportView(jlArtistes);
 					}
 					jpArtistlist.add(spArtist, BorderLayout.CENTER);
 
 					//======== jpArtistResize ========
 					{
-						jpArtistResize.setPreferredSize(new Dimension(10, 0));
+						jpArtistResize.setPreferredSize(new Dimension(3, 0));
 						jpArtistResize.setBackground(new Color(246, 247, 249));
 						jpArtistResize.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 						jpArtistResize.setLayout(new BorderLayout());
@@ -740,7 +896,7 @@ public class ContentContainerMain extends JPanel {
 				//======== jpAlbums ========
 				{
 					jpAlbums.setBackground(new Color(246, 247, 249));
-					jpAlbums.setPreferredSize(new Dimension(180, 0));
+					jpAlbums.setPreferredSize(new Dimension(220, 0));
 					jpAlbums.setBorder(new MatteBorder(0, 0, 0, 1, new Color(188, 188, 188)));
 					jpAlbums.setLayout(new BorderLayout());
 
@@ -772,17 +928,20 @@ public class ContentContainerMain extends JPanel {
 					{
 						spAlbum.setBackground(new Color(246, 247, 249));
 						spAlbum.setBorder(null);
+						spAlbum.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
 						//---- jlAlbums ----
 						jlAlbums.setBackground(new Color(246, 247, 249));
 						jlAlbums.setBorder(new EmptyBorder(2, 10, 0, 0));
+						jlAlbums.setFixedCellHeight(16);
+						jlAlbums.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 						spAlbum.setViewportView(jlAlbums);
 					}
 					jpAlbums.add(spAlbum, BorderLayout.CENTER);
 
 					//======== jpAlbumResize ========
 					{
-						jpAlbumResize.setPreferredSize(new Dimension(10, 0));
+						jpAlbumResize.setPreferredSize(new Dimension(3, 0));
 						jpAlbumResize.setBackground(new Color(246, 247, 249));
 						jpAlbumResize.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 						jpAlbumResize.setLayout(new BorderLayout());
@@ -846,15 +1005,18 @@ public class ContentContainerMain extends JPanel {
 				{
 					jspTracks.setBackground(Color.white);
 					jspTracks.setBorder(BorderFactory.createEmptyBorder());
-					jspTracks.setMinimumSize(new Dimension(300, 200));
+					jspTracks.setMinimumSize(new Dimension(0, 0));
 
 					//---- jtTracks ----
 					jtTracks.setGridColor(new Color(229, 229, 229));
 					jtTracks.setRowHeight(18);
 					jtTracks.setRowMargin(3);
 					jtTracks.setBorder(null);
-					jtTracks.setPreferredSize(new Dimension(3150, 300));
 					jtTracks.setIntercellSpacing(new Dimension(10, 3));
+					jtTracks.setFillsViewportHeight(true);
+					jtTracks.setShowHorizontalLines(false);
+					jtTracks.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					jtTracks.setPreferredScrollableViewportSize(new Dimension(0, 0));
 					jspTracks.setViewportView(jtTracks);
 				}
 				jpTrackContainer.add(jspTracks, BorderLayout.CENTER);
@@ -872,11 +1034,22 @@ public class ContentContainerMain extends JPanel {
 	private JLabel jlAppName;
 	private JPanel jpPlayButMenu;
 	private JButton jbPrevious;
-	private JButton jbPausPlay;
+	public JButton jbPausPlay;
 	private JButton jbNext;
 	private JPanel jbRightHeader;
 	private JButton button2;
-	private JPanel jpCenterHeader;
+	public JPanel jpCenterHeader;
+	public JPanel jpHeaderSpacerLeft;
+	public JPanel jpHeaderSpacerRight;
+	private JPanel jpHeaderBoard;
+	private JPanel jpHBLectureOptions;
+	public JButton jbRandom;
+	public JButton jbRepeat;
+	private JPanel jpHBCustomOptions;
+	private JButton jbVolet;
+	private JButton jbPlAdd;
+	public JPanel jpHBMain;
+	private JScrollPane scrollPane1;
 	private JPanel jpPlaylistViews;
 	private JPanel jpLibViewContainer;
 	private JPanel jpLibraryContainers;
@@ -937,7 +1110,7 @@ public class ContentContainerMain extends JPanel {
 	private JLabel label8;
 	private JLabel label9;
 	private JScrollPane spArtist;
-	private JList jlArtistes;
+	public JList jlArtistes;
 	private JPanel jpArtistResize;
 	private JPanel jpAlbums;
 	private JPanel jpAlbumHead;
@@ -953,6 +1126,6 @@ public class ContentContainerMain extends JPanel {
 	private JButton jbEcoutezAlbum;
 	private JPanel jpDisplayMenu;
 	private JScrollPane jspTracks;
-	private JTable jtTracks;
+	public JTable jtTracks;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

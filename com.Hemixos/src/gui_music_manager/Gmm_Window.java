@@ -1,5 +1,8 @@
 package gui_music_manager;
 
+import exceptions.UnselectedLibraryException;
+import gui_actionUpdater.ListUpdater;
+import gui_actionUpdater.PlayButtonsUpdater;
 import gui_generic_components.ListenerFrameResize;
 
 import java.awt.BorderLayout;
@@ -24,6 +27,8 @@ import javax.swing.event.ChangeListener;
 
 import properties.AbstractImages;
 import properties.AbstractValues;
+import threads.HeaderUpdater;
+import JFormDesigner.ContentContainerMain;
 
 import com.Hemixos.Model;
 import com.Hemixos.Model_window;
@@ -55,6 +60,9 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 	private JPanel mainMenuLeft;
 	private JPanel optionRight;
 	private JPanel mainContentCenter;
+
+
+	private Gmm_PlayerInfoLecture jpLecteurInfo;
 	
 	
 	
@@ -78,10 +86,19 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		initElements();
 		
 		// Listeners
-		this.addComponentListener(new ListenerFrameResize(model));
+		ListenerFrameResize frameListener = new ListenerFrameResize(model);
+		this.addComponentListener(frameListener);
+		
+		this.addWindowListener(frameListener);
+		this.addWindowFocusListener(frameListener);
+		this.addWindowStateListener(frameListener);
+		
+		
 		this.setVisible(true);
 		
 	}
+
+
 
 
 	private void configFrame() {
@@ -112,28 +129,68 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 
 
 
+	/**
+	 * Initialise les components crées avec JFormDesigner
+	 */
 	private void initElements() {
+	
+		ContentContainerMain jpJFD = new ContentContainerMain();
+				
+		this.add(jpJFD);
+		
+		// RegisterElements
+		model.getMc().regJpHeadSpacerLeft(jpJFD.getJpHeaderSpacerLeft());
+		model.getMc().regJpHeadSpacerRight(jpJFD.getJpHeaderSpacerRight());
 
-		// player top
-		this.playerTop = new Gmm_Player(model);
+		model.getMc().regJlArtist(jpJFD.getJlArtistes());
+		model.getMc().regJtTableTrack(jpJFD.getJtTracks());
 		
-		// menu left
-		this.mainMenuLeft = new Gmm_Menu(model);
+		model.getMc().regJbPlay(jpJFD.getJbPausPlay());
+		model.getMc().regJbNext(jpJFD.getJbNext());
+		model.getMc().regJbPrevious(jpJFD.getJbPrevious());
 		
-		// content center
-		this.mainContentCenter = new Gmm_Container(model);
-		
-		// option right
-		this.optionRight = new Gmm_OptionList(model);
-		
-		// Add elements
-		this.add(playerTop, BorderLayout.NORTH);
-		this.add(mainMenuLeft, BorderLayout.WEST);
-		this.add(optionRight, BorderLayout.EAST);
-		this.add(mainContentCenter, BorderLayout.CENTER);
+		model.getMc().regJbRandom(jpJFD.getJbRandom());
+		model.getMc().regJbRepeat(jpJFD.getJbRepeat());
 
+
+		
+		
+		/*
+		 *  Add external elements 
+		 */
+		
+		// Head info player
+		JPanel CenterHost = jpJFD.getJpHBMain();
+		
+		jpLecteurInfo = new Gmm_PlayerInfoLecture(model);
+		model.getMc().regJpInfo(jpLecteurInfo);
+		
+		CenterHost.add(jpLecteurInfo);	
+				
+
+		/*
+		 * refresh appearance data
+		 */
+		try {
+			ListUpdater.refreshArtistList(model);
+			ListUpdater.refreshTrackTable(model);
+		} catch (UnselectedLibraryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		/*
+		 * Finitions
+		 */		
+		new PlayButtonsUpdater(model);
+		HeaderUpdater.instanciate(model);
+		model.getMw().actionResize();
 	}
-
+	
 
 	@Override
 	public void stateChanged(ChangeEvent e) {

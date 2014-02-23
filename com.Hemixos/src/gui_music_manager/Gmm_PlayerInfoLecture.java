@@ -34,28 +34,23 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	}
 	
-	
-	
-	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		// Draw Rectangle
 		g.setColor(AbstractColors.GUI_INFO_BORDER);
-		g.drawRoundRect(20, 15, getInfoWidth(), this.getHeight()-30, 8, 8);
+		g.drawRoundRect(20, 15, model.getMw().getInfoWidth(), this.getHeight()-30, 8, 8);
 
-		
 		int playerWidth = 15+this.getHeight()-35;
 		
-		
 		g.setColor(AbstractColors.GUI_INFO_NOT_PLAYED);
-		g.fillRect(20, playerWidth, getInfoWidth()+2, 6);
+		g.fillRect(20, playerWidth, model.getMw().getInfoWidth()+2, 6);
 		
 		
 		
 		/*
 		 * length = 210000 (ms)
 		 * played =  60000 (ms)
-		 * 
 		 */
 		long length = 	model.getMp().getTrackLength(); 
 		long pos = 		model.getMp().getTrackLengthPlayed();
@@ -64,11 +59,11 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 			length = 1;
 			pos = 0;
 		}
-		int playedWidth = (int) ((int) (getInfoWidth()*pos)/length);
+		int playedWidth = (int) ((int) (model.getMw().getInfoWidth()*pos)/length);
 
 		g.setColor(AbstractColors.GUI_INFO_PLAYED);
 		g.fillRect(20, playerWidth, playedWidth, 6);
-
+		
 		
 		if (model.getMp().getPlayingSong() != null) {
 			String title = model.getMp().getPlayingSong().getTitle();
@@ -81,13 +76,13 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 
 			g.setFont(fTitle);
 			g.setColor(AbstractColors.GUI_PL_INFO_TITLE);
-			g.drawString(name, getInfoWidth()/2-name.length()*6/2, 34);
+			g.drawString(name, model.getMw().getInfoWidth()/2-name.length()*6/2, 34);
 			
 			if (model.getMp().isEnLecture()) {
 				g.setFont(fTime);
 				g.setColor(AbstractColors.GUI_PL_INFO_TIME);
-				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLengthPlayed()), 30+model.getMw().getBorderTampon()/4, 45);
-				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLength()), getInfoWidth()-model.getMw().getBorderTampon()/5-10, 45);
+				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLengthPlayed()), 30+model.getMw().getBorderTampon()/4, 33);
+				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLength()), model.getMw().getInfoWidth()-model.getMw().getBorderTampon()/5-10, 33);
 			}
 			
 		}
@@ -95,13 +90,9 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 		
 	}
 	
+
 	
 
-
-
-	private int getInfoWidth() {
-		return model.getMw().getFrameWidth() - 880 - model.getMw().getBorderTampon()*2;
-	}
 	
 
 }

@@ -1,11 +1,5 @@
 package ucc;
 
-import java.awt.Dimension;
-
-import javax.swing.event.ChangeEvent;
-
-import properties.AbstractValues;
-
 import com.Hemixos.Model;
 
 public class ActionVolet implements Runnable {
@@ -23,6 +17,7 @@ public class ActionVolet implements Runnable {
 	
 	public void run() {
 		
+		/*
 		if (!model.getMw().isVoletEnAction()) {
 			
 			model.getMw().setVoletEnAction(true);
@@ -63,7 +58,7 @@ public class ActionVolet implements Runnable {
 			model.getMw().setVoletEnAction(false);
 			
 		}
-
+	*/
 	}
 	
 	
