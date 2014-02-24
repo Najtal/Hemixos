@@ -34,7 +34,7 @@ public class DTO_Album implements Serializable {
 		}*/
 	}
 	
-	protected Song getTrack(String trackName) {
+	public Song getTrack(String trackName) {
 		if (mapSongs.containsKey(trackName)) {
 			return mapSongs.get(trackName);
 		}
@@ -42,7 +42,7 @@ public class DTO_Album implements Serializable {
 	}
 
 
-	protected AlbumArtRef getCover() {
+	public AlbumArtRef getCover() {
 		return cover;
 	}
 
@@ -71,7 +71,7 @@ public class DTO_Album implements Serializable {
 	}
 
 
-	protected HashMap<String, Song> getMapSongs() {
+	public HashMap<String, Song> getMapSongs() {
 		return mapSongs;
 	}
 

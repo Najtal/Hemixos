@@ -5,8 +5,10 @@ import gui_music_manager.Gmm_PlayerInfoVolume;
 import gui_music_manager.Gmm_Window;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 
@@ -53,8 +55,17 @@ public class Model_comp {
 	public JButton jbArtistsAll;
 	public JButton jbalbumAll;
 
+	public JScrollPane spArtist;
+	public JScrollPane spPlaylistView;
+	public JScrollPane spAlbum;
+	public JScrollPane jspTracks;
 
-	
+	public JButton jbPisteImage;
+	public JLabel jlTitleValue;
+	public JLabel jlArtistValue;
+	public JLabel jlAlbumValue;
+	public JLabel jlDureeValue;
+
 	
 	/**
 	 * Constructor
@@ -152,6 +163,42 @@ public class Model_comp {
 
 	public void regJbAlbumAll(JButton jbalbumAll) {
 		this.jbalbumAll = jbalbumAll;
+	}
+
+	public void regJSPArtist(JScrollPane spArtist) {
+		this.spArtist = spArtist;
+	}
+
+	public void regJSPAlbum(JScrollPane spAlbum) {
+		this.spAlbum = spAlbum;
+	}
+
+	public void regJSPlaylistView(JScrollPane spPlaylistView) {
+		this.spPlaylistView = spPlaylistView;
+	}
+
+	public void regJSPTrack(JScrollPane jspTracks) {
+		this.jspTracks = jspTracks;		
+	}
+
+	public void regImageInfoPiste(JButton jbPisteImage) {
+		this.jbPisteImage = jbPisteImage;		
+	}
+
+	public void regTitreInfoPiste(JLabel jlTitleValue) {
+		this.jlTitleValue = jlTitleValue;
+	}
+
+	public void regArtistInfoPiste(JLabel jlArtistValue) {
+		this.jlArtistValue = jlArtistValue;
+	}
+
+	public void regAlbumInfoPiste(JLabel jlAlbumValue) {
+		this.jlAlbumValue = jlAlbumValue;
+	}
+
+	public void regDureeInfoPiste(JLabel jlDureeValue) {
+		this.jlDureeValue = jlDureeValue;
 	}
 	
 }

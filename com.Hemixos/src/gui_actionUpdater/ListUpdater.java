@@ -1,12 +1,18 @@
 package gui_actionUpdater;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+
+import properties.AbstractColors;
 
 import com.Hemixos.Model;
 import com.Hemixos.TableModel_Tracks;
@@ -32,6 +38,8 @@ public class ListUpdater implements ActionListener {
 	
 	private JButton jbAllArtist;
 	private JButton jbAllAlbum;
+	
+	private static boolean isTrackTableMouseListenerAdded = false;
 
 
 	/**
@@ -89,12 +97,22 @@ public class ListUpdater implements ActionListener {
 		jtTable.setModel(tdmListe);
 		jtTable.removeColumn(jtTable.getColumnModel().getColumn(3));
 
-		jtTable.addMouseListener(new ListenerTableTrack(model, jtTable));
+		if (!isTrackTableMouseListenerAdded) {
+			jtTable.addMouseListener(new ListenerTableTrack(model, jtTable));
+			isTrackTableMouseListenerAdded = true;
+		}
+		jtTable.setBackground(Color.WHITE);
 		
+		
+		// Style
 		jtTable.setShowVerticalLines(true);
 		jtTable.setShowHorizontalLines(false);
 		jtTable.setUpdateSelectionOnSort(true);
 		
+		JTableHeader header = jtTable.getTableHeader();
+		header.setBackground(AbstractColors.GUI_LISTE_TRACK_HEADER_BACKGROUND);
+		header.getColumnModel().setColumnSelectionAllowed(false);
+
 	}
 
 

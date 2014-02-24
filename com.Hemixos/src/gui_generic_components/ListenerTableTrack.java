@@ -2,10 +2,12 @@ package gui_generic_components;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.GregorianCalendar;
 
 import javax.swing.JTable;
 
 import ucc.ActionElementToPlay;
+import util.TimeUtil;
 
 import com.Hemixos.Model;
 
@@ -23,6 +25,10 @@ public class ListenerTableTrack implements MouseListener {
 	private Model model;
 	private JTable jtTable;
 
+	private static int lastSelectedTrack = -1;
+	private static long lastSelectedTrackTime = new GregorianCalendar().getTimeInMillis();
+	
+	
 	/**
 	 * Constructor
 	 * @param model
@@ -41,11 +47,16 @@ public class ListenerTableTrack implements MouseListener {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("single click");
-		if(e.getClickCount() == 2) {
-			System.out.println("double click");
+		
+		if ((e.getClickCount() == 2)
+				&& (e.getWhen() - lastSelectedTrackTime > 1000
+				|| lastSelectedTrack == jtTable.getSelectedRow())) {
 
+			lastSelectedTrackTime = e.getWhen();
+			lastSelectedTrack = jtTable.getSelectedRow();
+			
 			ActionElementToPlay.AddOrPlayElement(model, jtTable);
+
 		}
 	}
 

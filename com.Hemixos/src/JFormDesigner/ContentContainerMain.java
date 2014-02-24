@@ -112,6 +112,42 @@ public class ContentContainerMain extends JPanel {
 		return jbalbumAll;
 	}
 
+	public JScrollPane getSpArtist() {
+		return spArtist;
+	}
+
+	public JScrollPane getSpPlaylistView() {
+		return spPlaylistView;
+	}
+
+	public JScrollPane getSpAlbum() {
+		return spAlbum;
+	}
+
+	public JScrollPane getJspTracks() {
+		return jspTracks;
+	}
+
+	public JButton getJbPisteImage() {
+		return jbPisteImage;
+	}
+
+	public JLabel getJlTitleValue() {
+		return jlTitleValue;
+	}
+
+	public JLabel getJlArtistValue() {
+		return jlArtistValue;
+	}
+
+	public JLabel getJlAlbumValue() {
+		return jlAlbumValue;
+	}
+
+	public JLabel getJlDureeValue() {
+		return jlDureeValue;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - jv dudux
@@ -135,7 +171,7 @@ public class ContentContainerMain extends JPanel {
 		jbVolet = new JButton();
 		jbPlAdd = new JButton();
 		jpHBMain = new JPanel();
-		scrollPane1 = new JScrollPane();
+		spPlaylistView = new JScrollPane();
 		jpPlaylistViews = new JPanel();
 		jpLibViewContainer = new JPanel();
 		jpLibraryContainers = new JPanel();
@@ -175,7 +211,7 @@ public class ContentContainerMain extends JPanel {
 		jpInfoPSBorder = new JPanel();
 		jpInfoPSContainer = new JPanel();
 		jpImageContainer = new JPanel();
-		jbImage = new JButton();
+		jbPisteImage = new JButton();
 		jpSpaceT = new JPanel();
 		jpSpaceS = new JPanel();
 		jpInfoTxt = new JPanel();
@@ -392,13 +428,13 @@ public class ContentContainerMain extends JPanel {
 		}
 		add(jpHeader, BorderLayout.NORTH);
 
-		//======== scrollPane1 ========
+		//======== spPlaylistView ========
 		{
-			scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-			scrollPane1.setBackground(new Color(229, 229, 229));
-			scrollPane1.setBorder(BorderFactory.createEmptyBorder());
-			scrollPane1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-			scrollPane1.setRequestFocusEnabled(false);
+			spPlaylistView.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+			spPlaylistView.setBackground(new Color(229, 229, 229));
+			spPlaylistView.setBorder(BorderFactory.createEmptyBorder());
+			spPlaylistView.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+			spPlaylistView.setRequestFocusEnabled(false);
 
 			//======== jpPlaylistViews ========
 			{
@@ -617,9 +653,9 @@ public class ContentContainerMain extends JPanel {
 				}
 				jpPlaylistViews.add(jpPlaylistContainer, BorderLayout.CENTER);
 			}
-			scrollPane1.setViewportView(jpPlaylistViews);
+			spPlaylistView.setViewportView(jpPlaylistViews);
 		}
-		add(scrollPane1, BorderLayout.WEST);
+		add(spPlaylistView, BorderLayout.WEST);
 
 		//======== jpPlayingInfo ========
 		{
@@ -754,15 +790,15 @@ public class ContentContainerMain extends JPanel {
 						jpImageContainer.setBackground(new Color(245, 245, 245));
 						jpImageContainer.setLayout(new BorderLayout());
 
-						//---- jbImage ----
-						jbImage.setSelectedIcon(null);
-						jbImage.setIcon(new ImageIcon(getClass().getResource("/images/td_miniature.png")));
-						jbImage.setPreferredSize(new Dimension(50, 50));
-						jbImage.setBorder(null);
-						jbImage.setBackground(new Color(245, 245, 245));
-						jbImage.setBorderPainted(false);
-						jbImage.setMaximumSize(new Dimension(60, 60));
-						jpImageContainer.add(jbImage, BorderLayout.CENTER);
+						//---- jbPisteImage ----
+						jbPisteImage.setSelectedIcon(null);
+						jbPisteImage.setIcon(new ImageIcon(getClass().getResource("/images/td_miniature.png")));
+						jbPisteImage.setPreferredSize(new Dimension(50, 50));
+						jbPisteImage.setBorder(null);
+						jbPisteImage.setBackground(new Color(245, 245, 245));
+						jbPisteImage.setBorderPainted(false);
+						jbPisteImage.setMaximumSize(new Dimension(60, 60));
+						jpImageContainer.add(jbPisteImage, BorderLayout.CENTER);
 
 						//======== jpSpaceT ========
 						{
@@ -909,12 +945,11 @@ public class ContentContainerMain extends JPanel {
 					//======== spArtist ========
 					{
 						spArtist.setBackground(new Color(246, 247, 249));
-						spArtist.setBorder(null);
-						spArtist.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+						spArtist.setBorder(new EmptyBorder(0, 10, 0, 0));
 
 						//---- jlArtistes ----
 						jlArtistes.setBackground(new Color(246, 247, 249));
-						jlArtistes.setBorder(new EmptyBorder(2, 10, 0, 0));
+						jlArtistes.setBorder(new EmptyBorder(2, 0, 0, 0));
 						jlArtistes.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 						jlArtistes.setFixedCellHeight(16);
 						spArtist.setViewportView(jlArtistes);
@@ -969,12 +1004,11 @@ public class ContentContainerMain extends JPanel {
 					//======== spAlbum ========
 					{
 						spAlbum.setBackground(new Color(246, 247, 249));
-						spAlbum.setBorder(null);
-						spAlbum.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+						spAlbum.setBorder(new EmptyBorder(0, 10, 0, 0));
 
 						//---- jlAlbums ----
 						jlAlbums.setBackground(new Color(246, 247, 249));
-						jlAlbums.setBorder(new EmptyBorder(2, 10, 0, 0));
+						jlAlbums.setBorder(new EmptyBorder(2, 0, 0, 0));
 						jlAlbums.setFixedCellHeight(16);
 						jlAlbums.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 						spAlbum.setViewportView(jlAlbums);
@@ -1046,7 +1080,7 @@ public class ContentContainerMain extends JPanel {
 				//======== jspTracks ========
 				{
 					jspTracks.setBackground(Color.white);
-					jspTracks.setBorder(BorderFactory.createEmptyBorder());
+					jspTracks.setBorder(new EmptyBorder(0, 0, 0, 3));
 					jspTracks.setMinimumSize(new Dimension(0, 0));
 
 					//---- jtTracks ----
@@ -1091,7 +1125,7 @@ public class ContentContainerMain extends JPanel {
 	private JButton jbVolet;
 	private JButton jbPlAdd;
 	public JPanel jpHBMain;
-	private JScrollPane scrollPane1;
+	private JScrollPane spPlaylistView;
 	private JPanel jpPlaylistViews;
 	private JPanel jpLibViewContainer;
 	private JPanel jpLibraryContainers;
@@ -1131,7 +1165,7 @@ public class ContentContainerMain extends JPanel {
 	private JPanel jpInfoPSBorder;
 	private JPanel jpInfoPSContainer;
 	private JPanel jpImageContainer;
-	private JButton jbImage;
+	public JButton jbPisteImage;
 	private JPanel jpSpaceT;
 	private JPanel jpSpaceS;
 	private JPanel jpInfoTxt;
@@ -1141,10 +1175,10 @@ public class ContentContainerMain extends JPanel {
 	private JLabel jlAlbum;
 	private JLabel jlDuree;
 	private JPanel jpInfoListValue;
-	private JLabel jlTitleValue;
-	private JLabel jlArtistValue;
-	private JLabel jlAlbumValue;
-	private JLabel jlDureeValue;
+	public JLabel jlTitleValue;
+	public JLabel jlArtistValue;
+	public JLabel jlAlbumValue;
+	public JLabel jlDureeValue;
 	private JPanel jpCenterMain;
 	private JPanel jpFilterContainer;
 	private JPanel jpArtistlist;

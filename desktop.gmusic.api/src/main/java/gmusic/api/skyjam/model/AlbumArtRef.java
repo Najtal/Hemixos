@@ -16,6 +16,8 @@ import java.net.URISyntaxException;
 
 public class AlbumArtRef implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private String url;
 
 	public final String getUrl() {

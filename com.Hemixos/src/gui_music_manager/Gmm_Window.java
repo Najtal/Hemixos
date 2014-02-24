@@ -1,9 +1,11 @@
 package gui_music_manager;
 
 import exceptions.UnselectedLibraryException;
+import gui_actionUpdater.InfoPisteLectureUpdater;
 import gui_actionUpdater.ListUpdater;
 import gui_actionUpdater.PlayButtonsUpdater;
 import gui_actionUpdater.ViewUpdater;
+import gui_generic_components.GuiScrollBarUpdater;
 import gui_generic_components.ListenerFrameResize;
 
 import java.awt.BorderLayout;
@@ -166,6 +168,18 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regJbArtistAll(jpJFD.getJbArtistsAll());
 		model.getMc().regJbAlbumAll(jpJFD.getJbalbumAll());
 		
+		model.getMc().regJSPArtist(jpJFD.getSpArtist());
+		model.getMc().regJSPAlbum(jpJFD.getSpAlbum());
+		model.getMc().regJSPlaylistView(jpJFD.getSpPlaylistView());
+		model.getMc().regJSPTrack(jpJFD.getJspTracks());
+		
+		
+		model.getMc().regImageInfoPiste(jpJFD.getJbPisteImage());
+		model.getMc().regTitreInfoPiste(jpJFD.getJlTitleValue());
+		model.getMc().regArtistInfoPiste(jpJFD.getJlArtistValue());
+		model.getMc().regAlbumInfoPiste(jpJFD.getJlAlbumValue());
+		model.getMc().regDureeInfoPiste(jpJFD.getJlDureeValue());
+
 		
 		/*
 		 *  Add external elements 
@@ -198,6 +212,13 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		new ListUpdater(model);
 		new ViewUpdater(model);
 		new PlayButtonsUpdater(model);
+		new InfoPisteLectureUpdater(model);
+		
+		GuiScrollBarUpdater.updateArtistSB(model);
+		GuiScrollBarUpdater.updateAlbumSB(model);
+		GuiScrollBarUpdater.updatePlaylistSB(model);
+		GuiScrollBarUpdater.updateTrackSB(model);
+		
 		HeaderUpdater.instanciate(model);
 		model.getMw().actionResize();
 	}

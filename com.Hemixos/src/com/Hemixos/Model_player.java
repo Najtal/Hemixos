@@ -1,7 +1,9 @@
 package com.Hemixos;
 
 import gmusic.api.model.Song;
+import gui_actionUpdater.InfoPisteLectureUpdater;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.event.ChangeEvent;
@@ -29,6 +31,8 @@ public class Model_player {
 	private int volume = 70;
 	
 	private Song playingSong;
+	private Image iPlayingTrackCover;
+
 	private PlayingQueue queue;
 	
 	private boolean addToPL;
@@ -38,6 +42,7 @@ public class Model_player {
 	private boolean enLecture;
 	private boolean random;
 	private boolean repeat;
+
 	
 	
 	
@@ -119,7 +124,7 @@ public class Model_player {
 
 		queue.ajouterUnePiste(s);
 		
-		playingSong = s;
+		setPlayingTrack(s);
 		setEnLecture(true);
 		traiterEvent(null);
 		
@@ -254,6 +259,7 @@ public class Model_player {
 	 */
 	public void setPlayingTrack(Song playingSong) {
 		this.playingSong = playingSong;
+		InfoPisteLectureUpdater.getInstance().updateInfoPiste();
 	}
 
 
@@ -330,5 +336,16 @@ public class Model_player {
 		traiterEvent(null);
 	}
 
+
+	public void setPlayingTrackCover(Image image) {
+		this.iPlayingTrackCover = image;
+	}
+
 	
+	/**
+	 * @return the iPlayingTrackCover
+	 */
+	public Image getiPlayingTrackCover() {
+		return iPlayingTrackCover;
+	}
 }

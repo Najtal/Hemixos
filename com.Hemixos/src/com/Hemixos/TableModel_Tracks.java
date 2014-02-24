@@ -25,7 +25,7 @@ public class TableModel_Tracks extends DefaultTableModel {
 		super(model.getMd().getListePisteData(), model.getMd().getListePisteCN());
 
 		this.model = model;
-
+		
 	}
 	
 	

@@ -194,12 +194,15 @@ new FormModel {
 				"value": "North"
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-				name: "scrollPane1"
+				name: "spPlaylistView"
 				"horizontalScrollBarPolicy": 31
 				"background": new java.awt.Color( 229, 229, 229, 255 )
 				"border": new javax.swing.border.EmptyBorder( 0, 0, 0, 0 )
 				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
 				"requestFocusEnabled": false
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 					name: "jpPlaylistViews"
 					"background": new java.awt.Color( 229, 229, 229, 255 )
@@ -528,7 +531,7 @@ new FormModel {
 							"preferredSize": new java.awt.Dimension( 80, 45 )
 							"background": &Color12 new java.awt.Color( 245, 245, 245, 255 )
 							add( new FormComponent( "javax.swing.JButton" ) {
-								name: "jbImage"
+								name: "jbPisteImage"
 								"selectedIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/td_miniature.png" )
 								"preferredSize": new java.awt.Dimension( 50, 50 )
@@ -536,6 +539,10 @@ new FormModel {
 								"background": #Color12
 								"borderPainted": false
 								"maximumSize": new java.awt.Dimension( 60, 60 )
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+									"JavaCodeGenerator.variableModifiers": 1
+								}
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "Center"
 							} )
@@ -601,24 +608,40 @@ new FormModel {
 									"text": "One more time"
 									"foreground": #Color13
 									"font": #Font3
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 1
+									}
 								} )
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "jlArtistValue"
 									"text": "Daft Punk"
 									"foreground": #Color13
 									"font": #Font3
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 1
+									}
 								} )
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "jlAlbumValue"
 									"text": "Discovery"
 									"foreground": #Color13
 									"font": #Font3
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 1
+									}
 								} )
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "jlDureeValue"
 									"text": "5:20"
 									"foreground": #Color13
 									"font": #Font3
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 1
+									}
 								} )
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
@@ -680,12 +703,14 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "spArtist"
 							"background": &Color19 new java.awt.Color( 246, 247, 249, 255 )
-							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-							"horizontalScrollBarPolicy": 31
+							"border": new javax.swing.border.EmptyBorder( 0, 10, 0, 0 )
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
 							add( new FormComponent( "javax.swing.JList" ) {
 								name: "jlArtistes"
 								"background": #Color19
-								"border": &EmptyBorder6 new javax.swing.border.EmptyBorder( 2, 10, 0, 0 )
+								"border": new javax.swing.border.EmptyBorder( 2, 0, 0, 0 )
 								"font": new java.awt.Font( "Segoe UI", 0, 12 )
 								"fixedCellHeight": 16
 								auxiliary() {
@@ -747,12 +772,14 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 							name: "spAlbum"
 							"background": #Color19
-							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-							"horizontalScrollBarPolicy": 31
+							"border": new javax.swing.border.EmptyBorder( 0, 10, 0, 0 )
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
 							add( new FormComponent( "javax.swing.JList" ) {
 								name: "jlAlbums"
 								"background": #Color19
-								"border": #EmptyBorder6
+								"border": new javax.swing.border.EmptyBorder( 2, 0, 0, 0 )
 								"fixedCellHeight": 16
 								"font": new java.awt.Font( "Segoe UI", 0, 12 )
 								auxiliary() {
@@ -793,7 +820,7 @@ new FormModel {
 								"text": "Ecoutez Daft Punk"
 								"background": &Color21 new java.awt.Color( 245, 245, 245, 255 )
 								"borderPainted": false
-								"border": &EmptyBorder7 new javax.swing.border.EmptyBorder( 0, 5, 0, 15 )
+								"border": &EmptyBorder6 new javax.swing.border.EmptyBorder( 0, 5, 0, 15 )
 								"foreground": &Color22 new java.awt.Color( 78, 94, 107, 255 )
 								"contentAreaFilled": false
 								"focusPainted": false
@@ -803,7 +830,7 @@ new FormModel {
 								"text": "Ecoutez Discovery"
 								"background": #Color21
 								"borderPainted": false
-								"border": #EmptyBorder7
+								"border": #EmptyBorder6
 								"foreground": #Color22
 								"contentAreaFilled": false
 								"focusPainted": false
@@ -822,8 +849,11 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "jspTracks"
 						"background": new java.awt.Color( 255, 255, 255, 255 )
-						"border": new javax.swing.border.EmptyBorder( 0, 0, 0, 0 )
+						"border": new javax.swing.border.EmptyBorder( 0, 0, 0, 3 )
 						"minimumSize": new java.awt.Dimension( 0, 0 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						add( new FormComponent( "javax.swing.JTable" ) {
 							name: "jtTracks"
 							"gridColor": new java.awt.Color( 229, 229, 229, 255 )
