@@ -76,6 +76,42 @@ public class ContentContainerMain extends JPanel {
 		return jbRepeat;
 	}
 
+	public JList getJlAlbums() {
+		return jlAlbums;
+	}
+
+	public JButton getJbViewSimple() {
+		return jbViewSimple;
+	}
+
+	public JButton getJbViewOneC() {
+		return jbViewOneC;
+	}
+
+	public JButton getJbViewTwoC() {
+		return jbViewTwoC;
+	}
+
+	public JButton getJbviewThreeC() {
+		return jbviewThreeC;
+	}
+
+	public JPanel getJpAlbumslist() {
+		return jpAlbumslist;
+	}
+
+	public JPanel getJpArtistlist() {
+		return jpArtistlist;
+	}
+
+	public JButton getJbArtistsAll() {
+		return jbArtistsAll;
+	}
+
+	public JButton getJbalbumAll() {
+		return jbalbumAll;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - jv dudux
@@ -157,14 +193,14 @@ public class ContentContainerMain extends JPanel {
 		jpFilterContainer = new JPanel();
 		jpArtistlist = new JPanel();
 		jpArtistHead = new JPanel();
-		label8 = new JLabel();
+		jbArtistsAll = new JButton();
 		label9 = new JLabel();
 		spArtist = new JScrollPane();
 		jlArtistes = new JList();
 		jpArtistResize = new JPanel();
-		jpAlbums = new JPanel();
+		jpAlbumslist = new JPanel();
 		jpAlbumHead = new JPanel();
-		label10 = new JLabel();
+		jbalbumAll = new JButton();
 		label11 = new JLabel();
 		spAlbum = new JScrollPane();
 		jlAlbums = new JList();
@@ -850,13 +886,16 @@ public class ContentContainerMain extends JPanel {
 						jpArtistHead.setPreferredSize(new Dimension(94, 31));
 						jpArtistHead.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-						//---- label8 ----
-						label8.setText("Artistes");
-						label8.setBackground(new Color(245, 245, 245));
-						label8.setFont(new Font("Segoe UI", Font.BOLD, 12));
-						label8.setBorder(new EmptyBorder(2, 5, 2, 5));
-						label8.setForeground(new Color(65, 72, 80));
-						jpArtistHead.add(label8);
+						//---- jbArtistsAll ----
+						jbArtistsAll.setText("Artistes");
+						jbArtistsAll.setBackground(new Color(245, 245, 245));
+						jbArtistsAll.setFont(new Font("Segoe UI", Font.BOLD, 12));
+						jbArtistsAll.setBorder(new EmptyBorder(2, 5, 2, 5));
+						jbArtistsAll.setForeground(new Color(65, 72, 80));
+						jbArtistsAll.setBorderPainted(false);
+						jbArtistsAll.setContentAreaFilled(false);
+						jbArtistsAll.setFocusPainted(false);
+						jpArtistHead.add(jbArtistsAll);
 
 						//---- label9 ----
 						label9.setText("(1236)");
@@ -893,12 +932,12 @@ public class ContentContainerMain extends JPanel {
 				}
 				jpFilterContainer.add(jpArtistlist);
 
-				//======== jpAlbums ========
+				//======== jpAlbumslist ========
 				{
-					jpAlbums.setBackground(new Color(246, 247, 249));
-					jpAlbums.setPreferredSize(new Dimension(220, 0));
-					jpAlbums.setBorder(new MatteBorder(0, 0, 0, 1, new Color(188, 188, 188)));
-					jpAlbums.setLayout(new BorderLayout());
+					jpAlbumslist.setBackground(new Color(246, 247, 249));
+					jpAlbumslist.setPreferredSize(new Dimension(220, 0));
+					jpAlbumslist.setBorder(new MatteBorder(0, 0, 0, 1, new Color(188, 188, 188)));
+					jpAlbumslist.setLayout(new BorderLayout());
 
 					//======== jpAlbumHead ========
 					{
@@ -907,13 +946,16 @@ public class ContentContainerMain extends JPanel {
 						jpAlbumHead.setPreferredSize(new Dimension(94, 31));
 						jpAlbumHead.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-						//---- label10 ----
-						label10.setText("Albums");
-						label10.setBackground(new Color(245, 245, 245));
-						label10.setFont(new Font("Segoe UI", Font.BOLD, 12));
-						label10.setBorder(new EmptyBorder(2, 5, 2, 5));
-						label10.setForeground(new Color(65, 72, 80));
-						jpAlbumHead.add(label10);
+						//---- jbalbumAll ----
+						jbalbumAll.setText("Albums");
+						jbalbumAll.setBackground(new Color(245, 245, 245));
+						jbalbumAll.setFont(new Font("Segoe UI", Font.BOLD, 12));
+						jbalbumAll.setBorder(new EmptyBorder(2, 5, 2, 5));
+						jbalbumAll.setForeground(new Color(65, 72, 80));
+						jbalbumAll.setBorderPainted(false);
+						jbalbumAll.setContentAreaFilled(false);
+						jbalbumAll.setFocusPainted(false);
+						jpAlbumHead.add(jbalbumAll);
 
 						//---- label11 ----
 						label11.setText("(2311)");
@@ -922,7 +964,7 @@ public class ContentContainerMain extends JPanel {
 						label11.setFont(new Font("Tahoma", Font.PLAIN, 10));
 						jpAlbumHead.add(label11);
 					}
-					jpAlbums.add(jpAlbumHead, BorderLayout.NORTH);
+					jpAlbumslist.add(jpAlbumHead, BorderLayout.NORTH);
 
 					//======== spAlbum ========
 					{
@@ -937,7 +979,7 @@ public class ContentContainerMain extends JPanel {
 						jlAlbums.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 						spAlbum.setViewportView(jlAlbums);
 					}
-					jpAlbums.add(spAlbum, BorderLayout.CENTER);
+					jpAlbumslist.add(spAlbum, BorderLayout.CENTER);
 
 					//======== jpAlbumResize ========
 					{
@@ -946,9 +988,9 @@ public class ContentContainerMain extends JPanel {
 						jpAlbumResize.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
 						jpAlbumResize.setLayout(new BorderLayout());
 					}
-					jpAlbums.add(jpAlbumResize, BorderLayout.EAST);
+					jpAlbumslist.add(jpAlbumResize, BorderLayout.EAST);
 				}
-				jpFilterContainer.add(jpAlbums);
+				jpFilterContainer.add(jpAlbumslist);
 			}
 			jpCenterMain.add(jpFilterContainer, BorderLayout.WEST);
 
@@ -1059,10 +1101,10 @@ public class ContentContainerMain extends JPanel {
 	private JList<String> jlLibs;
 	private JPanel ViewContainer;
 	private JPanel ViewsGridLayout;
-	private JButton jbViewSimple;
-	private JButton jbViewOneC;
-	private JButton jbViewTwoC;
-	private JButton jbviewThreeC;
+	public JButton jbViewSimple;
+	public JButton jbViewOneC;
+	public JButton jbViewTwoC;
+	public JButton jbviewThreeC;
 	private JPanel jpPVBorder3;
 	private JPanel jpPlaylistContainer;
 	private JPanel jpPVBorder2;
@@ -1107,17 +1149,17 @@ public class ContentContainerMain extends JPanel {
 	private JPanel jpFilterContainer;
 	private JPanel jpArtistlist;
 	private JPanel jpArtistHead;
-	private JLabel label8;
+	private JButton jbArtistsAll;
 	private JLabel label9;
 	private JScrollPane spArtist;
 	public JList jlArtistes;
 	private JPanel jpArtistResize;
-	private JPanel jpAlbums;
+	private JPanel jpAlbumslist;
 	private JPanel jpAlbumHead;
-	private JLabel label10;
+	private JButton jbalbumAll;
 	private JLabel label11;
 	private JScrollPane spAlbum;
-	private JList jlAlbums;
+	public JList jlAlbums;
 	private JPanel jpAlbumResize;
 	private JPanel jpTrackContainer;
 	private JPanel jpSelectedTrackMenu;

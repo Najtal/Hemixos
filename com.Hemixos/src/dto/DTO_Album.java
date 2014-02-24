@@ -51,7 +51,7 @@ public class DTO_Album implements Serializable {
 	}
 
 
-	protected String getAlbumName() {
+	public String getAlbumName() {
 		return albumName;
 	}
 
@@ -61,7 +61,7 @@ public class DTO_Album implements Serializable {
 	}
 
 
-	protected DTO_Artist getArtist() {
+	public DTO_Artist getArtist() {
 		return artist;
 	}
 

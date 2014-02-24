@@ -1,8 +1,5 @@
 package gui_generic_components;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -28,9 +25,5 @@ public class ListenerListeArtist implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent arg0) {
 		model.getMw().setSelectedArtist(liste.getSelectedIndex());		
 	}
-
-	
-	
-
 
 }

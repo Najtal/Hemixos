@@ -32,6 +32,7 @@ public class Model_comp {
 	public JPanel jpHeadSpacerRight;
 
 	public JList jlArtistes;
+	public JList jlAlbums;
 	public JTable jtTableTrack;
 
 	public JButton jbPlay;
@@ -41,7 +42,18 @@ public class Model_comp {
 	public JButton jbRandom;
 	public JButton jbRepeat;
 
-	
+	public JButton jbViewSimple;
+	public JButton jbViewOneC;
+	public JButton jbViewTwoC;
+	public JButton jbviewThreeC;
+
+	public JPanel jpArtistlist;
+	public JPanel jpAlbumslist;
+
+	public JButton jbArtistsAll;
+	public JButton jbalbumAll;
+
+
 	
 	
 	/**
@@ -104,6 +116,42 @@ public class Model_comp {
 
 	public void regJbRandom(JButton jbRandom) {
 		this.jbRandom = jbRandom;
+	}
+
+	public void regJlAlbum(JList jlAlbums) {
+		this.jlAlbums = jlAlbums;
+	}
+
+	public void regViewSimple(JButton jbViewSimple) {
+		this.jbViewSimple = jbViewSimple;
+	}
+
+	public void regViewOne(JButton jbViewOneC) {
+		this.jbViewOneC = jbViewOneC;
+	}
+
+	public void regViewTwo(JButton jbViewTwoC) {
+		this.jbViewTwoC = jbViewTwoC;
+	}
+
+	public void regViewThree(JButton jbviewThreeC) {
+		this.jbviewThreeC = jbviewThreeC;
+	}
+
+	public void regJpArtistList(JPanel jpArtistlist) {
+		this.jpArtistlist = jpArtistlist;
+	}
+
+	public void regJpAlbumList(JPanel jpAlbumslist) {
+		this.jpAlbumslist = jpAlbumslist;
+	}
+
+	public void regJbArtistAll(JButton jbArtistsAll) {
+		this.jbArtistsAll = jbArtistsAll;
+	}
+
+	public void regJbAlbumAll(JButton jbalbumAll) {
+		this.jbalbumAll = jbalbumAll;
 	}
 	
 }

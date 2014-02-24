@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.JList;
 
 import layer_manager.ApiManager;
+import dto.DTO_Album;
 import dto.DTO_Artist;
 import dto.Library;
 import exceptions.UndefineGoogleManagerAPI;
@@ -41,8 +42,12 @@ public class Model_data {
 	private Vector<String> listArtistKey;	// liste avec toute les clés associées
 
 	private int selectedArtist; // L'artiste selectionné
-	
-	
+
+	private Vector<String> listeAlbums;		// liste avec tous les nom d'albums
+	private Vector<String> listAlbumKey;	// liste avec toute les clés associées
+
+	private int selectedAlbum; // Album selectionné
+
 	
 	/**
 	 * Constructeur
@@ -53,6 +58,7 @@ public class Model_data {
 		this.model = model;
 		
 		selectedArtist = -1;
+		selectedAlbum = -1;
 		this.libs = new ArrayList<Library>();
 	}
 	
@@ -83,15 +89,19 @@ public class Model_data {
 		Vector<Vector> v = new Vector<Vector>();
 
 		Song song = null;
-		String an = null;
+		String ar = null;
+		String al = null;
 		
 		Iterator<Song> itt = lib.getMapSongs().values().iterator();
 		
 		if (selectedArtist > -1) {
-			
-			JList<String> liste = model.getMc().jlArtistes;
-			an = liste.getModel().getElementAt(liste.getSelectedIndex());
+			JList<String> listeArtist = model.getMc().jlArtistes;
+			ar = listeArtist.getModel().getElementAt(listeArtist.getSelectedIndex());
+		}
 
+		if (selectedAlbum > -1) {
+			JList<String> listeAlbum = model.getMc().jlAlbums;
+			al = listeAlbum.getModel().getElementAt(listeAlbum.getSelectedIndex());
 		}
 		
 		while (itt.hasNext()) {
@@ -99,25 +109,48 @@ public class Model_data {
 			song = (Song) itt.next();
 			
 			if (selectedArtist > -1) {
-								
-				if (an.equals(song.getArtist())) {
+						
+				if (selectedAlbum > -1) {
+					if (ar.equals(song.getArtist()) && al.equals(song.getAlbum())) {
+						Vector<String> vt = new Vector<>();
+						vt.add(song.getTitle());
+						vt.add(song.getArtist());
+						vt.add(song.getAlbum());
+						vt.add(song.getId());						
+						v.add(vt);						
+					}
+					
+				} else {
+					if (ar.equals(song.getArtist())) {
+						Vector<String> vt = new Vector<>();
+						vt.add(song.getTitle());
+						vt.add(song.getArtist());
+						vt.add(song.getAlbum());
+						vt.add(song.getId());						
+						v.add(vt);						
+					}
+				}
+				
+			} else {
+
+				if (selectedAlbum > -1) {
+					if (al.equals(song.getAlbum())) {
+						Vector<String> vt = new Vector<>();
+						vt.add(song.getTitle());
+						vt.add(song.getArtist());
+						vt.add(song.getAlbum());
+						vt.add(song.getId());						
+						v.add(vt);						
+					}
+					
+				} else {
 					Vector<String> vt = new Vector<>();
 					vt.add(song.getTitle());
 					vt.add(song.getArtist());
 					vt.add(song.getAlbum());
 					vt.add(song.getId());						
-					v.add(vt);						
-				
+					v.add(vt);	
 				}
-				
-			} else {
-			
-				Vector<String> vt = new Vector<>();
-				vt.add(song.getTitle());
-				vt.add(song.getArtist());
-				vt.add(song.getAlbum());
-				vt.add(song.getId());						
-				v.add(vt);	
 			}
 		}
 		
@@ -216,19 +249,66 @@ public class Model_data {
 
 
 	public Vector<String> getArtistVector() {
-		
 		if (listArtist == null) {
-			setArtistvector();
+			setArtistVector();
 		}
-
 		return listArtist;
-		
+	}
+	
+	
+
+
+	public Vector<String> getAlbumVector() {
+		setAlbumsVector();
+		return listeAlbums;
 	}
 
 
 
+	private void setAlbumsVector() {
+		listeAlbums = new Vector<>();
+		listAlbumKey = new Vector<>();
+		
+		Iterator<Entry<String, DTO_Album>> ita = lib.getMapAlbums().entrySet().iterator();
+				
+		boolean filtre = false;
+		String selectedArtistName = null;
+		
+		if (model.getMd().getSelectedArtist() > -1) {
+			selectedArtistName  = (String) model.getMc().jlArtistes.getModel().getElementAt(model.getMc().jlArtistes.getSelectedIndex());
+			System.out.println("selectedArtist: " + selectedArtist);
+			filtre = true;
+		}
+		
+		
+		if (filtre) {
+			
+			while (ita.hasNext()) {
+				Entry<String, DTO_Album> nx = ita.next();
+				if (nx.getValue().getArtist().getArtistName().equals(selectedArtistName)) {
+					listAlbumKey.add(nx.getKey());
+					listeAlbums.add(nx.getValue().getAlbumName());
+				}
+			}
+			
+		} else {
+			
+			while (ita.hasNext()) {
+				Entry<String, DTO_Album> nx = ita.next();
+					listAlbumKey.add(nx.getKey());
+					listeAlbums.add(nx.getValue().getAlbumName());
+			}
+		}
+		
+		
+		
+		
+		
+		
+		 Collections.sort(listArtist);				
+	}
 
-	private void setArtistvector() {
+	private void setArtistVector() {
 		
 		listArtist = new Vector<>();
 		listArtistKey = new Vector<>();
@@ -254,12 +334,43 @@ public class Model_data {
 		selectedArtist = selectedIndex;
 		
 		// On filtre les albums
-		// TODO
+		try {
+			ListUpdater.refreshAlbumList(model);
+		} catch (UnselectedLibraryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// On filtre les pistes
 		ListUpdater.refreshTrackTable(model);
-		
 	}
+
+	/**
+	 * @return the selectedAlbum
+	 */
+	public int getSelectedAlbum() {
+		return selectedAlbum;
+	}
+
+
+	/**
+	 * @param selectedAlbum the selectedAlbum to set
+	 */
+	public void setSelectedAlbum(int selectedAlbum) {
+		this.selectedAlbum = selectedAlbum;
+		
+		// On filtre les pistes
+		ListUpdater.refreshTrackTable(model);
+	}
+
+
+	/**
+	 * @return the listeAlbums
+	 */
+	public Vector<String> getListeAlbums() {
+		return listeAlbums;
+	}
+
 
 
 }

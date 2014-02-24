@@ -3,6 +3,7 @@ package gui_music_manager;
 import exceptions.UnselectedLibraryException;
 import gui_actionUpdater.ListUpdater;
 import gui_actionUpdater.PlayButtonsUpdater;
+import gui_actionUpdater.ViewUpdater;
 import gui_generic_components.ListenerFrameResize;
 
 import java.awt.BorderLayout;
@@ -143,6 +144,7 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regJpHeadSpacerRight(jpJFD.getJpHeaderSpacerRight());
 
 		model.getMc().regJlArtist(jpJFD.getJlArtistes());
+		model.getMc().regJlAlbum(jpJFD.getJlAlbums());
 		model.getMc().regJtTableTrack(jpJFD.getJtTracks());
 		
 		model.getMc().regJbPlay(jpJFD.getJbPausPlay());
@@ -151,8 +153,18 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		
 		model.getMc().regJbRandom(jpJFD.getJbRandom());
 		model.getMc().regJbRepeat(jpJFD.getJbRepeat());
+		
+		
+		model.getMc().regViewSimple(jpJFD.getJbViewSimple());
+		model.getMc().regViewOne(jpJFD.getJbViewOneC());
+		model.getMc().regViewTwo(jpJFD.getJbViewTwoC());
+		model.getMc().regViewThree(jpJFD.getJbviewThreeC());
 
-
+		model.getMc().regJpArtistList(jpJFD.getJpArtistlist());
+		model.getMc().regJpAlbumList(jpJFD.getJpAlbumslist());
+		
+		model.getMc().regJbArtistAll(jpJFD.getJbArtistsAll());
+		model.getMc().regJbAlbumAll(jpJFD.getJbalbumAll());
 		
 		
 		/*
@@ -173,19 +185,18 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		 */
 		try {
 			ListUpdater.refreshArtistList(model);
+			ListUpdater.refreshAlbumList(model);
 			ListUpdater.refreshTrackTable(model);
 		} catch (UnselectedLibraryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
 		/*
 		 * Finitions
 		 */		
+		new ListUpdater(model);
+		new ViewUpdater(model);
 		new PlayButtonsUpdater(model);
 		HeaderUpdater.instanciate(model);
 		model.getMw().actionResize();

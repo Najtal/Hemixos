@@ -278,6 +278,10 @@ new FormModel {
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"background": new java.awt.Color( 229, 229, 229, 255 )
 									"margin": new java.awt.Insets( 2, 0, 2, 14 )
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 1
+									}
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewOneC"
@@ -286,6 +290,10 @@ new FormModel {
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )
 									"focusPainted": false
+									auxiliary() {
+										"JavaCodeGenerator.variableModifiers": 1
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewTwoC"
@@ -294,6 +302,10 @@ new FormModel {
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )
 									"focusPainted": false
+									auxiliary() {
+										"JavaCodeGenerator.variableModifiers": 1
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbviewThreeC"
@@ -303,6 +315,10 @@ new FormModel {
 									"background": new java.awt.Color( 229, 229, 229, 255 )
 									"margin": new java.awt.Insets( 2, 14, 2, 0 )
 									"focusPainted": false
+									auxiliary() {
+										"JavaCodeGenerator.variableModifiers": 1
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 							} )
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
@@ -627,6 +643,9 @@ new FormModel {
 						"background": &Color14 new java.awt.Color( 246, 247, 249, 255 )
 						"preferredSize": new java.awt.Dimension( 220, 0 )
 						"border": &MatteBorder1 new javax.swing.border.MatteBorder( 0, 0, 0, 1, new java.awt.Color( 188, 188, 188, 255 ) )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 							"alignment": 0
 						} ) {
@@ -634,13 +653,19 @@ new FormModel {
 							"background": &Color15 new java.awt.Color( 245, 245, 245, 255 )
 							"border": &MatteBorder2 new javax.swing.border.MatteBorder( 0, 0, 1, 0, new java.awt.Color( 205, 205, 205, 255 ) )
 							"preferredSize": new java.awt.Dimension( 94, 31 )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "label8"
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbArtistsAll"
 								"text": "Artistes"
 								"background": &Color16 new java.awt.Color( 245, 245, 245, 255 )
 								"font": &Font4 new java.awt.Font( "Segoe UI", 1, 12 )
 								"border": &EmptyBorder4 new javax.swing.border.EmptyBorder( 2, 5, 2, 5 )
 								"foreground": &Color17 new java.awt.Color( 65, 72, 80, 255 )
+								"borderPainted": false
+								"contentAreaFilled": false
+								"focusPainted": false
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label9"
@@ -681,10 +706,13 @@ new FormModel {
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-						name: "jpAlbums"
+						name: "jpAlbumslist"
 						"background": #Color14
 						"preferredSize": new java.awt.Dimension( 220, 0 )
 						"border": #MatteBorder1
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 							"alignment": 0
 						} ) {
@@ -692,13 +720,19 @@ new FormModel {
 							"background": #Color15
 							"border": #MatteBorder2
 							"preferredSize": new java.awt.Dimension( 94, 31 )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "label10"
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "jbalbumAll"
 								"text": "Albums"
 								"background": #Color16
 								"font": #Font4
 								"border": #EmptyBorder4
 								"foreground": #Color17
+								"borderPainted": false
+								"contentAreaFilled": false
+								"focusPainted": false
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+								}
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label11"
@@ -721,6 +755,10 @@ new FormModel {
 								"border": #EmptyBorder6
 								"fixedCellHeight": 16
 								"font": new java.awt.Font( "Segoe UI", 0, 12 )
+								auxiliary() {
+									"JavaCodeGenerator.variableGetter": true
+									"JavaCodeGenerator.variableModifiers": 1
+								}
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"

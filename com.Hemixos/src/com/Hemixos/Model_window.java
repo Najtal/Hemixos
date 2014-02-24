@@ -319,23 +319,38 @@ public class Model_window {
 	 */
 	public void actionViewSimpleList() {
 		this.vueSelected = SIMPLE_LIST;
-		//if (model.getMd().getSelectedArtist() != -1)
-		//	model.getMd().setSelectedArtist(-1);
-		//model.getMc().gmm_Container.setViewContent(new Gmm_VueSimple(model));
+		
+		model.getMd().setSelectedArtist(-1);
+		model.getMd().setSelectedAlbum(-1);
+
+		model.getMc().jpAlbumslist.setVisible(false);
+		model.getMc().jpArtistlist.setVisible(false);
+		
 		traiterEvent(new ChangeEvent(this));
 	}
 	
 	public void actionViewOneList() {
 		this.vueSelected = ONE_COL_LIST;
-		//model.getMc().gmm_Container.setViewContent(new Gmm_VueOne(model));	
+
+		model.getMd().setSelectedArtist(-1);
+		model.getMd().setSelectedAlbum(-1);
+
+		model.getMc().jpAlbumslist.setVisible(false);
+		model.getMc().jpArtistlist.setVisible(true);
+		
 		traiterEvent(new ChangeEvent(this));
 	}
 
 	public void actionViewTwoList() {
 		this.vueSelected = TWO_COL_LIST;
-
-		// TODO Auto-generated method stub
 		
+		model.getMd().setSelectedArtist(-1);
+		model.getMd().setSelectedAlbum(-1);
+
+		model.getMc().jpAlbumslist.setVisible(true);
+		model.getMc().jpArtistlist.setVisible(true);
+		
+		traiterEvent(new ChangeEvent(this));
 	}
 
 	public void actionViewThreeList() {
@@ -473,10 +488,17 @@ public class Model_window {
 
 
 	public void setSelectedArtist(int selectedIndex) {
-		
 		model.getMd().setSelectedArtist(selectedIndex);
 		
 		traiterEvent(null);
+	}
+
+
+
+	public void setSelectedAlbum(int selectedIndex) {
+		model.getMd().setSelectedAlbum(selectedIndex);
+		
+		traiterEvent(null);		
 	}
 
 
