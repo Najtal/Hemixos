@@ -53,6 +53,9 @@ public class AbstractColors {
 	
 	public static final Color GUI_LISTE_ARTIST_BG = new Color(246, 247, 249);
 	public static final Color GUI_LISTE_TRACK_HEADER_BACKGROUND = new Color(255, 255, 255);
+	
+	public static final Color GUI_OPTION_BACKGROUND = new Color(51, 51, 51);
+	public static final Color GUI_OPTION_BORDER_LEFT = new Color(27, 27, 27);
 
 
 }

@@ -50,6 +50,8 @@ public class Model_window {
 	// prog state
 	private boolean voletOuvert;
 	private boolean voletEnAction;
+	private boolean optionOuvert;
+	private boolean optionEnAction;
 	
 	// Vues
 	public static final int SIMPLE_LIST = 1;
@@ -501,6 +503,44 @@ public class Model_window {
 		traiterEvent(null);		
 	}
 
+
+
+	/**
+	 * @return the optionOuvert
+	 */
+	public boolean isOptionOuvert() {
+		return optionOuvert;
+	}
+
+
+
+	/**
+	 * @param optionOuvert the optionOuvert to set
+	 */
+	public void setOptionOuvert(boolean optionOuvert) {
+		this.optionOuvert = optionOuvert;
+	}
+
+
+
+	/**
+	 * @return the optionEnAction
+	 */
+	public boolean isOptionEnAction() {
+		return optionEnAction;
+	}
+
+
+
+	/**
+	 * @param optionEnAction the optionEnAction to set
+	 */
+	public void setOptionEnAction(boolean optionEnAction) {
+		this.optionEnAction = optionEnAction;
+	}
+
+	
+	
 
 
 		

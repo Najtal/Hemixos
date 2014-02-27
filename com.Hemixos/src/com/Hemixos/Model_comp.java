@@ -66,6 +66,12 @@ public class Model_comp {
 	public JLabel jlAlbumValue;
 	public JLabel jlDureeValue;
 
+	public JPanel jpPlayingInfo;
+	public JPanel jpOptions;
+
+	public JButton jbOptions;
+	public JButton jbVolet;
+
 	
 	/**
 	 * Constructor
@@ -199,6 +205,22 @@ public class Model_comp {
 
 	public void regDureeInfoPiste(JLabel jlDureeValue) {
 		this.jlDureeValue = jlDureeValue;
+	}
+
+	public void regJpEnLecture(JPanel jpPlayingInfo) {
+		this.jpPlayingInfo = jpPlayingInfo;
+	}
+
+	public void regJpOption(JPanel jpOptions) {
+		this.jpOptions = jpOptions;
+	}
+
+	public void regJbOptions(JButton jbOptions) {
+		this.jbOptions = jbOptions;
+	}
+
+	public void regJbVolet(JButton jbVolet) {
+		this.jbVolet = jbVolet;
 	}
 	
 }

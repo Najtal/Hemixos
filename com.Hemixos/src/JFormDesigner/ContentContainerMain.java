@@ -148,6 +148,22 @@ public class ContentContainerMain extends JPanel {
 		return jlDureeValue;
 	}
 
+	public JPanel getJpPlayingInfo() {
+		return jpPlayingInfo;
+	}
+
+	public JPanel getJpOptions() {
+		return jpOptions;
+	}
+
+	public JButton getJbOptions() {
+		return jbOptions;
+	}
+
+	public JButton getJbVolet() {
+		return jbVolet;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - jv dudux
@@ -159,7 +175,7 @@ public class ContentContainerMain extends JPanel {
 		jbPausPlay = new JButton();
 		jbNext = new JButton();
 		jbRightHeader = new JPanel();
-		button2 = new JButton();
+		jbOptions = new JButton();
 		jpCenterHeader = new JPanel();
 		jpHeaderSpacerLeft = new JPanel();
 		jpHeaderSpacerRight = new JPanel();
@@ -193,6 +209,7 @@ public class ContentContainerMain extends JPanel {
 		list1 = new JList<>();
 		label2 = new JLabel();
 		list2 = new JList<>();
+		jpInfoOptionEast = new JPanel();
 		jpPlayingInfo = new JPanel();
 		jpPlaylistList = new JPanel();
 		panel3 = new JPanel();
@@ -225,6 +242,17 @@ public class ContentContainerMain extends JPanel {
 		jlArtistValue = new JLabel();
 		jlAlbumValue = new JLabel();
 		jlDureeValue = new JLabel();
+		jpOptions = new JPanel();
+		jpOptionHeader = new JPanel();
+		jpOHBorder = new JPanel();
+		jlOptionTitle = new JLabel();
+		jpOptionBody = new JPanel();
+		jpOBBorder = new JPanel();
+		jpOBContent = new JPanel();
+		jpOBSpacer = new JPanel();
+		jpOBLine = new JPanel();
+		jlOLine1 = new JLabel();
+		cbOLine1 = new JCheckBox();
 		jpCenterMain = new JPanel();
 		jpFilterContainer = new JPanel();
 		jpArtistlist = new JPanel();
@@ -252,13 +280,6 @@ public class ContentContainerMain extends JPanel {
 
 		//======== this ========
 		setBackground(Color.white);
-
-		// JFormDesigner evaluation mark
-		setBorder(new javax.swing.border.CompoundBorder(
-			new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-				"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-				javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-				java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
 		setLayout(new BorderLayout());
 
@@ -328,16 +349,16 @@ public class ContentContainerMain extends JPanel {
 				jbRightHeader.setBackground(new Color(245, 245, 243));
 				jbRightHeader.setLayout(new HorizontalLayout());
 
-				//---- button2 ----
-				button2.setOpaque(false);
-				button2.setPreferredSize(new Dimension(38, 28));
-				button2.setIcon(new ImageIcon(getClass().getResource("/images/ico_options.jpg")));
-				button2.setBackground(new Color(245, 245, 243));
-				button2.setBorderPainted(false);
-				button2.setBorder(new EmptyBorder(0, 0, 0, 10));
-				button2.setContentAreaFilled(false);
-				button2.setFocusPainted(false);
-				jbRightHeader.add(button2);
+				//---- jbOptions ----
+				jbOptions.setOpaque(false);
+				jbOptions.setPreferredSize(new Dimension(38, 28));
+				jbOptions.setIcon(new ImageIcon(getClass().getResource("/images/ico_options.jpg")));
+				jbOptions.setBackground(new Color(245, 245, 243));
+				jbOptions.setBorderPainted(false);
+				jbOptions.setBorder(new EmptyBorder(0, 0, 0, 10));
+				jbOptions.setContentAreaFilled(false);
+				jbOptions.setFocusPainted(false);
+				jbRightHeader.add(jbOptions);
 			}
 			jpHeader.add(jbRightHeader, BorderLayout.EAST);
 
@@ -398,7 +419,7 @@ public class ContentContainerMain extends JPanel {
 						jpHBCustomOptions.setLayout(new HorizontalLayout());
 
 						//---- jbVolet ----
-						jbVolet.setIcon(new ImageIcon(getClass().getResource("/images/ico_volet.jpg")));
+						jbVolet.setIcon(new ImageIcon(getClass().getResource("/images/ico_volet_selected.jpg")));
 						jbVolet.setBorderPainted(false);
 						jbVolet.setBorder(new EmptyBorder(0, 5, 0, 5));
 						jbVolet.setContentAreaFilled(false);
@@ -657,247 +678,338 @@ public class ContentContainerMain extends JPanel {
 		}
 		add(spPlaylistView, BorderLayout.WEST);
 
-		//======== jpPlayingInfo ========
+		//======== jpInfoOptionEast ========
 		{
-			jpPlayingInfo.setMinimumSize(new Dimension(220, 0));
-			jpPlayingInfo.setPreferredSize(new Dimension(220, 0));
-			jpPlayingInfo.setBackground(new Color(245, 245, 245));
-			jpPlayingInfo.setMaximumSize(new Dimension(450, 2147483647));
-			jpPlayingInfo.setLayout(new BorderLayout());
+			jpInfoOptionEast.setLayout(new HorizontalLayout());
 
-			//======== jpPlaylistList ========
+			//======== jpPlayingInfo ========
 			{
-				jpPlaylistList.setLayout(new BorderLayout());
+				jpPlayingInfo.setMinimumSize(new Dimension(200, 0));
+				jpPlayingInfo.setPreferredSize(new Dimension(220, 0));
+				jpPlayingInfo.setBackground(new Color(245, 245, 245));
+				jpPlayingInfo.setMaximumSize(new Dimension(450, 2147483647));
+				jpPlayingInfo.setLayout(new BorderLayout());
 
-				//======== panel3 ========
+				//======== jpPlaylistList ========
 				{
-					panel3.setLayout(new BorderLayout());
+					jpPlaylistList.setLayout(new BorderLayout());
 
-					//======== jpPlaylistListContainer ========
+					//======== panel3 ========
 					{
-						jpPlaylistListContainer.setAutoscrolls(true);
-						jpPlaylistListContainer.setBackground(new Color(245, 245, 245));
-						jpPlaylistListContainer.setLayout(new VerticalLayout());
+						panel3.setLayout(new BorderLayout());
 
-						//======== PlayingListElement ========
+						//======== jpPlaylistListContainer ========
 						{
-							PlayingListElement.setBackground(new Color(245, 245, 245));
-							PlayingListElement.setBorder(new MatteBorder(1, 0, 1, 0, new Color(230, 230, 230)));
-							PlayingListElement.setLayout(new BorderLayout());
+							jpPlaylistListContainer.setAutoscrolls(true);
+							jpPlaylistListContainer.setBackground(new Color(245, 245, 245));
+							jpPlaylistListContainer.setLayout(new VerticalLayout());
 
-							//======== jpPlaylistElementBorder ========
+							//======== PlayingListElement ========
 							{
-								jpPlaylistElementBorder.setPreferredSize(new Dimension(12, 0));
-								jpPlaylistElementBorder.setBorder(new AbstractBorder_playlist());
-								jpPlaylistElementBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
-								jpPlaylistElementBorder.setLayout(new BorderLayout());
+								PlayingListElement.setBackground(new Color(245, 245, 245));
+								PlayingListElement.setBorder(new MatteBorder(1, 0, 1, 0, new Color(230, 230, 230)));
+								PlayingListElement.setLayout(new BorderLayout());
+
+								//======== jpPlaylistElementBorder ========
+								{
+									jpPlaylistElementBorder.setPreferredSize(new Dimension(12, 0));
+									jpPlaylistElementBorder.setBorder(new AbstractBorder_playlist());
+									jpPlaylistElementBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
+									jpPlaylistElementBorder.setLayout(new BorderLayout());
+								}
+								PlayingListElement.add(jpPlaylistElementBorder, BorderLayout.WEST);
+
+								//---- label5 ----
+								label5.setText("Daft Punk - One more time");
+								label5.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+								label5.setForeground(new Color(0, 11, 42));
+								PlayingListElement.add(label5, BorderLayout.CENTER);
+
+								//---- label4 ----
+								label4.setText("5:20");
+								label4.setBorder(new EmptyBorder(5, 10, 5, 10));
+								label4.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+								label4.setForeground(new Color(0, 11, 42));
+								PlayingListElement.add(label4, BorderLayout.EAST);
 							}
-							PlayingListElement.add(jpPlaylistElementBorder, BorderLayout.WEST);
+							jpPlaylistListContainer.add(PlayingListElement);
 
-							//---- label5 ----
-							label5.setText("Daft Punk - One more time");
-							label5.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-							label5.setForeground(new Color(0, 11, 42));
-							PlayingListElement.add(label5, BorderLayout.CENTER);
-
-							//---- label4 ----
-							label4.setText("5:20");
-							label4.setBorder(new EmptyBorder(5, 10, 5, 10));
-							label4.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-							label4.setForeground(new Color(0, 11, 42));
-							PlayingListElement.add(label4, BorderLayout.EAST);
-						}
-						jpPlaylistListContainer.add(PlayingListElement);
-
-						//======== PlayingListElement2 ========
-						{
-							PlayingListElement2.setBackground(new Color(245, 245, 245));
-							PlayingListElement2.setBorder(new MatteBorder(1, 0, 1, 0, new Color(230, 230, 230)));
-							PlayingListElement2.setPreferredSize(new Dimension(200, 27));
-							PlayingListElement2.setLayout(new BorderLayout());
-
-							//======== jpPlaylistElementBorder2 ========
+							//======== PlayingListElement2 ========
 							{
-								jpPlaylistElementBorder2.setPreferredSize(new Dimension(12, 0));
-								jpPlaylistElementBorder2.setBorder(new AbstractBorder_playlist());
-								jpPlaylistElementBorder2.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
-								jpPlaylistElementBorder2.setLayout(new BorderLayout());
+								PlayingListElement2.setBackground(new Color(245, 245, 245));
+								PlayingListElement2.setBorder(new MatteBorder(1, 0, 1, 0, new Color(230, 230, 230)));
+								PlayingListElement2.setPreferredSize(new Dimension(200, 27));
+								PlayingListElement2.setLayout(new BorderLayout());
+
+								//======== jpPlaylistElementBorder2 ========
+								{
+									jpPlaylistElementBorder2.setPreferredSize(new Dimension(12, 0));
+									jpPlaylistElementBorder2.setBorder(new AbstractBorder_playlist());
+									jpPlaylistElementBorder2.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
+									jpPlaylistElementBorder2.setLayout(new BorderLayout());
+								}
+								PlayingListElement2.add(jpPlaylistElementBorder2, BorderLayout.WEST);
+
+								//---- label6 ----
+								label6.setText("3:32");
+								label6.setBorder(new EmptyBorder(5, 10, 5, 10));
+								label6.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+								label6.setForeground(new Color(0, 11, 42));
+								PlayingListElement2.add(label6, BorderLayout.EAST);
+
+								//---- label7 ----
+								label7.setText("Daft Punk - Aerodynamic");
+								label7.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+								label7.setForeground(new Color(0, 11, 42));
+								PlayingListElement2.add(label7, BorderLayout.CENTER);
 							}
-							PlayingListElement2.add(jpPlaylistElementBorder2, BorderLayout.WEST);
-
-							//---- label6 ----
-							label6.setText("3:32");
-							label6.setBorder(new EmptyBorder(5, 10, 5, 10));
-							label6.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-							label6.setForeground(new Color(0, 11, 42));
-							PlayingListElement2.add(label6, BorderLayout.EAST);
-
-							//---- label7 ----
-							label7.setText("Daft Punk - Aerodynamic");
-							label7.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-							label7.setForeground(new Color(0, 11, 42));
-							PlayingListElement2.add(label7, BorderLayout.CENTER);
+							jpPlaylistListContainer.add(PlayingListElement2);
 						}
-						jpPlaylistListContainer.add(PlayingListElement2);
+						panel3.add(jpPlaylistListContainer, BorderLayout.CENTER);
 					}
-					panel3.add(jpPlaylistListContainer, BorderLayout.CENTER);
-				}
-				jpPlaylistList.add(panel3, BorderLayout.NORTH);
+					jpPlaylistList.add(panel3, BorderLayout.NORTH);
 
-				//======== jpPlaylistListSpacer ========
+					//======== jpPlaylistListSpacer ========
+					{
+						jpPlaylistListSpacer.setBackground(new Color(245, 245, 245));
+						jpPlaylistListSpacer.setLayout(new BorderLayout());
+
+						//======== jpPlaylistBorder ========
+						{
+							jpPlaylistBorder.setPreferredSize(new Dimension(12, 0));
+							jpPlaylistBorder.setBorder(new AbstractBorder_playlist());
+							jpPlaylistBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
+							jpPlaylistBorder.setLayout(new BorderLayout());
+						}
+						jpPlaylistListSpacer.add(jpPlaylistBorder, BorderLayout.WEST);
+					}
+					jpPlaylistList.add(jpPlaylistListSpacer, BorderLayout.CENTER);
+				}
+				jpPlayingInfo.add(jpPlaylistList, BorderLayout.CENTER);
+
+				//======== jpInfoPlayingSong ========
 				{
-					jpPlaylistListSpacer.setBackground(new Color(245, 245, 245));
-					jpPlaylistListSpacer.setLayout(new BorderLayout());
+					jpInfoPlayingSong.setPreferredSize(new Dimension(0, 120));
+					jpInfoPlayingSong.setBackground(new Color(245, 245, 245));
+					jpInfoPlayingSong.setBorder(new MatteBorder(1, 0, 0, 0, new Color(204, 204, 204)));
+					jpInfoPlayingSong.setFocusable(false);
+					jpInfoPlayingSong.setRequestFocusEnabled(false);
+					jpInfoPlayingSong.setLayout(new BorderLayout());
 
-					//======== jpPlaylistBorder ========
+					//======== jpInfoPSBorder ========
 					{
-						jpPlaylistBorder.setPreferredSize(new Dimension(12, 0));
-						jpPlaylistBorder.setBorder(new AbstractBorder_playlist());
-						jpPlaylistBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
-						jpPlaylistBorder.setLayout(new BorderLayout());
+						jpInfoPSBorder.setPreferredSize(new Dimension(12, 0));
+						jpInfoPSBorder.setBorder(new AbstractBorder_playlist());
+						jpInfoPSBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
+						jpInfoPSBorder.setLayout(new BorderLayout());
 					}
-					jpPlaylistListSpacer.add(jpPlaylistBorder, BorderLayout.WEST);
+					jpInfoPlayingSong.add(jpInfoPSBorder, BorderLayout.WEST);
+
+					//======== jpInfoPSContainer ========
+					{
+						jpInfoPSContainer.setLayout(new BorderLayout());
+
+						//======== jpImageContainer ========
+						{
+							jpImageContainer.setPreferredSize(new Dimension(80, 45));
+							jpImageContainer.setBackground(new Color(245, 245, 245));
+							jpImageContainer.setLayout(new BorderLayout());
+
+							//---- jbPisteImage ----
+							jbPisteImage.setSelectedIcon(null);
+							jbPisteImage.setIcon(new ImageIcon(getClass().getResource("/images/td_miniature.png")));
+							jbPisteImage.setPreferredSize(new Dimension(50, 50));
+							jbPisteImage.setBorder(null);
+							jbPisteImage.setBackground(new Color(245, 245, 245));
+							jbPisteImage.setBorderPainted(false);
+							jbPisteImage.setMaximumSize(new Dimension(60, 60));
+							jpImageContainer.add(jbPisteImage, BorderLayout.CENTER);
+
+							//======== jpSpaceT ========
+							{
+								jpSpaceT.setPreferredSize(new Dimension(0, 20));
+								jpSpaceT.setBackground(new Color(245, 245, 245));
+								jpSpaceT.setLayout(new BorderLayout());
+							}
+							jpImageContainer.add(jpSpaceT, BorderLayout.NORTH);
+
+							//======== jpSpaceS ========
+							{
+								jpSpaceS.setPreferredSize(new Dimension(0, 20));
+								jpSpaceS.setBackground(new Color(245, 245, 245));
+								jpSpaceS.setLayout(new BorderLayout());
+							}
+							jpImageContainer.add(jpSpaceS, BorderLayout.SOUTH);
+						}
+						jpInfoPSContainer.add(jpImageContainer, BorderLayout.WEST);
+
+						//======== jpInfoTxt ========
+						{
+							jpInfoTxt.setBackground(new Color(245, 245, 245));
+							jpInfoTxt.setLayout(new HorizontalLayout());
+
+							//======== jpInfoListTitle ========
+							{
+								jpInfoListTitle.setBorder(new EmptyBorder(30, 10, 25, 5));
+								jpInfoListTitle.setBackground(new Color(245, 245, 245));
+								jpInfoListTitle.setLayout(new VerticalLayout());
+
+								//---- jlTitle ----
+								jlTitle.setText("Titre");
+								jlTitle.setForeground(new Color(71, 94, 124));
+								jlTitle.setBackground(new Color(245, 245, 245));
+								jlTitle.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListTitle.add(jlTitle);
+
+								//---- jlArtist ----
+								jlArtist.setText("Artiste");
+								jlArtist.setForeground(new Color(71, 94, 124));
+								jlArtist.setBackground(new Color(245, 245, 245));
+								jlArtist.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListTitle.add(jlArtist);
+
+								//---- jlAlbum ----
+								jlAlbum.setText("Album");
+								jlAlbum.setForeground(new Color(71, 94, 124));
+								jlAlbum.setBackground(new Color(245, 245, 245));
+								jlAlbum.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListTitle.add(jlAlbum);
+
+								//---- jlDuree ----
+								jlDuree.setText("Dur\u00e9e");
+								jlDuree.setForeground(new Color(71, 94, 124));
+								jlDuree.setBackground(new Color(245, 245, 245));
+								jlDuree.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListTitle.add(jlDuree);
+							}
+							jpInfoTxt.add(jpInfoListTitle);
+
+							//======== jpInfoListValue ========
+							{
+								jpInfoListValue.setBorder(new EmptyBorder(30, 0, 25, 0));
+								jpInfoListValue.setBackground(new Color(245, 245, 245));
+								jpInfoListValue.setLayout(new VerticalLayout());
+
+								//---- jlTitleValue ----
+								jlTitleValue.setText("One more time");
+								jlTitleValue.setForeground(new Color(71, 94, 124));
+								jlTitleValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListValue.add(jlTitleValue);
+
+								//---- jlArtistValue ----
+								jlArtistValue.setText("Daft Punk");
+								jlArtistValue.setForeground(new Color(71, 94, 124));
+								jlArtistValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListValue.add(jlArtistValue);
+
+								//---- jlAlbumValue ----
+								jlAlbumValue.setText("Discovery");
+								jlAlbumValue.setForeground(new Color(71, 94, 124));
+								jlAlbumValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListValue.add(jlAlbumValue);
+
+								//---- jlDureeValue ----
+								jlDureeValue.setText("5:20");
+								jlDureeValue.setForeground(new Color(71, 94, 124));
+								jlDureeValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+								jpInfoListValue.add(jlDureeValue);
+							}
+							jpInfoTxt.add(jpInfoListValue);
+						}
+						jpInfoPSContainer.add(jpInfoTxt, BorderLayout.CENTER);
+					}
+					jpInfoPlayingSong.add(jpInfoPSContainer, BorderLayout.CENTER);
 				}
-				jpPlaylistList.add(jpPlaylistListSpacer, BorderLayout.CENTER);
+				jpPlayingInfo.add(jpInfoPlayingSong, BorderLayout.SOUTH);
 			}
-			jpPlayingInfo.add(jpPlaylistList, BorderLayout.CENTER);
+			jpInfoOptionEast.add(jpPlayingInfo);
 
-			//======== jpInfoPlayingSong ========
+			//======== jpOptions ========
 			{
-				jpInfoPlayingSong.setPreferredSize(new Dimension(0, 120));
-				jpInfoPlayingSong.setBackground(new Color(245, 245, 245));
-				jpInfoPlayingSong.setBorder(new MatteBorder(1, 0, 0, 0, new Color(204, 204, 204)));
-				jpInfoPlayingSong.setFocusable(false);
-				jpInfoPlayingSong.setRequestFocusEnabled(false);
-				jpInfoPlayingSong.setLayout(new BorderLayout());
+				jpOptions.setPreferredSize(new Dimension(0, 0));
+				jpOptions.setBackground(new Color(51, 51, 51));
+				jpOptions.setBorder(new AbstractBorder_options());
+				jpOptions.setLayout(new VerticalLayout());
 
-				//======== jpInfoPSBorder ========
+				//======== jpOptionHeader ========
 				{
-					jpInfoPSBorder.setPreferredSize(new Dimension(12, 0));
-					jpInfoPSBorder.setBorder(new AbstractBorder_playlist());
-					jpInfoPSBorder.setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
-					jpInfoPSBorder.setLayout(new BorderLayout());
-				}
-				jpInfoPlayingSong.add(jpInfoPSBorder, BorderLayout.WEST);
+					jpOptionHeader.setBackground(new Color(51, 51, 51));
+					jpOptionHeader.setPreferredSize(new Dimension(0, 50));
+					jpOptionHeader.setBorder(new MatteBorder(0, 0, 1, 0, new Color(42, 42, 42)));
+					jpOptionHeader.setLayout(new BorderLayout());
 
-				//======== jpInfoPSContainer ========
+					//======== jpOHBorder ========
+					{
+						jpOHBorder.setBackground(new Color(51, 51, 51));
+						jpOHBorder.setBorder(new AbstractBorder_options());
+						jpOHBorder.setPreferredSize(new Dimension(13, 0));
+						jpOHBorder.setLayout(new BorderLayout());
+					}
+					jpOptionHeader.add(jpOHBorder, BorderLayout.WEST);
+
+					//---- jlOptionTitle ----
+					jlOptionTitle.setText("Settings");
+					jlOptionTitle.setForeground(Color.white);
+					jlOptionTitle.setFont(new Font("Segoe UI Semilight", Font.BOLD, 18));
+					jlOptionTitle.setBorder(new EmptyBorder(0, 10, 0, 0));
+					jpOptionHeader.add(jlOptionTitle, BorderLayout.CENTER);
+				}
+				jpOptions.add(jpOptionHeader);
+
+				//======== jpOptionBody ========
 				{
-					jpInfoPSContainer.setLayout(new BorderLayout());
+					jpOptionBody.setBackground(new Color(51, 51, 51));
+					jpOptionBody.setBorder(null);
+					jpOptionBody.setLayout(new BorderLayout());
 
-					//======== jpImageContainer ========
+					//======== jpOBBorder ========
 					{
-						jpImageContainer.setPreferredSize(new Dimension(80, 45));
-						jpImageContainer.setBackground(new Color(245, 245, 245));
-						jpImageContainer.setLayout(new BorderLayout());
-
-						//---- jbPisteImage ----
-						jbPisteImage.setSelectedIcon(null);
-						jbPisteImage.setIcon(new ImageIcon(getClass().getResource("/images/td_miniature.png")));
-						jbPisteImage.setPreferredSize(new Dimension(50, 50));
-						jbPisteImage.setBorder(null);
-						jbPisteImage.setBackground(new Color(245, 245, 245));
-						jbPisteImage.setBorderPainted(false);
-						jbPisteImage.setMaximumSize(new Dimension(60, 60));
-						jpImageContainer.add(jbPisteImage, BorderLayout.CENTER);
-
-						//======== jpSpaceT ========
-						{
-							jpSpaceT.setPreferredSize(new Dimension(0, 20));
-							jpSpaceT.setBackground(new Color(245, 245, 245));
-							jpSpaceT.setLayout(new BorderLayout());
-						}
-						jpImageContainer.add(jpSpaceT, BorderLayout.NORTH);
-
-						//======== jpSpaceS ========
-						{
-							jpSpaceS.setPreferredSize(new Dimension(0, 20));
-							jpSpaceS.setBackground(new Color(245, 245, 245));
-							jpSpaceS.setLayout(new BorderLayout());
-						}
-						jpImageContainer.add(jpSpaceS, BorderLayout.SOUTH);
+						jpOBBorder.setPreferredSize(new Dimension(13, 0));
+						jpOBBorder.setBorder(new AbstractBorder_options());
+						jpOBBorder.setBackground(new Color(51, 51, 51));
+						jpOBBorder.setLayout(new BorderLayout());
 					}
-					jpInfoPSContainer.add(jpImageContainer, BorderLayout.WEST);
+					jpOptionBody.add(jpOBBorder, BorderLayout.WEST);
 
-					//======== jpInfoTxt ========
+					//======== jpOBContent ========
 					{
-						jpInfoTxt.setBackground(new Color(245, 245, 245));
-						jpInfoTxt.setLayout(new HorizontalLayout());
+						jpOBContent.setBackground(new Color(51, 51, 51));
+						jpOBContent.setBorder(new EmptyBorder(5, 25, 5, 35));
+						jpOBContent.setLayout(new VerticalLayout());
 
-						//======== jpInfoListTitle ========
+						//======== jpOBSpacer ========
 						{
-							jpInfoListTitle.setBorder(new EmptyBorder(30, 10, 25, 5));
-							jpInfoListTitle.setBackground(new Color(245, 245, 245));
-							jpInfoListTitle.setLayout(new VerticalLayout());
-
-							//---- jlTitle ----
-							jlTitle.setText("Titre");
-							jlTitle.setForeground(new Color(71, 94, 124));
-							jlTitle.setBackground(new Color(245, 245, 245));
-							jlTitle.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListTitle.add(jlTitle);
-
-							//---- jlArtist ----
-							jlArtist.setText("Artiste");
-							jlArtist.setForeground(new Color(71, 94, 124));
-							jlArtist.setBackground(new Color(245, 245, 245));
-							jlArtist.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListTitle.add(jlArtist);
-
-							//---- jlAlbum ----
-							jlAlbum.setText("Album");
-							jlAlbum.setForeground(new Color(71, 94, 124));
-							jlAlbum.setBackground(new Color(245, 245, 245));
-							jlAlbum.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListTitle.add(jlAlbum);
-
-							//---- jlDuree ----
-							jlDuree.setText("Dur\u00e9e");
-							jlDuree.setForeground(new Color(71, 94, 124));
-							jlDuree.setBackground(new Color(245, 245, 245));
-							jlDuree.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListTitle.add(jlDuree);
+							jpOBSpacer.setBackground(new Color(51, 51, 51));
+							jpOBSpacer.setPreferredSize(new Dimension(0, 15));
+							jpOBSpacer.setLayout(new BorderLayout());
 						}
-						jpInfoTxt.add(jpInfoListTitle);
+						jpOBContent.add(jpOBSpacer);
 
-						//======== jpInfoListValue ========
+						//======== jpOBLine ========
 						{
-							jpInfoListValue.setBorder(new EmptyBorder(30, 0, 25, 0));
-							jpInfoListValue.setBackground(new Color(245, 245, 245));
-							jpInfoListValue.setLayout(new VerticalLayout());
+							jpOBLine.setBackground(new Color(51, 51, 51));
+							jpOBLine.setLayout(new BorderLayout());
 
-							//---- jlTitleValue ----
-							jlTitleValue.setText("One more time");
-							jlTitleValue.setForeground(new Color(71, 94, 124));
-							jlTitleValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListValue.add(jlTitleValue);
+							//---- jlOLine1 ----
+							jlOLine1.setText("Autosave");
+							jlOLine1.setForeground(Color.white);
+							jlOLine1.setFont(new Font("Segoe UI Semilight", Font.PLAIN, 14));
+							jpOBLine.add(jlOLine1, BorderLayout.WEST);
 
-							//---- jlArtistValue ----
-							jlArtistValue.setText("Daft Punk");
-							jlArtistValue.setForeground(new Color(71, 94, 124));
-							jlArtistValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListValue.add(jlArtistValue);
-
-							//---- jlAlbumValue ----
-							jlAlbumValue.setText("Discovery");
-							jlAlbumValue.setForeground(new Color(71, 94, 124));
-							jlAlbumValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListValue.add(jlAlbumValue);
-
-							//---- jlDureeValue ----
-							jlDureeValue.setText("5:20");
-							jlDureeValue.setForeground(new Color(71, 94, 124));
-							jlDureeValue.setFont(new Font("Segoe UI", Font.PLAIN, 10));
-							jpInfoListValue.add(jlDureeValue);
+							//---- cbOLine1 ----
+							cbOLine1.setBackground(new Color(51, 51, 51));
+							cbOLine1.setBorder(null);
+							jpOBLine.add(cbOLine1, BorderLayout.EAST);
 						}
-						jpInfoTxt.add(jpInfoListValue);
+						jpOBContent.add(jpOBLine);
 					}
-					jpInfoPSContainer.add(jpInfoTxt, BorderLayout.CENTER);
+					jpOptionBody.add(jpOBContent, BorderLayout.CENTER);
 				}
-				jpInfoPlayingSong.add(jpInfoPSContainer, BorderLayout.CENTER);
+				jpOptions.add(jpOptionBody);
 			}
-			jpPlayingInfo.add(jpInfoPlayingSong, BorderLayout.SOUTH);
+			jpInfoOptionEast.add(jpOptions);
 		}
-		add(jpPlayingInfo, BorderLayout.EAST);
+		add(jpInfoOptionEast, BorderLayout.EAST);
 
 		//======== jpCenterMain ========
 		{
@@ -950,8 +1062,8 @@ public class ContentContainerMain extends JPanel {
 						//---- jlArtistes ----
 						jlArtistes.setBackground(new Color(246, 247, 249));
 						jlArtistes.setBorder(new EmptyBorder(2, 0, 0, 0));
-						jlArtistes.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-						jlArtistes.setFixedCellHeight(16);
+						jlArtistes.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
+						jlArtistes.setFixedCellHeight(20);
 						spArtist.setViewportView(jlArtistes);
 					}
 					jpArtistlist.add(spArtist, BorderLayout.CENTER);
@@ -1009,8 +1121,8 @@ public class ContentContainerMain extends JPanel {
 						//---- jlAlbums ----
 						jlAlbums.setBackground(new Color(246, 247, 249));
 						jlAlbums.setBorder(new EmptyBorder(2, 0, 0, 0));
-						jlAlbums.setFixedCellHeight(16);
-						jlAlbums.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+						jlAlbums.setFixedCellHeight(20);
+						jlAlbums.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 						spAlbum.setViewportView(jlAlbums);
 					}
 					jpAlbumslist.add(spAlbum, BorderLayout.CENTER);
@@ -1085,7 +1197,7 @@ public class ContentContainerMain extends JPanel {
 
 					//---- jtTracks ----
 					jtTracks.setGridColor(new Color(229, 229, 229));
-					jtTracks.setRowHeight(18);
+					jtTracks.setRowHeight(23);
 					jtTracks.setRowMargin(3);
 					jtTracks.setBorder(null);
 					jtTracks.setIntercellSpacing(new Dimension(10, 3));
@@ -1093,6 +1205,7 @@ public class ContentContainerMain extends JPanel {
 					jtTracks.setShowHorizontalLines(false);
 					jtTracks.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					jtTracks.setPreferredScrollableViewportSize(new Dimension(0, 0));
+					jtTracks.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 14));
 					jspTracks.setViewportView(jtTracks);
 				}
 				jpTrackContainer.add(jspTracks, BorderLayout.CENTER);
@@ -1113,7 +1226,7 @@ public class ContentContainerMain extends JPanel {
 	public JButton jbPausPlay;
 	private JButton jbNext;
 	private JPanel jbRightHeader;
-	private JButton button2;
+	private JButton jbOptions;
 	public JPanel jpCenterHeader;
 	public JPanel jpHeaderSpacerLeft;
 	public JPanel jpHeaderSpacerRight;
@@ -1147,6 +1260,7 @@ public class ContentContainerMain extends JPanel {
 	private JList<String> list1;
 	private JLabel label2;
 	private JList<String> list2;
+	private JPanel jpInfoOptionEast;
 	private JPanel jpPlayingInfo;
 	private JPanel jpPlaylistList;
 	private JPanel panel3;
@@ -1179,6 +1293,17 @@ public class ContentContainerMain extends JPanel {
 	public JLabel jlArtistValue;
 	public JLabel jlAlbumValue;
 	public JLabel jlDureeValue;
+	private JPanel jpOptions;
+	private JPanel jpOptionHeader;
+	private JPanel jpOHBorder;
+	private JLabel jlOptionTitle;
+	private JPanel jpOptionBody;
+	private JPanel jpOBBorder;
+	private JPanel jpOBContent;
+	private JPanel jpOBSpacer;
+	private JPanel jpOBLine;
+	private JLabel jlOLine1;
+	private JCheckBox cbOLine1;
 	private JPanel jpCenterMain;
 	private JPanel jpFilterContainer;
 	private JPanel jpArtistlist;
