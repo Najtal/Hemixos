@@ -540,7 +540,7 @@ public class ContentContainerMain extends JPanel {
 							ViewsGridLayout.setLayout(new GridLayout());
 
 							//---- jbViewSimple ----
-							jbViewSimple.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_simpleListSelected.jpg"));
+							jbViewSimple.setIcon(new ImageIcon(getClass().getResource("/images/ico_simpleList.jpg")));
 							jbViewSimple.setBorderPainted(false);
 							jbViewSimple.setFocusPainted(false);
 							jbViewSimple.setBorder(null);
@@ -549,7 +549,7 @@ public class ContentContainerMain extends JPanel {
 							ViewsGridLayout.add(jbViewSimple);
 
 							//---- jbViewOneC ----
-							jbViewOneC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_oneList.jpg"));
+							jbViewOneC.setIcon(new ImageIcon(getClass().getResource("/images/ico_oneList.jpg")));
 							jbViewOneC.setBorder(null);
 							jbViewOneC.setBorderPainted(false);
 							jbViewOneC.setBackground(new Color(229, 229, 229));
@@ -557,7 +557,7 @@ public class ContentContainerMain extends JPanel {
 							ViewsGridLayout.add(jbViewOneC);
 
 							//---- jbViewTwoC ----
-							jbViewTwoC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_twoList.jpg"));
+							jbViewTwoC.setIcon(new ImageIcon(getClass().getResource("/images/ico_twoList.jpg")));
 							jbViewTwoC.setBorder(null);
 							jbViewTwoC.setBorderPainted(false);
 							jbViewTwoC.setBackground(new Color(229, 229, 229));
@@ -565,7 +565,7 @@ public class ContentContainerMain extends JPanel {
 							ViewsGridLayout.add(jbViewTwoC);
 
 							//---- jbviewThreeC ----
-							jbviewThreeC.setIcon(new ImageIcon("C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_threeList.jpg"));
+							jbviewThreeC.setIcon(new ImageIcon(getClass().getResource("/images/ico_threeList.jpg")));
 							jbviewThreeC.setBorder(null);
 							jbviewThreeC.setBorderPainted(false);
 							jbviewThreeC.setBackground(new Color(229, 229, 229));

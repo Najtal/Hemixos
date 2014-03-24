@@ -10,8 +10,7 @@
  ******************************************************************************/
 package gmusic.api.skyjam.model;
 
-import java.io.Serializable;
-
-public class Playlists implements Serializable {
+public class Playlists
+{
 
 }

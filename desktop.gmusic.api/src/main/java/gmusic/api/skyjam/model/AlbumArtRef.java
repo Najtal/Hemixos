@@ -10,21 +10,20 @@
  ******************************************************************************/
 package gmusic.api.skyjam.model;
 
-import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class AlbumArtRef implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
+public class AlbumArtRef
+{
 	private String url;
 
-	public final String getUrl() {
+	public final String getUrl()
+	{
 		return url;
 	}
 
-	public final URI getUrlAsURI() throws URISyntaxException {
+	public final URI getUrlAsURI() throws URISyntaxException
+	{
 		return new URI(url);
 	}
 }

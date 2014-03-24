@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 public class Library implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -73,7 +75,8 @@ public class Library implements Serializable {
 		DTO_Album dtoAlbum = null;
 					
 		// On s'occupe de l'artiste
-		String artName = song.getArtist();
+		String artName = song.getAlbumArtist();
+		// TODO
 		if (!mapArtist.containsKey(artName)) {
 			// L'artiste n'existe pas
 			dtoArtist= new DTO_Artist(artName);
@@ -128,13 +131,26 @@ public class Library implements Serializable {
 	
 
 	
-	public void addSongs(Collection<Song> songs) {
-		for (Song song : songs) {
-			addSong(song);
+	public int addSongs(Collection<Song> songs) throws Exception {
+
+		int nbrSongsAdded = 0;
+		if (songs == null) {
+			throw new Exception("songs in addSongs = null !");
+		}
+		
+		java.util.Iterator<Song> its = songs.iterator();
+		
+		while (its.hasNext()) {
+			addSong(its.next());
+			nbrSongsAdded++;
 		}
 		
 		 TreeMap<String, DTO_Artist> mapArtist = new TreeMap<String, DTO_Artist>(this.mapArtist);
+		 
+		 return nbrSongsAdded;
 	}
+	
+	
 	
 	public void addPlaylists(Playlists playlists) {
 		this.playlists = playlists;

@@ -20,18 +20,15 @@ public class Playlists implements Serializable {
 	public Collection<Playlist> getPlaylists() {
 		return playlists;
 	}
-	
-	
+
 	public void setPlaylists(Collection<Playlist> playlists) {
 		this.playlists = playlists;
 	}
-	
-	
+
 	public Collection<Playlist> getMagicPlaylists() {
 		return magicPlaylists;
 	}
-	
-	
+
 	public void setMagicPlaylists(Collection<Playlist> magicPlaylists) {
 		this.magicPlaylists = magicPlaylists;
 	}

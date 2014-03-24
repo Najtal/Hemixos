@@ -10,10 +10,10 @@
  ******************************************************************************/
 package gmusic.api.skyjam.model;
 
-import java.io.Serializable;
 import java.util.Collection;
 
-public class TrackFeedData implements Serializable {
+public class TrackFeedData
+{
 	private Collection<Track> items;
 
 	public final Collection<Track> getItems()

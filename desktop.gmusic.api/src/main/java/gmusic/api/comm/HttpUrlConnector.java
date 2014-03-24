@@ -61,7 +61,6 @@ public class HttpUrlConnector implements IGoogleHttpClient
 
 		setCookie(connection);
 		return Util.getStringFromInputStream(connection.getInputStream());
-		// return IOUtils.toString(connection.getInputStream());
 	}
 
 	@Override
@@ -79,9 +78,7 @@ public class HttpUrlConnector implements IGoogleHttpClient
 			throw new IllegalStateException("Statuscode " + connection.getResponseCode() + " not supported");
 		}
 
-//		String response = IOUtils.toString(connection.getInputStream());
 		String response = Util.getStringFromInputStream(connection.getInputStream());
-
 		setCookie(connection);
 
 		if(!isStartup)
@@ -113,7 +110,7 @@ public class HttpUrlConnector implements IGoogleHttpClient
 	{
 		if(address.toString().startsWith(HTTPS_PLAY_GOOGLE_COM_MUSIC_SERVICES))
 		{
-			return address = new URI(address.toURL() + String.format(COOKIE_FORMAT, cookie));
+			return address = new URI(address.toURL() + String.format(COOKIE_FORMAT, cookie) + "&format=jsarray");
 		}
 
 		return address;
@@ -131,7 +128,6 @@ public class HttpUrlConnector implements IGoogleHttpClient
 			throw new IllegalStateException("Statuscode " + connection.getResponseCode() + " not supported");
 		}
 
-//		String response = IOUtils.toString(connection.getInputStream());
 		String response = Util.getStringFromInputStream(connection.getInputStream());
 		if(!isStartup)
 		{

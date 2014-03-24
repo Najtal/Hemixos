@@ -10,32 +10,34 @@
  ******************************************************************************/
 package gmusic.api.model;
 
-public class AddPlaylist {
+public class AddPlaylist
+{
 	private String id;
 	private String title;
 	private boolean success;
 
-	public final String getId() {
+	public final String getId()
+	{
 		return id;
 	}
-	
-	public final void setId(String id) {
+	public final void setId(String id)
+	{
 		this.id = id;
 	}
-	
-	public final String getTitle() {
+	public final String getTitle()
+	{
 		return title;
 	}
-	
-	public final void setTitle(String title) {
+	public final void setTitle(String title)
+	{
 		this.title = title;
 	}
-	
-	public final boolean isSuccess() {
+	public final boolean isSuccess()
+	{
 		return success;
 	}
-	
-	public final void setSuccess(boolean success) {
+	public final void setSuccess(boolean success)
+	{
 		this.success = success;
 	}
 

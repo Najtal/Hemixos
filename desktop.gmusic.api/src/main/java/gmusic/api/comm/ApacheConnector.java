@@ -61,12 +61,12 @@ public class ApacheConnector implements IGoogleHttpClient
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
 	}
 
-	private HttpResponse execute(URI uri, HttpRequestBase request) throws IOException, URISyntaxException {
-		
+	private HttpResponse execute(URI uri, HttpRequestBase request) throws IOException, URISyntaxException
+	{
 		request.addHeader("Accept-Encoding", "gzip, deflate");
 		HttpResponse response = httpClient.execute(adjustAddress(uri, request), localContext);
-		
-		if(response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+		if(response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
+		{
 			EntityUtils.toString(response.getEntity());
 			throw new IllegalStateException("Statuscode " + response.getStatusLine().getStatusCode() + " not supported");
 		}
@@ -74,7 +74,8 @@ public class ApacheConnector implements IGoogleHttpClient
 	}
 
 	@Override
-	public final synchronized String dispatchGet(URI address) throws URISyntaxException, IOException {
+	public final synchronized String dispatchGet(URI address) throws URISyntaxException, IOException
+	{
 		return EntityUtils.toString(execute(address, new HttpGet()).getEntity());
 	}
 

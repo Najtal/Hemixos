@@ -22,73 +22,59 @@ public class Playlist implements Serializable {
 	private Collection<Song> playlist;
 	private boolean continuation;
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title)
-	{
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public String getPlaylistId()
-	{
+	public String getPlaylistId() {
 		return playlistId;
 	}
 
-	public void setPlaylistId(String playlistId)
-	{
+	public void setPlaylistId(String playlistId) {
 		this.playlistId = playlistId;
 	}
 
-	public double getRequestTime()
-	{
+	public double getRequestTime() {
 		return requestTime;
 	}
 
-	public void setRequestTime(double requestTime)
-	{
+	public void setRequestTime(double requestTime) {
 		this.requestTime = requestTime;
 	}
 
-	public String getContinuationToken()
-	{
+	public String getContinuationToken() {
 		return continuationToken;
 	}
 
-	public void setContinuationToken(String continuationToken)
-	{
+	public void setContinuationToken(String continuationToken) {
 		this.continuationToken = continuationToken;
 	}
 
-	public boolean isDifferentialUpdate()
-	{
+	public boolean isDifferentialUpdate() {
 		return differentialUpdate;
 	}
 
-	public void setDifferentialUpdate(boolean differentialUpdate)
-	{
+	public void setDifferentialUpdate(boolean differentialUpdate) {
 		this.differentialUpdate = differentialUpdate;
 	}
 
-	public Collection<Song> getPlaylist()
-	{
+	public Collection<Song> getPlaylist() {
 		return playlist;
 	}
 
-	public void setPlaylist(Collection<Song> playlist)
-	{
+	public void setPlaylist(Collection<Song> playlist) {
 		this.playlist = playlist;
 	}
 
-	public boolean isContinuation()
-	{
+	public boolean isContinuation() {
 		return continuation;
 	}
 
-	public void setContinuation(boolean continuation)
-	{
+	public void setContinuation(boolean continuation) {
 		this.continuation = continuation;
 	}
 }

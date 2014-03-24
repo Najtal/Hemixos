@@ -10,38 +10,15 @@
  ******************************************************************************/
 package layer_manager;
 
-import gmusic.api.comm.ApacheConnector;
-import gmusic.api.comm.JSON;
-import gmusic.api.comm.Util;
 import gmusic.api.impl.GoogleMusicAPI;
 import gmusic.api.impl.GoogleSkyJamAPI;
-import gmusic.api.impl.InvalidCredentialsException;
 import gmusic.api.interfaces.IGoogleMusicAPI;
-import gmusic.api.model.Playlist;
-import gmusic.api.model.Playlists;
 import gmusic.api.model.Song;
-import gmusic.api.skyjam.model.AlbumArtRef;
-import gmusic.api.skyjam.model.Track;
-import gmusic.api.skyjam.model.TrackFeed;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.ByteBuffer;
 import java.util.Collection;
-
-import javax.print.URIException;
-
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.datatype.Artwork;
-import org.jaudiotagger.tag.id3.ID3v24Tag;
-
-import com.google.common.io.Closeables;
 
 
 
@@ -55,11 +32,12 @@ import com.google.common.io.Closeables;
 
 public class ApiManager {
 	
-	private GoogleMusicAPI GMapi;
+	//private GoogleMusicAPI GMapi;
+	private IGoogleMusicAPI igmapi;
 	
 	
-	private GoogleSkyJamAPI api;
-	private GoogleMusicAPI aa;
+	private GoogleSkyJamAPI gsjapi;
+	private GoogleMusicAPI gmapi;
 	
 	private String password;
 	private String username;
@@ -75,29 +53,52 @@ public class ApiManager {
 		this.password = password;
 
 		
-		/*
-		 * Connexion
-		 */
-        
-		aa = new GoogleMusicAPI();
-        // IGoogleMusicAPI api = new GoogleSkyJamAPI();
-        // GoogleSkyJamAPI api = new GoogleSkyJamAPI(new ApacheConnector(), new JSON(), new File("."));
-        // GoogleMusicAPI aa = new GoogleMusicAPI(new ApacheConnector(), new JSON(), new File("."));
+		/* Connexion */
+		System.out.println("NEW API_MANAGER");
+		
+		
+		igmapi = new GoogleMusicAPI();
 
-        try {
-                api = new GoogleSkyJamAPI();
-                api.login(username, password);
-                new GoogleMusicAPI().login(username, password);
-        } catch(Exception e) {
-                e.printStackTrace();
-        }
-
-        try {
-			aa.login(username, password);
+		try {
+			System.out.println("\tnew GoogleSkyJamAPI");
+			gsjapi = new GoogleSkyJamAPI();
+			System.out.println("\tGoogleSkyJamAPI login");
+			gsjapi.login(username, password);
+			
+			System.out.println("\tnew GoogleMusicAPI");
+			gmapi = new GoogleMusicAPI();
+			System.out.println("\tnew GoogleMusicAPI");
+			gmapi.login(username, password);
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		try {
+			
+			System.out.println("api login");
+			igmapi.login(username, password);
+			// QueryResponse response = api.search("Jane");
+			// api.downloadSongs(response.getResults().getSongs());
+			
+			/*System.out.println("Get all songs");
+			Collection<Song> songs = igmapi.getAllSongs();
+			igmapi.downloadSong(songs.iterator().next());
+			*/			
+			/*for (int i = 0; i < 5; i++) {
+				Song s = (Song) its.next();
+				System.out.println(s.getArtistNorm() + " - " + s.getTitleNorm() + " - " + igmapi.getSongURL(s));
+			}*/
+			
+			// api.downloadSongs(songs);
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
         
 	}
 	
@@ -106,8 +107,8 @@ public class ApiManager {
 		return api;
 	}*/
 	
-	public GoogleMusicAPI getGmApiSource() {
-		return aa;
+	public IGoogleMusicAPI getGmApiSource() {
+		return igmapi;
 	}
 
 
@@ -135,16 +136,8 @@ public class ApiManager {
 	
 	public Collection<Song> getAllSongs() throws Exception {
 		
-		Collection<Song> songs;
-		try {
-			songs = aa.getAllSongs();
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new Exception();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-			throw new Exception();
-		}
+		Collection<Song> songs = igmapi.getAllSongs();
+		igmapi.downloadSong(songs.iterator().next());
 		
 		return songs;
 	}
@@ -154,7 +147,7 @@ public class ApiManager {
 	 * Get all the playlists from the API
 	 * @return all the API
 	 */
-	public Playlists getAllplaylist() {
+	/*public Playlists getAllplaylist() {
 		Playlists playlists = null;
 		
 		try {
@@ -176,7 +169,7 @@ public class ApiManager {
 			e.printStackTrace();
 		}
 		return playlists;
-	}
+	}*/
 
 
 	/**
@@ -186,11 +179,8 @@ public class ApiManager {
 	 * @throws Exception 
 	 */
 	public URI getTrackURL(Song s) throws Exception {
-		try {
-						
-			api.getSongURL(s);			
-			
-			return api.getSongURL(s);
+		try {			
+			return igmapi.getSongURL(s);
 		} catch (URISyntaxException | IOException e) {
 			throw new Exception();
 		}
@@ -201,6 +191,7 @@ public class ApiManager {
 	 * Return the Sky Jam Playlists
 	 * @return the Sky Jam Playlists
 	 */
+	/*
 	public gmusic.api.skyjam.model.Playlists getSJPlaylists() {
 		try {
 			return api.getAllSkyJamPlaylists();
@@ -211,7 +202,7 @@ public class ApiManager {
 			e.printStackTrace();
 			return null;
 		}
-	}
+	}*/
 	
 
 	/**
@@ -219,7 +210,7 @@ public class ApiManager {
 	 * @param file the empty file
 	 * @param song the song
 	 * @throws IOException in case of an error with the file
-	 */
+	 
 	private static void populateFileWithTuneTags(File file, Song song) throws IOException {
 		try {
 			AudioFile f = AudioFileIO.read(file);
@@ -262,7 +253,7 @@ public class ApiManager {
 		} catch (Exception e) {
 			throw new IOException(e);
 		}
-	}
+	}*/
 
 	
 	/**
@@ -270,7 +261,7 @@ public class ApiManager {
 	 * @param file the empty file
 	 * @param track the track
 	 * @throws IOException in case of an error with the file
-	 */
+	 
 	private static void populateFileWithTuneTags(File file, Track track) throws IOException {
 		try {
 			AudioFile f = AudioFileIO.read(file);
@@ -318,7 +309,7 @@ public class ApiManager {
 		} catch (Exception e) {
 			throw new IOException(e);
 		}
-	}
+	}*/
 
 
 

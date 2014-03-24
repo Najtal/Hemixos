@@ -281,7 +281,7 @@ new FormModel {
 								"border": new javax.swing.border.EmptyBorder( 5, 8, 5, 0 )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewSimple"
-									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_simpleListSelected.jpg" )
+									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_simpleList.jpg" )
 									"borderPainted": false
 									"focusPainted": false
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -294,7 +294,7 @@ new FormModel {
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewOneC"
-									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_oneList.jpg" )
+									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_oneList.jpg" )
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )
@@ -306,7 +306,7 @@ new FormModel {
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewTwoC"
-									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_twoList.jpg" )
+									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_twoList.jpg" )
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )
@@ -318,7 +318,7 @@ new FormModel {
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbviewThreeC"
-									"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Jean-Vital\\WorkSpace\\TestJFormDesigner\\res\\ico_threeList.jpg" )
+									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/ico_threeList.jpg" )
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )

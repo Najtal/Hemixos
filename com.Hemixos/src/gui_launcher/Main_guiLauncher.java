@@ -201,9 +201,7 @@ public class Main_guiLauncher extends JFrame {
 			model.getMd().addLib(l);
 					
 			// On se connecte
-			System.out.println("Connecting to library...");
 			jlInfo.setText("Connecting to library...");
-			
 			
 			try {
 				model.getMd().connectToGM();
@@ -405,37 +403,40 @@ public class Main_guiLauncher extends JFrame {
 		Playlists playlist = null;
 		try {
 			
-			System.out.println("get all tracks");
-			System.out.println("gm: " + model.getMd().getGm().toString());
+			System.out.println("Get all songs");
 						
 			songs = model.getMd().getGm().getAllSongs();
-			System.out.println("tracks ok");
+			System.out.println("tracks \tok");
 
-			playlist = model.getMd().getGm().getAllplaylist();
-			System.out.println("playlists ok");
+			//playlist = model.getMd().getGm().getAllplaylist();
+			//System.out.println("playlists \tok");
 		
 		} catch (Exception e) {
 			jlInfo.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_UNABLE_TO_GET_LIBRARY));
-			System.out.println("error : Can't add track or playlist");
+			System.out.println("error : Can't GET track or playlist");
 			e.printStackTrace();
-			System.exit(1);
 		}
 		
 		jlInfo.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_LIB_TRAITEMENT));
 		
 		// On ajoute les Tracks
-		lib.addSongs(songs);
+		try {
+			int nxb = lib.addSongs(songs);
+			System.out.println(nxb + " songs added to library");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		// On ajoute les playlists
-		lib.addPlaylists(playlist);
-				
-		
 		// TODO
-		System.out.println("Libs added");
+		//lib.addPlaylists(playlist);
+				
 		
 		jlInfo.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_SAVE_LIB));
 		
 		try {
 			LibraryManager.saveLibrary(model, model.getMd().getLib());
+			System.out.println("library saved");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

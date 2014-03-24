@@ -111,10 +111,10 @@ public class Model_data {
 			if (selectedArtist > -1) {
 						
 				if (selectedAlbum > -1) {
-					if (ar.equals(song.getArtist()) && al.equals(song.getAlbum())) {
+					if (ar.equals(song.getAlbumArtist()) && al.equals(song.getAlbum())) {
 						Vector<String> vt = new Vector<>();
-						vt.add(song.getTitle());
-						vt.add(song.getArtist());
+						vt.add(song.getName());
+						vt.add(song.getAlbumArtist());
 						vt.add(song.getAlbum());
 						vt.add(song.getId());						
 						v.add(vt);						
@@ -123,8 +123,8 @@ public class Model_data {
 				} else {
 					if (ar.equals(song.getArtist())) {
 						Vector<String> vt = new Vector<>();
-						vt.add(song.getTitle());
-						vt.add(song.getArtist());
+						vt.add(song.getName());
+						vt.add(song.getAlbumArtist());
 						vt.add(song.getAlbum());
 						vt.add(song.getId());						
 						v.add(vt);						
@@ -136,8 +136,8 @@ public class Model_data {
 				if (selectedAlbum > -1) {
 					if (al.equals(song.getAlbum())) {
 						Vector<String> vt = new Vector<>();
-						vt.add(song.getTitle());
-						vt.add(song.getArtist());
+						vt.add(song.getName());
+						vt.add(song.getAlbumArtist());
 						vt.add(song.getAlbum());
 						vt.add(song.getId());						
 						v.add(vt);						
@@ -145,8 +145,8 @@ public class Model_data {
 					
 				} else {
 					Vector<String> vt = new Vector<>();
-					vt.add(song.getTitle());
-					vt.add(song.getArtist());
+					vt.add(song.getName());
+					vt.add(song.getAlbumArtist());
 					vt.add(song.getAlbum());
 					vt.add(song.getId());						
 					v.add(vt);	
@@ -299,10 +299,6 @@ public class Model_data {
 					listeAlbums.add(nx.getValue().getAlbumName());
 			}
 		}
-		
-		
-		
-		
 		
 		
 		 Collections.sort(listArtist);				

@@ -10,12 +10,8 @@
  ******************************************************************************/
 package gmusic.model;
 
-import java.io.Serializable;
-
-public abstract class Tune implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	
+public abstract class Tune
+{
 	protected String genre;
 	protected int beatsPerMinute;
 	protected String album;

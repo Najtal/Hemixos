@@ -79,9 +79,9 @@ public class InfoPisteLectureUpdater implements Runnable {
 
 		Song s = model.getMp().getPlayingSong();
 		
-		jlArtist.setText(s.getArtist());
+		jlArtist.setText(s.getAlbumArtist());
 		jlAlbum.setText(s.getAlbum());
-		jlTitre.setText(s.getTitle());
+		jlTitre.setText(s.getName());
 		jlDuree.setText(StringTransform.milliSecToString(s.getDurationMillis()));
 		
 		String uriCover = null;

@@ -10,9 +10,8 @@
  ******************************************************************************/
 package gmusic.api.skyjam.model;
 
-import java.io.Serializable;
-
-public class TrackFeed implements Serializable {
+public class TrackFeed
+{
 	public final String getNextPageToken()
 	{
 		return nextPageToken;

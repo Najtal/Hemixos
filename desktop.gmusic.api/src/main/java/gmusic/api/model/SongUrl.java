@@ -10,12 +10,12 @@
  ******************************************************************************/
 package gmusic.api.model;
 
-import java.io.Serializable;
-
-public class SongUrl implements Serializable {
+public class SongUrl
+{
 	private String url;
 
-	public final String getUrl() {
+	public final String getUrl()
+	{
 		return url;
 	}
 

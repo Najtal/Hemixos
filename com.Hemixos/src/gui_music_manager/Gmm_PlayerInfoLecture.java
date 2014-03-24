@@ -66,8 +66,8 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 		
 		
 		if (model.getMp().getPlayingSong() != null) {
-			String title = model.getMp().getPlayingSong().getTitle();
-			String artist = model.getMp().getPlayingSong().getArtist();
+			String title = model.getMp().getPlayingSong().getName();
+			String artist = model.getMp().getPlayingSong().getAlbumArtist();
 			
 			String name = artist + " - " + title;
 			
