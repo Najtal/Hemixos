@@ -14,6 +14,7 @@ import gmusic.api.impl.GoogleMusicAPI;
 import gmusic.api.impl.GoogleSkyJamAPI;
 import gmusic.api.interfaces.IGoogleMusicAPI;
 import gmusic.api.model.Song;
+import gmusic.api.model.SongUrl;
 
 import java.io.IOException;
 import java.net.URI;
@@ -51,11 +52,6 @@ public class ApiManager {
 		
 		this.username = username;
 		this.password = password;
-
-		
-		/* Connexion */
-		System.out.println("NEW API_MANAGER");
-		
 		
 		igmapi = new GoogleMusicAPI();
 
@@ -69,14 +65,6 @@ public class ApiManager {
 			gmapi = new GoogleMusicAPI();
 			System.out.println("\tnew GoogleMusicAPI");
 			gmapi.login(username, password);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		try {
 			
 			System.out.println("api login");
 			igmapi.login(username, password);
@@ -180,6 +168,20 @@ public class ApiManager {
 	 */
 	public URI getTrackURL(Song s) throws Exception {
 		try {			
+			return igmapi.getSongURL(s);
+		} catch (URISyntaxException | IOException e) {
+			throw new Exception();
+		}
+	}
+	
+	/**
+	 * Return the URI of a track
+	 * @param t The track
+	 * @return the URI of the track
+	 * @throws Exception 
+	 */
+	public URI getSongURL(Song s) throws Exception {
+		try {	
 			return igmapi.getSongURL(s);
 		} catch (URISyntaxException | IOException e) {
 			throw new Exception();

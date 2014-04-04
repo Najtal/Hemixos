@@ -41,18 +41,18 @@ public class AbstractColors {
 	public static final Color GUI_PL_VOL_FRONT = new Color(79, 97, 111);
 	public static final Color GUI_PL_VOL_TXT = new Color(79, 97, 111);
 	public static final Color GUI_INFO_BORDER = new Color(195, 195, 195);
-	public static final Color GUI_INFO_NOT_PLAYED = new Color(230, 230, 230);
-	public static final Color GUI_PL_INFO_TITLE = new Color(62, 79, 86);
-	public static final Color GUI_PL_INFO_TIME = new Color(81, 77, 74);
+	public static final Color GUI_INFO_NOT_PLAYED = new Color(77, 77, 77);
+	public static final Color GUI_PL_INFO_TITLE = new Color(239, 239, 239);
+	public static final Color GUI_PL_INFO_TIME = new Color(239, 239, 239);
 	public static final Color GUI_MN_LIBS = new Color(77, 90, 106);
 	public static final Color GUI_MN_LIBS_SOURCE = new Color(128, 128, 128);
 	public static final Color GUI_VUE_MENUTOP = new Color(245, 245, 245);
 	public static final Color GUI_VUE_MENUTOP_BUTTON = new Color(86, 99, 108);
-	public static final Color GUI_INFO_PLAYED = new Color(168, 213, 219);
+	public static final Color GUI_INFO_PLAYED = new Color(255, 0, 100);
+	//public static final Color GUI_INFO_PLAYED = new Color(168, 213, 219);
 
-	
-	public static final Color GUI_LISTE_ARTIST_BG = new Color(246, 247, 249);
-	public static final Color GUI_LISTE_TRACK_HEADER_BACKGROUND = new Color(255, 255, 255);
+	public static final Color GUI_LISTE_ARTIST_BG = new Color(245, 245, 245);
+	public static final Color GUI_LISTE_TRACK_HEADER_BACKGROUND = new Color(245, 245, 245);
 	
 	public static final Color GUI_OPTION_BACKGROUND = new Color(51, 51, 51);
 	public static final Color GUI_OPTION_BORDER_LEFT = new Color(27, 27, 27);

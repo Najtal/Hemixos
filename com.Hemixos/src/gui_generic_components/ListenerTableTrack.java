@@ -58,6 +58,8 @@ public class ListenerTableTrack implements MouseListener {
 			ActionElementToPlay.AddOrPlayElement(model, jtTable);
 
 		}
+		
+		//model.getMc().jpTrackContainer.repaint();
 	}
 
 	@Override

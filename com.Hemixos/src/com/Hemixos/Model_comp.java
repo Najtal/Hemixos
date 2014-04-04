@@ -1,5 +1,6 @@
 package com.Hemixos;
 
+import gui_music_manager.BirdTempo;
 import gui_music_manager.Gmm_PlayerInfoLecture;
 import gui_music_manager.Gmm_PlayerInfoVolume;
 import gui_music_manager.Gmm_Window;
@@ -10,6 +11,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import org.jdesktop.swingx.JXList;
 
 
 /**
@@ -33,7 +36,7 @@ public class Model_comp {
 	public JPanel jpHeadSpacerLeft;
 	public JPanel jpHeadSpacerRight;
 
-	public JList jlArtistes;
+	public JXList jlArtistes;
 	public JList jlAlbums;
 	public JTable jtTableTrack;
 
@@ -71,6 +74,21 @@ public class Model_comp {
 
 	public JButton jbOptions;
 	public JButton jbVolet;
+	public JButton jbPlAdd;
+
+	public JPanel jpPlaylist;
+	
+	public JPanel jpPVBorder1;
+	public JPanel jpPVBorder2;
+	public JPanel jpPVBorder3;
+	public JPanel jpArtistResize;
+	public JPanel jpAlbumResize;
+	public JPanel jpPlaylistResize1;
+	public JPanel jpPlaylistResize2;
+	public JPanel jpPlaylistViews;
+
+	public BirdTempo jpTrackContainer;
+
 
 	
 	/**
@@ -86,7 +104,7 @@ public class Model_comp {
 	//public void regJpVolume(GmmC_Volume gmmC_Volume) {
 	//	this.jpVolume = gmmC_Volume;
 	//}
-
+	
 	public void regJpInfo(Gmm_PlayerInfoLecture gmm_PlayerInfoLecture) {
 		this.jpInfo = gmm_PlayerInfoLecture;
 	}
@@ -107,7 +125,7 @@ public class Model_comp {
 		this.jpHeadSpacerRight = j;
 	}
 
-	public void regJlArtist(JList jlArtistes) {
+	public void regJlArtist(JXList jlArtistes) {
 		this.jlArtistes = jlArtistes;
 	}
 	
@@ -223,4 +241,49 @@ public class Model_comp {
 		this.jbVolet = jbVolet;
 	}
 	
+	public void regJpPlaylist(JPanel jpPlaylist) {
+		this.jpPlaylist = jpPlaylist;
+	}
+
+	public void regJbPlAdd(JButton jbPlAdd) {
+		this.jbPlAdd = jbPlAdd;
+	}
+	
+	
+	
+	public void regjpArtistResize(JPanel jpArtistResize) {
+		this.jpArtistResize = jpArtistResize;
+	}
+	
+	public void regjpAlbumResize(JPanel jpAlbumResize) {
+		this.jpAlbumResize = jpAlbumResize;
+	}
+	
+	public void regjpPlaylistResize1(JPanel jpPlaylistResize1) {
+		this.jpPlaylistResize1 = jpPlaylistResize1;
+	}
+	
+	public void regjpPlaylistResize2(JPanel jpPlaylistResize2) {
+		this.jpPlaylistResize2 = jpPlaylistResize2;
+	}
+
+	public void regjpLibrairy1(JPanel jpPVBorder1) {
+		this.jpPVBorder1 = jpPVBorder1;
+	}
+
+	public void regjpLibrairy2(JPanel jpPVBorder2) {
+		this.jpPVBorder2 = jpPVBorder2;
+	}
+
+	public void regjpLibrairy3(JPanel jpPVBorder3) {
+		this.jpPVBorder3 = jpPVBorder3;		
+	}
+
+	public void regJpPlaylistView(JPanel jpPlaylistViews) {
+		this.jpPlaylistViews = jpPlaylistViews;
+	}
+
+	public void regjpTrackContainer(BirdTempo jpTrackContainer) {
+		this.jpTrackContainer = jpTrackContainer;
+	}
 }

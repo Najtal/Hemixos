@@ -1,15 +1,14 @@
 package ucc;
 
-import dto.Library;
-import dto.PlayingQueue;
 import exceptions.UnselectedLibraryException;
-import gmusic.api.model.Song;
-import gmusic.api.skyjam.model.Track;
 
 import java.util.Vector;
 
 import javax.swing.JTable;
 
+import library.Library;
+import library.PlayQueue;
+import library.Song;
 import threads.LaunchPlay;
 
 import com.Hemixos.Model;
@@ -25,40 +24,37 @@ public class ActionElementToPlay {
 	 */
 	public static void AddOrPlayElement(Model model, JTable table) {
 		
-
 		Song s = null;
 		
 		//System.out.println("selected row : " + table.getSelectedRow());
 		s = getTrackFromRow(table.getSelectedRow(), model);
 		//System.out.println("song: " + s.getTitle());
 		
-		/*PlayingQueue queue = model.getMp().getQueue();
+		PlayQueue queue = model.getMp().getQueue();
 		
 		
 		// On ajoute a la playlist
 		if (model.getMp().isAddToPL()) {
+			queue.addSong(s);
+					
+			// On supprime la playlist et on ajoute tout a dans une nouvelle Playlist
+		} else {		
+			queue.removeAll();
 			
-			s = getTrackFromRow(table.getSelectedRow(), model);
-			queue.ajouterUnePiste(s);
-		
-		// On supprime la playlist et on ajoute tout a dans une nouvelle Playlist
-		} else {
+			queue.addSong(s);
 			
-			int nbrRow = table.getRowCount();
+			/*int nbrRow = table.getRowCount();
 			
 			for (int i = table.getSelectedRow(); i < nbrRow; i++) {
-				queue.ajouterUnePiste(getTrackFromRow(i, model));
+				queue.addSong(getTrackFromRow(i, model));
 			}
 			
 			for (int i = 0; i < table.getSelectedRow(); i++) {
-				queue.ajouterUnePiste(getTrackFromRow(i, model));
-			}
+				queue.addSong(getTrackFromRow(i, model));
+			}*/
 			
-		}*/
-		
-		new LaunchPlay(model, s);
-		//model.getMp().play(s);
-		
+		}
+							
 	}
 	
 	
@@ -73,10 +69,12 @@ public class ActionElementToPlay {
 		}
 		
 		// On récupère la piste
-		Vector<String> vv = (Vector<String>) model.getMd().getListePisteData().get(tableRow);
-		String idt = vv.get(3);
-				
-		return ltmp.getMapSongs().get(idt);
+		Song s = model.getMd().getListSong().get(tableRow);
+		//Vector<String> vv = (Vector<String>) model.getMd().getListePisteData().get(tableRow);
+		//String idt = vv.get(3);
+			
+		return s;
+		//return ltmp.getMapSongs().get(idt);
 	}
 	
 }

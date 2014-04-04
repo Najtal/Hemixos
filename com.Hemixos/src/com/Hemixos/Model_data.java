@@ -1,11 +1,14 @@
 package com.Hemixos;
 
-import gmusic.api.model.Song;
+import gui_actionUpdater.AlbumComparator;
+import gui_actionUpdater.ArtistComparator;
 import gui_actionUpdater.ListUpdater;
 
 import java.net.ConnectException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Vector;
@@ -13,9 +16,10 @@ import java.util.Vector;
 import javax.swing.JList;
 
 import layer_manager.ApiManager;
-import dto.DTO_Album;
-import dto.DTO_Artist;
-import dto.Library;
+import library.Album;
+import library.Artist;
+import library.Library;
+import library.Song;
 import exceptions.UndefineGoogleManagerAPI;
 import exceptions.UnselectedLibraryException;
 
@@ -34,19 +38,16 @@ public class Model_data {
 	// Google music
 	private ApiManager gm;	
 	
-	
-	
-	
 	// Artists
-	private Vector<String> listArtist; 		// liste avec tous les nom artistes
-	private Vector<String> listArtistKey;	// liste avec toute les clés associées
+	private Vector<Artist> listArtist; // liste avec tous les nom artistes
+	private Artist selectedArtist; // L'artiste selectionné
 
-	private int selectedArtist; // L'artiste selectionné
-
-	private Vector<String> listeAlbums;		// liste avec tous les nom d'albums
-	private Vector<String> listAlbumKey;	// liste avec toute les clés associées
-
-	private int selectedAlbum; // Album selectionné
+	// Album
+	private Vector<Album> listeAlbums; // liste avec tous les nom d'albums
+	private Album selectedAlbum; // Album selectionné
+	
+	// Song
+	private Vector<Song> listSong; // liste des songs displayed dans la JTable
 
 	
 	/**
@@ -57,13 +58,11 @@ public class Model_data {
 
 		this.model = model;
 		
-		selectedArtist = -1;
-		selectedAlbum = -1;
+		selectedArtist = null;
+		selectedAlbum = null;
+			
 		this.libs = new ArrayList<Library>();
 	}
-	
-	
-	
 	
 	/**
 	 * Connect the library to the google account
@@ -78,89 +77,38 @@ public class Model_data {
 		return;
 	}
 	
-	
-	
 	/**
 	 * Récupère les pistes de la librairie et renvoie un vecteur y de vecteurs avec toute les données des pistes de la librairie en cours
 	 * @return un vecteur de vecteur de data pistes
 	 */
-	public Vector getListePisteData() {
+	public Vector<Song> getListePisteData() {
 		
-		Vector<Vector> v = new Vector<Vector>();
+		Vector<Song> v = new Vector<Song>();
 
-		Song song = null;
-		String ar = null;
-		String al = null;
+		Iterator<Song> itt;
 		
-		Iterator<Song> itt = lib.getMapSongs().values().iterator();
-		
-		if (selectedArtist > -1) {
-			JList<String> listeArtist = model.getMc().jlArtistes;
-			ar = listeArtist.getModel().getElementAt(listeArtist.getSelectedIndex());
-		}
-
-		if (selectedAlbum > -1) {
-			JList<String> listeAlbum = model.getMc().jlAlbums;
-			al = listeAlbum.getModel().getElementAt(listeAlbum.getSelectedIndex());
-		}
-		
-		while (itt.hasNext()) {
-
-			song = (Song) itt.next();
-			
-			if (selectedArtist > -1) {
-						
-				if (selectedAlbum > -1) {
-					if (ar.equals(song.getAlbumArtist()) && al.equals(song.getAlbum())) {
-						Vector<String> vt = new Vector<>();
-						vt.add(song.getName());
-						vt.add(song.getAlbumArtist());
-						vt.add(song.getAlbum());
-						vt.add(song.getId());						
-						v.add(vt);						
-					}
-					
-				} else {
-					if (ar.equals(song.getArtist())) {
-						Vector<String> vt = new Vector<>();
-						vt.add(song.getName());
-						vt.add(song.getAlbumArtist());
-						vt.add(song.getAlbum());
-						vt.add(song.getId());						
-						v.add(vt);						
-					}
-				}
-				
+		// Si un album est sélectionné
+		if (selectedAlbum != null) {
+			itt = selectedAlbum.getMapSongs().values().iterator();
+		// Si pas d'album sélectionné
+		} else {
+			// Si un artist est sélectionné
+			if (selectedArtist != null) {	
+				itt = selectedArtist.getMapAllSong().values().iterator();
+			// Si pas d'artist sélectionné
 			} else {
-
-				if (selectedAlbum > -1) {
-					if (al.equals(song.getAlbum())) {
-						Vector<String> vt = new Vector<>();
-						vt.add(song.getName());
-						vt.add(song.getAlbumArtist());
-						vt.add(song.getAlbum());
-						vt.add(song.getId());						
-						v.add(vt);						
-					}
-					
-				} else {
-					Vector<String> vt = new Vector<>();
-					vt.add(song.getName());
-					vt.add(song.getAlbumArtist());
-					vt.add(song.getAlbum());
-					vt.add(song.getId());						
-					v.add(vt);	
-				}
+				itt = model.getMd().lib.getMapSongs().values().iterator();
 			}
 		}
 		
+		while (itt.hasNext()) {
+			v.add(itt.next());
+		}
+		
+		listSong = v;
 		return v;
 	}
 
-
-	
-	
-	
 	
 	/*
 	 * GETTERS and SETTERS
@@ -169,12 +117,9 @@ public class Model_data {
 	/**
 	 * @return the selectedArtist
 	 */
-	public int getSelectedArtist() {
+	public Artist getSelectedArtist() {
 		return selectedArtist;
 	}
-
-
-
 
 	/**
 	 * Set the current library
@@ -199,8 +144,10 @@ public class Model_data {
 		throw new UnselectedLibraryException();
 	}
 
-	
-	// TODO mettre doc
+	/**
+	 * Renvoie l'entête de la JTable principale
+	 * @return
+	 */
 	public Vector<String> getListePisteCN() {
 
 		Vector<String> c = new Vector<>();
@@ -220,7 +167,6 @@ public class Model_data {
 		}
 	}
 	
-
 	/**
 	 * Getter pour GoogleMusic Manager : ApiManager
 	 * @return Google music manager
@@ -245,89 +191,90 @@ public class Model_data {
 		return libs;
 	}
 
-
-
-
-	public Vector<String> getArtistVector() {
+	/**
+	 * Renvoie le vecteur des artistes pour la JList d'artist
+	 * @return
+	 */
+	public Vector<Artist> getArtistVector() {
 		if (listArtist == null) {
 			setArtistVector();
 		}
 		return listArtist;
 	}
 	
-	
-
-
-	public Vector<String> getAlbumVector() {
+	/**
+	 * Renvoie le vecteur d'albums pour la JList d'albums
+	 * @return
+	 */
+	public Vector<Album> getAlbumVector() {
 		setAlbumsVector();
 		return listeAlbums;
 	}
 
 
-
 	private void setAlbumsVector() {
 		listeAlbums = new Vector<>();
-		listAlbumKey = new Vector<>();
 		
-		Iterator<Entry<String, DTO_Album>> ita = lib.getMapAlbums().entrySet().iterator();
-				
-		boolean filtre = false;
-		String selectedArtistName = null;
-		
-		if (model.getMd().getSelectedArtist() > -1) {
-			selectedArtistName  = (String) model.getMc().jlArtistes.getModel().getElementAt(model.getMc().jlArtistes.getSelectedIndex());
-			System.out.println("selectedArtist: " + selectedArtist);
-			filtre = true;
-		}
-		
-		
-		if (filtre) {
-			
-			while (ita.hasNext()) {
-				Entry<String, DTO_Album> nx = ita.next();
-				if (nx.getValue().getArtist().getArtistName().equals(selectedArtistName)) {
-					listAlbumKey.add(nx.getKey());
-					listeAlbums.add(nx.getValue().getAlbumName());
-				}
-			}
-			
+		Iterator<Entry<String, Album>> ita;
+						
+		// Si un artist est sélectionné
+		if (selectedArtist != null) {	
+			ita = selectedArtist.getMapAlbum().entrySet().iterator();
+		// Si pas d'artist sélectionné
 		} else {
-			
-			while (ita.hasNext()) {
-				Entry<String, DTO_Album> nx = ita.next();
-					listAlbumKey.add(nx.getKey());
-					listeAlbums.add(nx.getValue().getAlbumName());
-			}
+			ita = model.getMd().lib.getMapAlbums().entrySet().iterator();
 		}
 		
-		
-		 Collections.sort(listArtist);				
-	}
-
-	private void setArtistVector() {
-		
-		listArtist = new Vector<>();
-		listArtistKey = new Vector<>();
-		
-		Iterator<Entry<String, DTO_Artist>> ita = 	lib.getMapArtist().entrySet().iterator();
-				
+		Vector<Album> tmpv = new Vector<>();
 		while (ita.hasNext()) {
-			Entry<String, DTO_Artist> nx = ita.next();
-			
-			listArtistKey.add(nx.getKey());
-			listArtist.add(nx.getValue().getArtistName());
+			tmpv.add(ita.next().getValue());
 		}
 		
-		 Collections.sort(listArtist);		
+		Album[] array = new Album[tmpv.size()];   
+		tmpv.copyInto(array);   
+
+		AlbumComparator ac = new AlbumComparator();
+	    Arrays.sort(array, ac );
+
+	    for (int i=0; i<array.length ; i++) {
+	    	listeAlbums.insertElementAt(array[i], i);
+		}
+				
+		 //Collections.sort(listeAlbums);				
 	}
 
+	
+	private void setArtistVector() {
+		listArtist = new Vector<>();
+		
+		Iterator<Entry<String, Artist>> ita = 	lib.getMapArtist().entrySet().iterator();
+				
+		Vector<Artist> tmpa = new Vector<>();
+		while (ita.hasNext()) {
+			Entry<String, Artist> am = ita.next();
+			tmpa.add(am.getValue());
+		}
+		
+		Artist[] array = new Artist[tmpa.size()];   
+		tmpa.copyInto(array);   
 
+		ArtistComparator ac = new ArtistComparator();
+	    Arrays.sort(array, ac );
+
+	    for (int i=0; i<array.length ; i++) {
+	    	listArtist.insertElementAt(array[i], i);
+		}
+	
+	}
 
 
 	public void setSelectedArtist(int selectedIndex) {		
 		
-		// nouvel artist
-		selectedArtist = selectedIndex;
+		if (selectedIndex == -1) {
+			selectedArtist = null;
+		} else {
+			selectedArtist = listArtist.get(selectedIndex);
+		}
 		
 		// On filtre les albums
 		try {
@@ -344,30 +291,38 @@ public class Model_data {
 	/**
 	 * @return the selectedAlbum
 	 */
-	public int getSelectedAlbum() {
+	public Album getSelectedAlbum() {
 		return selectedAlbum;
 	}
-
 
 	/**
 	 * @param selectedAlbum the selectedAlbum to set
 	 */
 	public void setSelectedAlbum(int selectedAlbum) {
-		this.selectedAlbum = selectedAlbum;
+		//this.selectedAlbum = selectedAlbum;
+		if (selectedAlbum == -1) {
+			this.selectedAlbum = null;
+		} else {
+			this.selectedAlbum = listeAlbums.get(selectedAlbum);
+		}
 		
 		// On filtre les pistes
 		ListUpdater.refreshTrackTable(model);
 	}
 
-
 	/**
 	 * @return the listeAlbums
 	 */
-	public Vector<String> getListeAlbums() {
+	public Vector<Album> getListeAlbums() {
 		return listeAlbums;
 	}
 
-
+	/**
+	 * @return the listSong
+	 */
+	public Vector<Song> getListSong() {
+		return listSong;
+	}
 
 }
 

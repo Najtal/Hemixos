@@ -16,12 +16,9 @@ import com.Hemixos.Model;
 
 public class Gmm_PlayerInfoLecture extends JPanel {
 
-	
 	private static final long serialVersionUID = 1L;
 	
-	
 	private Model model;
-	
 	private int width;
 
 	
@@ -30,7 +27,8 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 		this.model = model;
 		this.model.getMc().regJpInfo(this);
 		
-		this.setBackground(AbstractColors.GUI_PL_BACKGROUND);
+		//this.setBackground(AbstractColors.GUI_PL_BACKGROUND);
+		this.setOpaque(false);
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	}
 	
@@ -38,15 +36,15 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 		super.paintComponent(g);
 		
 		// Draw Rectangle
-		g.setColor(AbstractColors.GUI_INFO_BORDER);
-		g.drawRoundRect(20, 15, model.getMw().getInfoWidth(), this.getHeight()-30, 8, 8);
+		//g.setColor(AbstractColors.GUI_INFO_BORDER);
+		//g.drawRoundRect(20, 15, model.getMw().getInfoWidth(), this.getHeight()-30, 8, 8);
 
-		int playerWidth = 15+this.getHeight()-35;
+		int playerWidth = 15+this.getHeight()-40;
 		
 		g.setColor(AbstractColors.GUI_INFO_NOT_PLAYED);
-		g.fillRect(20, playerWidth, model.getMw().getInfoWidth()+2, 6);
+		g.fillRect(0, playerWidth, model.getMw().getInfoWidth()+2, 3);
 		
-		
+		int infoWidth = model.getMw().getInfoWidth();
 		
 		/*
 		 * length = 210000 (ms)
@@ -59,33 +57,44 @@ public class Gmm_PlayerInfoLecture extends JPanel {
 			length = 1;
 			pos = 0;
 		}
-		int playedWidth = (int) ((int) (model.getMw().getInfoWidth()*pos)/length);
+		int playedWidth = (int) ((int) (infoWidth*pos)/length);
 
 		g.setColor(AbstractColors.GUI_INFO_PLAYED);
-		g.fillRect(20, playerWidth, playedWidth, 6);
-		
+		g.fillRect(0, playerWidth, playedWidth, 3);
+				
 		
 		if (model.getMp().getPlayingSong() != null) {
-			String title = model.getMp().getPlayingSong().getName();
-			String artist = model.getMp().getPlayingSong().getAlbumArtist();
+			String title = model.getMp().getPlayingSong().getTitle();
+			String artist = model.getMp().getPlayingSong().getArtist().getArtistName();
 			
 			String name = artist + " - " + title;
 			
-			Font fTitle = new Font("Lucie Sans", Font.BOLD, 14);
-			Font fTime = new Font("Lucie Sans", 0, 10);
+			Font fTitle = new Font("Segoe UI Light", Font.BOLD, 18);
+			Font fTime = new Font("Segoe UI Light", 0, 12);
 
 			g.setFont(fTitle);
 			g.setColor(AbstractColors.GUI_PL_INFO_TITLE);
-			g.drawString(name, model.getMw().getInfoWidth()/2-name.length()*6/2, 34);
+			g.drawString(name, infoWidth/2-name.length()*3-20, 34);
 			
 			if (model.getMp().isEnLecture()) {
 				g.setFont(fTime);
 				g.setColor(AbstractColors.GUI_PL_INFO_TIME);
-				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLengthPlayed()), 30+model.getMw().getBorderTampon()/4, 33);
-				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLength()), model.getMw().getInfoWidth()-model.getMw().getBorderTampon()/5-10, 33);
-			}
+				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLengthPlayed()), model.getMw().getBorderTampon()/4-20, 50);
+				g.drawString(StringTransform.milliSecToString(model.getMp().getTrackLength()), infoWidth-model.getMw().getBorderTampon()/5-20, 50);
 			
+				
+				/*if (model.getMp().getPm().isPlaying())
+					System.out.println("en lecture");
+				
+				
+				if (pos == length-100 || (model.getMp().isEnLecture() && !model.getMp().getPm().isPlaying())) {
+					model.getMp().getQueue().PlayNextSong();
+				}*/
+			
+			}
 		}
+		
+		
 		
 		
 	}

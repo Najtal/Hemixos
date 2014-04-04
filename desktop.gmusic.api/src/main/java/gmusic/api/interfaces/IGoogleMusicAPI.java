@@ -60,4 +60,5 @@ public interface IGoogleMusicAPI
 	QueryResponse search(String query) throws Exception;
 
 	void uploadSong(File song);
+
 }

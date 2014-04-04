@@ -8,13 +8,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import library.Library;
 import properties.AbstractPropKey;
 import properties.AbstractValues;
 
 import com.Hemixos.Model;
 import com.Hemixos.Model_window;
-
-import dto.Library;
 
 public class LibraryManager {
 

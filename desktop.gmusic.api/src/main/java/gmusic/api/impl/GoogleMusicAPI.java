@@ -120,6 +120,7 @@ public class GoogleMusicAPI implements IGoogleMusicAPI {
 								tune.getId()))), SongUrl.class).getUrl());
 	}
 
+	
 	@Override
 	public URI getSongURL(Song song) throws URISyntaxException, IOException {
 		return getTuneURL(song);
@@ -186,7 +187,6 @@ public class GoogleMusicAPI implements IGoogleMusicAPI {
 		return chunkedCollection;
 	}
 
-	@Override
 	public Collection<File> downloadSongs(Collection<Song> songs)
 			throws MalformedURLException, IOException, URISyntaxException {
 		Collection<File> files = new ArrayList<File>();
@@ -236,4 +236,5 @@ public class GoogleMusicAPI implements IGoogleMusicAPI {
 	public void uploadSong(File song) {
 
 	}
+
 }

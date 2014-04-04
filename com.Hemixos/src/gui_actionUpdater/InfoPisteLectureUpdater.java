@@ -1,8 +1,6 @@
 package gui_actionUpdater;
 
-import dto.DTO_Album;
 import exceptions.UnselectedLibraryException;
-import gmusic.api.model.Song;
 import gmusic.api.skyjam.model.AlbumArtRef;
 
 import java.awt.Image;
@@ -18,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import library.Album;
+import library.Song;
 import properties.AbstractImages;
 import util.StringTransform;
 
@@ -79,17 +79,17 @@ public class InfoPisteLectureUpdater implements Runnable {
 
 		Song s = model.getMp().getPlayingSong();
 		
-		jlArtist.setText(s.getAlbumArtist());
-		jlAlbum.setText(s.getAlbum());
-		jlTitre.setText(s.getName());
+		jlArtist.setText(s.getArtist().getArtistName());
+		jlAlbum.setText((s.getAlbum() != null) ? s.getAlbum().getName() : "");
+		jlTitre.setText(s.getTitle());
 		jlDuree.setText(StringTransform.milliSecToString(s.getDurationMillis()));
 		
 		String uriCover = null;
 		Image image = null;
 
-		if (s.getAlbum() != "") {
+		if (s.getAlbum() != null) {
 
-			DTO_Album album = null;
+			Album album = null;
 			try {
 				album = model.getMd().getLib().getMapAlbums().get(s.getAlbum());
 				
@@ -97,8 +97,8 @@ public class InfoPisteLectureUpdater implements Runnable {
 				java.util.Iterator<String> itat = album.getMapSongs().keySet().iterator();
 				while (itat.hasNext()) {
 					
-					if (album.getMapSongs().get(itat.next()).getAlbumArtUrl() != null) {
-						uriCover = album.getMapSongs().get(itat.next()).getAlbumArtUrlAsURI().toString();
+					if (album.getMapSongs().get(itat.next()).getAlbum().getAlbumArtUrl() != null) {
+						uriCover = album.getMapSongs().get(itat.next()).getAlbum().getAlbumArtUrl().toString();
 						break;
 					}	
 				}

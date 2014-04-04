@@ -20,23 +20,23 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
 import layer_manager.ApiManager;
+import library.Library;
+import library.Song;
 import properties.AbstractColors;
 import properties.AbstractImages;
 import properties.AbstractPropKey;
 import properties.AbstractValues;
 import properties.PropertiesLoader;
+import vlcEngine.PlayerManager;
 
 import com.Hemixos.Hemixos_Launcher;
 import com.Hemixos.Model;
-import com.vlcj.testx.PlayerManager;
 
-import dto.Library;
 import exceptions.FatalException;
 import exceptions.UndefineGoogleManagerAPI;
 import exceptions.UnselectedLibraryException;
 import files.LibraryManager;
 import gmusic.api.model.Playlists;
-import gmusic.api.model.Song;
 import gmusic.api.skyjam.model.Track;
 import gui_music_manager.Gmm_Window;
 
@@ -167,13 +167,13 @@ public class Main_guiLauncher extends JFrame {
 				// en prod
 				// TODO	
 				System.out.println(model.getMw().getMainProperty("load media manager from : C:\\Program Files\\VideoLAN\\VLC"));
-				model.getMp().setPm(new PlayerManager("C:\\Program Files\\VideoLAN\\VLC"));	
+				model.getMp().setPm(new PlayerManager("C:\\Program Files\\VideoLAN\\VLC", model));	
 				//System.out.println(model.getMp().getPm().toString());
 			} else {
 				// pour du vrai
 				// TODO	
 				System.out.println(model.getMw().getMainProperty("load media manager from : " + AbstractPropKey.pmSourceFolder));
-				model.getMp().setPm(new PlayerManager(model.getMw().getMainProperty(AbstractPropKey.pmSourceFolder)));			
+				model.getMp().setPm(new PlayerManager(model.getMw().getMainProperty(AbstractPropKey.pmSourceFolder), model));			
 			}
 			
 		} catch (Exception e) {
@@ -208,11 +208,7 @@ public class Main_guiLauncher extends JFrame {
 			} catch (ConnectException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			
-			//connectToGM();
-			//loginToGM();
+			}			
 
 			progressBar.setValue(progress_bar_evo++);
 			
@@ -399,7 +395,7 @@ public class Main_guiLauncher extends JFrame {
 		model.getMd().setCurrentLibrary(lib);
 
 		// On récupère les données
-		Collection<Song> songs = null;
+		Collection<gmusic.api.model.Song> songs = null;
 		Playlists playlist = null;
 		try {
 			
@@ -421,7 +417,7 @@ public class Main_guiLauncher extends JFrame {
 		
 		// On ajoute les Tracks
 		try {
-			int nxb = lib.addSongs(songs);
+			int nxb = lib.addSongCollection(songs);
 			System.out.println(nxb + " songs added to library");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

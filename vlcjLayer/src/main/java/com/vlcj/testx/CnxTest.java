@@ -11,5 +11,7 @@ public class CnxTest {
     public static void main(String[] args) {
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:\\Program Files\\VideoLAN\\VLC");
         Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
+    
+        System.out.println("ok");
     }
 }

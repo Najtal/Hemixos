@@ -1,7 +1,7 @@
 package com.Hemixos;
 
-import gmusic.api.model.Song;
 import gui_actionUpdater.InfoPisteLectureUpdater;
+import gui_music_manager.Gmm_Playlist;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.vlcj.testx.PlayerManager;
-
-import dto.PlayingQueue;
+import vlcEngine.PlayerManager;
+import library.PlayQueue;
+import library.Song;
 
 public class Model_player {
 
@@ -21,19 +21,16 @@ public class Model_player {
 	
 	private final ArrayList<ChangeListener> listeVues;
 
-
-	
 	// VLC Player Manager
 	private PlayerManager pm;
-	
-	
+		
 	// Volume
 	private int volume = 70;
 	
 	private Song playingSong;
 	private Image iPlayingTrackCover;
 
-	private PlayingQueue queue;
+	private PlayQueue queue;
 	
 	private boolean addToPL;
 	
@@ -43,9 +40,11 @@ public class Model_player {
 	private boolean random;
 	private boolean repeat;
 
+	private Gmm_Playlist gmm_Playlist;
+
 	
-	
-	
+
+
 	/**
 	 * Constructor
 	 * @param model
@@ -53,28 +52,11 @@ public class Model_player {
 	public Model_player(Model model) {
 		this.model = model;
 		this.listeVues = new ArrayList<ChangeListener>();
-		this.queue = new PlayingQueue(model);
+		this.queue = new PlayQueue(model);
 
-		this.addToPL = false;
-		
+		this.addToPL = false;		
 	}
 	
-	
-	/**
-	 * @return the queue
-	 */
-	public PlayingQueue getQueue() {
-		return queue;
-	}
-
-
-	/**
-	 * @param queue the queue to set
-	 */
-	public void setQueue(PlayingQueue queue) {
-		this.queue = queue;
-	}
-
 
 	/**
 	 * Enregistre un listener
@@ -102,28 +84,24 @@ public class Model_player {
 	
 	
 	
+	
 	/*
 	 * Actions on PM
 	 */
 	public void play(Song s) {
 				
-		if (s == null) {
-			System.out.println("No SONG");
-			return;
-		}
-		
+		if (s == null) return;
+				
 		String SongURL = "";		
-		
 		try {
-			SongURL = model.getMd().getGm().getTrackURL(s).toString();
+			SongURL = model.getMd().getGm().getSongURL(s.getSourceSong()).toString();
 		} catch (Exception e) {
+			// TODO catcher et gérer le cas ou l'url n'a pas pu être généré
+			System.out.println("CATCH DE NON GENERATION D'URL");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		
 
-		queue.ajouterUnePiste(s);
-		
 		setPlayingTrack(s);
 		setEnLecture(true);
 		traiterEvent(null);
@@ -180,14 +158,12 @@ public class Model_player {
 
 
 	public void actionNext() {
-		// TODO Auto-generated method stub
-		System.out.println("next");
+		queue.PlayNextSong();
 	}
 
 
 	public void actionPrevious() {
-		// TODO Auto-generated method stub
-		System.out.println("previous");
+		queue.playPreviousSong();
 	}
 	
 
@@ -205,6 +181,7 @@ public class Model_player {
 	public PlayerManager getPm() {
 		return pm;
 	}
+	
 
 	/**
 	 * @return the volume
@@ -340,12 +317,35 @@ public class Model_player {
 	public void setPlayingTrackCover(Image image) {
 		this.iPlayingTrackCover = image;
 	}
+	
+	
 
 	
+	/**
+	 * @return the queue
+	 */
+	public PlayQueue getQueue() {
+		return queue;
+	}
+
+
 	/**
 	 * @return the iPlayingTrackCover
 	 */
 	public Image getiPlayingTrackCover() {
 		return iPlayingTrackCover;
 	}
+
+
+	public void regJpPlaylist(Gmm_Playlist gmm_Playlist) {
+		this.gmm_Playlist = gmm_Playlist;
+	}
+
+	/**
+	 * @return the gmm_Playlist
+	 */
+	public Gmm_Playlist getGmm_Playlist() {
+		return gmm_Playlist;
+	}
+
 }

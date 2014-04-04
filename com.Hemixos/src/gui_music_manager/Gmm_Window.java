@@ -4,6 +4,8 @@ import exceptions.UnselectedLibraryException;
 import gui_actionUpdater.InfoPisteLectureUpdater;
 import gui_actionUpdater.ListUpdater;
 import gui_actionUpdater.OptionHandler;
+import gui_actionUpdater.PanelSlideHandler;
+import gui_actionUpdater.PlAddHandler;
 import gui_actionUpdater.PlayButtonsUpdater;
 import gui_actionUpdater.ViewUpdater;
 import gui_actionUpdater.VoletHandler;
@@ -68,6 +70,7 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 
 
 	private Gmm_PlayerInfoLecture jpLecteurInfo;
+	private Gmm_Playlist jpPlaylist;
 	
 	
 	
@@ -97,7 +100,6 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		this.addWindowListener(frameListener);
 		this.addWindowFocusListener(frameListener);
 		this.addWindowStateListener(frameListener);
-		
 		
 		this.setVisible(true);
 		
@@ -158,7 +160,6 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regJbRandom(jpJFD.getJbRandom());
 		model.getMc().regJbRepeat(jpJFD.getJbRepeat());
 		
-		
 		model.getMc().regViewSimple(jpJFD.getJbViewSimple());
 		model.getMc().regViewOne(jpJFD.getJbViewOneC());
 		model.getMc().regViewTwo(jpJFD.getJbViewTwoC());
@@ -175,7 +176,6 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regJSPlaylistView(jpJFD.getSpPlaylistView());
 		model.getMc().regJSPTrack(jpJFD.getJspTracks());
 		
-		
 		model.getMc().regImageInfoPiste(jpJFD.getJbPisteImage());
 		model.getMc().regTitreInfoPiste(jpJFD.getJlTitleValue());
 		model.getMc().regArtistInfoPiste(jpJFD.getJlArtistValue());
@@ -186,9 +186,20 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regJbVolet(jpJFD.getJbVolet());
 		model.getMc().regJpEnLecture(jpJFD.getJpPlayingInfo());
 		model.getMc().regJpOption(jpJFD.getJpOptions());
+		model.getMc().regJbPlAdd(jpJFD.getJbPlAdd());
+		
+		model.getMc().regJpPlaylist(jpJFD.getJpPlaylistListContainer());
+		
+		model.getMc().regjpLibrairy1(jpJFD.getJpPVBorder());
+		model.getMc().regjpLibrairy2(jpJFD.getJpPVBorder2());
+		model.getMc().regjpLibrairy3(jpJFD.getJpPVBorder3());
+		model.getMc().regJpPlaylistView(jpJFD.getJpPlaylistViews());
+		model.getMc().regjpArtistResize(jpJFD.getJpArtistResize());
+		model.getMc().regjpAlbumResize(jpJFD.getJpAlbumResize());
+		model.getMc().regjpPlaylistResize1(jpJFD.getJpInfoPSBorder());
+		model.getMc().regjpPlaylistResize2(jpJFD.getJpPlaylistBorder());
+		//model.getMc().regjpTrackContainer(jpJFD.getJpTrackContainer());
 
-		
-		
 		/*
 		 *  Add external elements 
 		 */
@@ -198,9 +209,11 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		
 		jpLecteurInfo = new Gmm_PlayerInfoLecture(model);
 		model.getMc().regJpInfo(jpLecteurInfo);
-		
 		CenterHost.add(jpLecteurInfo);	
-				
+
+		jpPlaylist = new Gmm_Playlist(model, model.getMc().jpPlaylist);
+		model.getMp().regJpPlaylist(jpPlaylist);
+
 
 		/*
 		 * refresh appearance data
@@ -223,6 +236,23 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		new InfoPisteLectureUpdater(model);
 		new VoletHandler(model);
 		new OptionHandler(model);
+		new PlAddHandler(model);
+		new PanelSlideHandler(model);
+		//model.getMp().getPm().getMediaPlayer().
+		
+		/*
+		 * on raffraichi l'image de fond
+		 */
+		/*model.getMc().jspTracks.getViewport().addChangeListener(
+				new ChangeListener() {
+					@Override
+					public void stateChanged(ChangeEvent arg0) {
+						model.getMc().jpTrackContainer.repaint();
+						model.getMc().jtTableTrack.revalidate();
+						model.getMc().jspTracks.revalidate();
+					}
+				} );*/
+		
 		
 		GuiScrollBarUpdater.updateArtistSB(model);
 		GuiScrollBarUpdater.updateAlbumSB(model);
@@ -237,6 +267,14 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		revalidate();
+	}
+
+
+	/**
+	 * @return the jpPlaylist
+	 */
+	public Gmm_Playlist getJpPlaylist() {
+		return jpPlaylist;
 	}
 	
 	

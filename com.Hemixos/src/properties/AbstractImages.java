@@ -1,5 +1,9 @@
 package properties;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -55,6 +59,8 @@ public class AbstractImages {
 	public Icon GUI_VIEW_ONE_LIST_SELECTED;
 	public Icon GUI_VIEW_TWO_LIST_SELECTED;
 	public Icon GUI_VIEW_THREE_LIST_SELECTED;
+	
+	public Image GUI_SONG_JT_LOGO;
 
 
 	
@@ -78,7 +84,7 @@ public class AbstractImages {
 					.getResourceAsStream("/images/ico_error.png")));
 			
 			ICON_COIN_GAUCHE = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_coinGauche.png")));
+					.getResourceAsStream("/images/ico_coinGauche2.png")));
 			
 			
 			
@@ -86,13 +92,13 @@ public class AbstractImages {
 					.getResourceAsStream("/images/ico_previous.jpg")));
 			
 			GUI_PLAYER_NEXT = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_next.jpg")));
+					.getResourceAsStream("/images/ico_next48.png")));
 			
 			GUI_PLAYER_PLAY = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_play.jpg")));
+					.getResourceAsStream("/images/ico_play.png")));
 			
 			GUI_PLAYER_PAUSE = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_pause.jpg")));
+					.getResourceAsStream("/images/ico_pause.png")));
 			
 			
 			
@@ -109,63 +115,67 @@ public class AbstractImages {
 					.getResourceAsStream("/images/ico_touch.jpg")));
 			
 			GUI_PLAYER_OPTION = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_options.jpg")));
+					.getResourceAsStream("/images/ico_option32.png")));
 
 			
 			
 			GUI_PLAYER_RANDOM = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_random.jpg")));
+					.getResourceAsStream("/images/ico_random32.png")));
 			
 			GUI_PLAYER_REPEAT = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_repeat.jpg")));
+					.getResourceAsStream("/images/ico_repeat32.png")));
 			
 			GUI_PLAYER_RANDOM_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_randomSelected.jpg")));
+					.getResourceAsStream("/images/ico_random32_selected.png")));
 			
 			GUI_PLAYER_REPEAT_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_repeatSelected.jpg")));
+					.getResourceAsStream("/images/ico_repeat32_selected.png")));
 			
 			
 			
 			GUI_PLAYER_VOLET = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_volet.jpg")));
+					.getResourceAsStream("/images/ico_volet32.png")));
 			
 			GUI_PLAYER_VOLET_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_volet_selected.jpg")));
+					.getResourceAsStream("/images/ico_volet32_selected.png")));
 			
 			GUI_PLAYER_ADDPLAYLIST = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_addplaylist.jpg")));
+					.getResourceAsStream("/images/ico_ajout32.png")));
 			
 			GUI_PLAYER_ADDPLAYLIST_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_addplaylist_selected.jpg")));
+					.getResourceAsStream("/images/ico_ajout32_selected.png")));
 			
 			
 			
 			GUI_VIEW_SIMPLE_LIST = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_simpleList.jpg")));
+					.getResourceAsStream("/images/vue1_48.png")));
 			
 			GUI_VIEW_ONE_LIST = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_oneList.jpg")));
+					.getResourceAsStream("/images/vue2_48.png")));
 			
 			GUI_VIEW_TWO_LIST = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_twoList.jpg")));
+					.getResourceAsStream("/images/vue3_48.png")));
 			
 			GUI_VIEW_THREE_LIST = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_threeList.jpg")));
+					.getResourceAsStream("/images/vue4_48.png")));
 			
 			GUI_VIEW_SIMPLE_LIST_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_simpleListSelected.jpg")));
+					.getResourceAsStream("/images/vue1_selected_48.png")));
 			
 			GUI_VIEW_ONE_LIST_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_oneListSelected.jpg")));
+					.getResourceAsStream("/images/vue2_selected_48.png")));
 			
 			GUI_VIEW_TWO_LIST_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_twoListSelected.jpg")));
+					.getResourceAsStream("/images/vue3_selected_48.png")));
 			
 			GUI_VIEW_THREE_LIST_SELECTED = new ImageIcon(ImageIO.read(this.getClass()
-					.getResourceAsStream("/images/ico_threeListSelected.jpg")));
+					.getResourceAsStream("/images/vue4_selected_48.png")));
 			
-			
+			/*
+			 * Ouiseau dans fond
+			 */
+			GUI_SONG_JT_LOGO = new ImageIcon(ImageIO.read(this.getClass()
+					.getResourceAsStream("/images/img_backround.png"))).getImage();
 			
 			/*
 			iNew = new ImageIcon(ImageIO.read(this.getClass()

@@ -1,6 +1,6 @@
 package threads;
 
-import gmusic.api.model.Song;
+import library.Song;
 import gui_actionUpdater.InfoPisteLectureUpdater;
 
 import com.Hemixos.Model;
@@ -23,7 +23,6 @@ public class LaunchPlay implements Runnable {
 		runner = new Thread(this);
 		runner.start();		
 	}
-	
 	
 	
 	public void run() {

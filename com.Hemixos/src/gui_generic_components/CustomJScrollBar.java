@@ -46,6 +46,7 @@ public class CustomJScrollBar extends MetalScrollBarUI {
 	private Image imageThumb, imageTrack;
 
 	public CustomJScrollBar(Color cb) {
+		//this.cBackground = new Color(cb.getRed(), cb.getGreen(), cb.getBlue(), 0);
 		this.cBackground = cb;
 	}
 
@@ -96,8 +97,6 @@ public class CustomJScrollBar extends MetalScrollBarUI {
 	@Override
 	protected void paintTrack(Graphics g, JComponent c,
 			Rectangle trackBounds) {
-		
-		
 
 		g.setColor(cBackground);
 		g.translate(trackBounds.x, trackBounds.y);

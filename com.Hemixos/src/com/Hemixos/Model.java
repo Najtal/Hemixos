@@ -11,6 +11,7 @@ public class Model {
 
 	private Model_comp mc;
 	
+	private static Model model;
 	
 	/**
 	 * Constructor
@@ -28,6 +29,7 @@ public class Model {
 		
 		this.mc = new Model_comp(this);
 	
+		model = this;
 	}
 
 
@@ -72,6 +74,13 @@ public class Model {
 	}
 	
 
+	public static Model getInstance() {
+		if (model != null) {
+			return model;
+		} else {
+			return null;
+		}
+	}
 	
 	
 	

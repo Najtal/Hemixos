@@ -85,7 +85,6 @@ public class NewLib extends JPanel implements ActionListener {
 		jlName = new JLabel(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_NAME));
 		jtfName = new JTextField();
 		jtfName.setPreferredSize(new Dimension(150, 20));
-
 		
 		jpName.add(jlName);
 		jpName.add(jtfName);
