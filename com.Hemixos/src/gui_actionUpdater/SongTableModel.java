@@ -74,7 +74,11 @@ public class SongTableModel extends AbstractTableModel {
         }
         
         return null;
-    }   
+    }
+
+	public Song getRowAt(int row) {
+		return songList.get(row);
+	}   
         
 }
 	

@@ -1,6 +1,7 @@
 package ucc;
 
 import exceptions.UnselectedLibraryException;
+import gui_actionUpdater.SongTableModel;
 
 import java.util.Vector;
 
@@ -16,31 +17,22 @@ import com.Hemixos.Model;
 public class ActionElementToPlay {
 
 	
-	
-	
 	/**
 	 * Cette classe est appelée lors d'une sélection sur des pistes a lire/ajouter a la queue
 	 * @param model
 	 */
 	public static void AddOrPlayElement(Model model, JTable table) {
 		
-		Song s = null;
-		
-		//System.out.println("selected row : " + table.getSelectedRow());
-		s = getTrackFromRow(table.getSelectedRow(), model);
-		//System.out.println("song: " + s.getTitle());
-		
+		Song s = getTrackFromRow(table.getSelectedRow(), model);
 		PlayQueue queue = model.getMp().getQueue();
-		
 		
 		// On ajoute a la playlist
 		if (model.getMp().isAddToPL()) {
 			queue.addSong(s);
 					
-			// On supprime la playlist et on ajoute tout a dans une nouvelle Playlist
+		// On supprime la playlist et on ajoute tout a dans une nouvelle Playlist
 		} else {		
 			queue.removeAll();
-			
 			queue.addSong(s);
 			
 			/*int nbrRow = table.getRowCount();
@@ -60,6 +52,14 @@ public class ActionElementToPlay {
 	
 	
 	private static Song getTrackFromRow(int tableRow, Model model) {
+		
+		JTable table = model.getMd().getTableTrack();
+		
+		int row = table.convertRowIndexToModel(table.getSelectedRow());
+		SongTableModel tableModel = (SongTableModel)table.getModel();
+
+        Song s = tableModel.getRowAt(row);
+		/*
 		// On récupère la librairie
 		Library ltmp = null;
 		try {
@@ -67,11 +67,12 @@ public class ActionElementToPlay {
 		} catch (UnselectedLibraryException e) {
 			return null;
 		}
-		
+
 		// On récupère la piste
 		Song s = model.getMd().getListSong().get(tableRow);
+				
 		//Vector<String> vv = (Vector<String>) model.getMd().getListePisteData().get(tableRow);
-		//String idt = vv.get(3);
+		//String idt = vv.get(3);*/
 			
 		return s;
 		//return ltmp.getMapSongs().get(idt);

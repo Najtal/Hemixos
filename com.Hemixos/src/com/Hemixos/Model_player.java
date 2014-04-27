@@ -33,7 +33,9 @@ public class Model_player {
 	private PlayQueue queue;
 	
 	private boolean addToPL;
-	
+	private boolean buffering;
+	private float buffered;
+
 	private boolean updateThreadLaunched = false;
 	
 	private boolean enLecture;
@@ -41,6 +43,8 @@ public class Model_player {
 	private boolean repeat;
 
 	private Gmm_Playlist gmm_Playlist;
+
+
 
 	
 
@@ -91,6 +95,9 @@ public class Model_player {
 	public void play(Song s) {
 				
 		if (s == null) return;
+		
+		if (enLecture)
+			model.getMp().getPm().stop();
 				
 		String SongURL = "";		
 		try {
@@ -103,7 +110,7 @@ public class Model_player {
 		}
 
 		setPlayingTrack(s);
-		setEnLecture(true);
+		//setEnLecture(true);
 		traiterEvent(null);
 		
 		pm.play(SongURL);
@@ -142,16 +149,16 @@ public class Model_player {
 		
 		if (playingSong != null && !isEnLecture()) {
 			pm.play();
-			setEnLecture(true);
+			//setEnLecture(true);
 			traiterEvent(null);
 		
 		} else if (playingSong != null && isEnLecture()) {
 			pm.pause();
-			setEnLecture(false);
+			//setEnLecture(false);
 			traiterEvent(null);
 		
 		} else if (playingSong == null) {
-			setEnLecture(true);
+			//setEnLecture(true);
 		}
 		
 	}
@@ -273,6 +280,7 @@ public class Model_player {
 	 */
 	public void setEnLecture(boolean enLecture) {
 		this.enLecture = enLecture;
+		traiterEvent(null);
 	}
 
 
@@ -346,6 +354,25 @@ public class Model_player {
 	 */
 	public Gmm_Playlist getGmm_Playlist() {
 		return gmm_Playlist;
+	}
+
+	public float buffered() {
+		return buffered;
+	}
+	
+	public boolean isBuffering() {
+		return buffering;
+	}
+
+	public void setBuffering(boolean buf) {
+		buffering = buf;
+	}
+	
+	public void setBuffered(float per) {
+		buffered = per;
+		
+		if (per == 100)
+			setBuffering(false);
 	}
 
 }

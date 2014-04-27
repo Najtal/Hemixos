@@ -13,9 +13,9 @@ public class AbstractColors {
 
 	
 	public static final Color BACKGROUND_GENERAL = Color.WHITE;
-	public static final Color BACKGROUND_LAUNCHER = new Color(240, 240, 240);
+	public static final Color BACKGROUND_LAUNCHER = new Color(52, 56, 59);
 
-	public static final Color MAIN_TITLE = new Color(38, 155, 185);
+	public static final Color MAIN_TITLE = new Color(73, 73, 73);
 	public static final Color LAUNCHER_INFO_EVO = Color.GRAY;
 	public static final Color LAUNCHER_NEW_LIB_INFO = new Color(128, 0, 0);
 

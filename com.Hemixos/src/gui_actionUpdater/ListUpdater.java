@@ -108,11 +108,11 @@ public class ListUpdater implements ActionListener {
 		
 		TableModel tdmListe = new SongTableModel(model);//TableModel_Tracks(model);
 		JTable jtTable = model.getMc().jtTableTrack;
+		model.getMd().setTableTrack(jtTable);
 		
 		//JTable jtTable = new SongTableRenderer();
 		
 		jtTable.setModel(tdmListe);
-		
 		
 		// TODO Les listener sur les colonnes ne fonctionnent pas
 		//jtTable.getColumnModel().addColumnModelListener(new ListenerTableColumn());

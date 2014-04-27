@@ -260,7 +260,7 @@ public class Model_window {
 
 		int dhWidth;
 		
-		dhWidth = ((frameWidth - 420) / 6);
+		dhWidth = ((frameWidth - 500) / 6);
 		
 		borderTampon = dhWidth;
 		

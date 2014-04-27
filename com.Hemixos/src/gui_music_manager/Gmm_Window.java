@@ -7,6 +7,7 @@ import gui_actionUpdater.OptionHandler;
 import gui_actionUpdater.PanelSlideHandler;
 import gui_actionUpdater.PlAddHandler;
 import gui_actionUpdater.PlayButtonsUpdater;
+import gui_actionUpdater.TableSongAddButtonHangler;
 import gui_actionUpdater.ViewUpdater;
 import gui_actionUpdater.VoletHandler;
 import gui_generic_components.GuiScrollBarUpdater;
@@ -102,6 +103,11 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		this.addWindowStateListener(frameListener);
 		
 		this.setVisible(true);
+		
+		/*
+		 * Finalement, on met la vue par défaut
+		 */
+		model.getMw().actionViewOneList();
 		
 	}
 
@@ -199,6 +205,11 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		model.getMc().regjpPlaylistResize1(jpJFD.getJpInfoPSBorder());
 		model.getMc().regjpPlaylistResize2(jpJFD.getJpPlaylistBorder());
 		//model.getMc().regjpTrackContainer(jpJFD.getJpTrackContainer());
+		
+		model.getMc().regJbAddSelectedArtist(jpJFD.getJbAddSelectedArtist());
+		model.getMc().regJbAddSelectedAlbum(jpJFD.getJbAddSelectedAlbum());
+		
+		
 
 		/*
 		 *  Add external elements 
@@ -238,6 +249,7 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		new OptionHandler(model);
 		new PlAddHandler(model);
 		new PanelSlideHandler(model);
+		new TableSongAddButtonHangler(model);
 		//model.getMp().getPm().getMediaPlayer().
 		
 		/*
@@ -260,7 +272,8 @@ public class Gmm_Window extends JFrame implements ChangeListener {
 		GuiScrollBarUpdater.updateTrackSB(model);
 		
 		HeaderUpdater.instanciate(model);
-		model.getMw().actionResize();
+		model.getMw().actionResize();	
+		
 	}
 	
 

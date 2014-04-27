@@ -4,6 +4,7 @@ import gui_actionUpdater.AlbumComparator;
 import gui_actionUpdater.ArtistComparator;
 import gui_actionUpdater.ListUpdater;
 
+import java.awt.Dimension;
 import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ import java.util.Map.Entry;
 import java.util.Vector;
 
 import javax.swing.JList;
+import javax.swing.JTable;
 
 import layer_manager.ApiManager;
 import library.Album;
@@ -48,6 +50,8 @@ public class Model_data {
 	
 	// Song
 	private Vector<Song> listSong; // liste des songs displayed dans la JTable
+
+	private JTable jtTable;
 
 	
 	/**
@@ -272,6 +276,8 @@ public class Model_data {
 		
 		if (selectedIndex == -1) {
 			selectedArtist = null;
+			model.getMc().jbAddSelectedArtist.setVisible(false);
+			model.getMc().jbAddSelectedAlbum.setVisible(false);
 		} else {
 			selectedArtist = listArtist.get(selectedIndex);
 		}
@@ -286,6 +292,15 @@ public class Model_data {
 		
 		// On filtre les pistes
 		ListUpdater.refreshTrackTable(model);
+		
+		// On rafraichi les boutons
+		if (selectedArtist != null) {
+			model.getMc().jbAddSelectedArtist.setText("Play all " + selectedArtist.getArtistName());
+			model.getMc().jbAddSelectedArtist.setVisible(true);
+			model.getMc().jbAddSelectedAlbum.setVisible(false);
+			model.getMc().jbAddSelectedArtist.setPreferredSize(new Dimension(selectedArtist.getArtistName().length()*8+90, 20));
+		}
+
 	}
 
 	/**
@@ -302,12 +317,30 @@ public class Model_data {
 		//this.selectedAlbum = selectedAlbum;
 		if (selectedAlbum == -1) {
 			this.selectedAlbum = null;
+			model.getMc().jbAddSelectedAlbum.setVisible(false);
+			
 		} else {
 			this.selectedAlbum = listeAlbums.get(selectedAlbum);
 		}
 		
 		// On filtre les pistes
 		ListUpdater.refreshTrackTable(model);
+		
+		// On rafraichi les boutons
+		if (this.selectedAlbum != null) {
+			model.getMc().jbAddSelectedArtist.setText("Play all " + this.selectedAlbum.getArtist().getArtistName());
+			model.getMc().jbAddSelectedArtist.setVisible(true);
+			model.getMc().jbAddSelectedArtist.setPreferredSize(new Dimension(this.selectedAlbum.getArtist().getArtistName().length()*8+90, 20));
+
+			model.getMc().jbAddSelectedAlbum.setText("Play " + this.selectedAlbum.getName());
+			model.getMc().jbAddSelectedAlbum.setVisible(true);
+			model.getMc().jbAddSelectedAlbum.setPreferredSize(new Dimension(this.selectedAlbum.getName().length()*9+60, 20));
+		} else {
+			model.getMc().jbAddSelectedAlbum.setVisible(false);
+			model.getMc().jbAddSelectedArtist.setVisible(false);
+
+		}
+
 	}
 
 	/**
@@ -322,6 +355,14 @@ public class Model_data {
 	 */
 	public Vector<Song> getListSong() {
 		return listSong;
+	}
+
+	public void setTableTrack(JTable jtTable) {
+		this.jtTable = jtTable;
+	}
+	
+	public JTable getTableTrack() {
+		return jtTable;
 	}
 
 }

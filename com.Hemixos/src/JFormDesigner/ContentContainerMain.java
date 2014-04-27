@@ -209,6 +209,14 @@ public class ContentContainerMain extends JPanel {
 		return jpTrackContainer;
 	}
 
+	public JButton getJbAddSelectedArtist() {
+		return jbAddSelectedArtist;
+	}
+
+	public JButton getJbAddSelectedAlbum() {
+		return jbAddSelectedAlbum;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - Dx jv
@@ -318,21 +326,14 @@ public class ContentContainerMain extends JPanel {
 		jpTrackContainer = new JPanel();
 		jpSelectedTrackMenu = new JPanel();
 		jpLectureMenu = new JPanel();
-		jbEcoutezArtist = new JButton();
-		jbEcoutezAlbum = new JButton();
+		jbAddSelectedArtist = new JButton();
+		jbAddSelectedAlbum = new JButton();
 		jpDisplayMenu = new JPanel();
 		jspTracks = new JScrollPane();
 		jtTracks = new JTable();
 
 		//======== this ========
 		setBackground(Color.white);
-
-		// JFormDesigner evaluation mark
-		setBorder(new javax.swing.border.CompoundBorder(
-			new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-				"JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-				javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-				java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
 		setLayout(new BorderLayout());
 
@@ -636,7 +637,7 @@ public class ContentContainerMain extends JPanel {
 							ViewsGridLayout.add(jbViewSimple);
 
 							//---- jbViewOneC ----
-							jbViewOneC.setIcon(new ImageIcon(getClass().getResource("/images/vue2_48.png")));
+							jbViewOneC.setIcon(new ImageIcon(getClass().getResource("/images/vue2_selected_48.png")));
 							jbViewOneC.setBorder(null);
 							jbViewOneC.setBorderPainted(false);
 							jbViewOneC.setBackground(new Color(229, 229, 229));
@@ -1137,7 +1138,7 @@ public class ContentContainerMain extends JPanel {
 							jbArtistsAll.setText("Artistes");
 							jbArtistsAll.setBackground(new Color(245, 245, 245));
 							jbArtistsAll.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-							jbArtistsAll.setBorder(new EmptyBorder(2, 5, 2, 5));
+							jbArtistsAll.setBorder(new EmptyBorder(2, 20, 2, 5));
 							jbArtistsAll.setForeground(new Color(65, 72, 80));
 							jbArtistsAll.setBorderPainted(false);
 							jbArtistsAll.setContentAreaFilled(false);
@@ -1197,7 +1198,7 @@ public class ContentContainerMain extends JPanel {
 							jbalbumAll.setText("Albums");
 							jbalbumAll.setBackground(new Color(245, 245, 245));
 							jbalbumAll.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-							jbalbumAll.setBorder(new EmptyBorder(2, 5, 2, 5));
+							jbalbumAll.setBorder(new EmptyBorder(2, 20, 2, 5));
 							jbalbumAll.setForeground(new Color(65, 72, 80));
 							jbalbumAll.setBorderPainted(false);
 							jbalbumAll.setContentAreaFilled(false);
@@ -1260,35 +1261,33 @@ public class ContentContainerMain extends JPanel {
 							jpLectureMenu.setBackground(new Color(245, 245, 245));
 							jpLectureMenu.setLayout(new HorizontalLayout());
 
-							//---- jbEcoutezArtist ----
-							jbEcoutezArtist.setText("Ecoutez Daft Punk");
-							jbEcoutezArtist.setBackground(new Color(245, 245, 245));
-							jbEcoutezArtist.setBorderPainted(false);
-							jbEcoutezArtist.setBorder(new EmptyBorder(0, 5, 0, 15));
-							jbEcoutezArtist.setForeground(new Color(65, 72, 80));
-							jbEcoutezArtist.setContentAreaFilled(false);
-							jbEcoutezArtist.setFocusPainted(false);
-							jbEcoutezArtist.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
-							jbEcoutezArtist.setMargin(new Insets(0, 14, 2, 14));
-							jbEcoutezArtist.setPreferredSize(new Dimension(150, 20));
-							jbEcoutezArtist.setMaximumSize(new Dimension(200, 20));
-							jbEcoutezArtist.setMinimumSize(new Dimension(100, 20));
-							jpLectureMenu.add(jbEcoutezArtist);
+							//---- jbAddSelectedArtist ----
+							jbAddSelectedArtist.setBackground(new Color(245, 245, 245));
+							jbAddSelectedArtist.setBorderPainted(false);
+							jbAddSelectedArtist.setBorder(new EmptyBorder(0, 5, 0, 15));
+							jbAddSelectedArtist.setForeground(new Color(65, 72, 80));
+							jbAddSelectedArtist.setContentAreaFilled(false);
+							jbAddSelectedArtist.setFocusPainted(false);
+							jbAddSelectedArtist.setFont(new Font("Segoe UI Light", Font.PLAIN, 16));
+							jbAddSelectedArtist.setMargin(new Insets(0, 14, 2, 14));
+							jbAddSelectedArtist.setPreferredSize(new Dimension(150, 20));
+							jbAddSelectedArtist.setMaximumSize(new Dimension(300, 20));
+							jbAddSelectedArtist.setMinimumSize(new Dimension(100, 20));
+							jpLectureMenu.add(jbAddSelectedArtist);
 
-							//---- jbEcoutezAlbum ----
-							jbEcoutezAlbum.setText("Ecoutez Discovery");
-							jbEcoutezAlbum.setBackground(new Color(245, 245, 245));
-							jbEcoutezAlbum.setBorderPainted(false);
-							jbEcoutezAlbum.setBorder(new EmptyBorder(0, 5, 0, 15));
-							jbEcoutezAlbum.setForeground(new Color(65, 72, 80));
-							jbEcoutezAlbum.setContentAreaFilled(false);
-							jbEcoutezAlbum.setFocusPainted(false);
-							jbEcoutezAlbum.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-							jbEcoutezAlbum.setMaximumSize(new Dimension(200, 20));
-							jbEcoutezAlbum.setMinimumSize(new Dimension(100, 20));
-							jbEcoutezAlbum.setPreferredSize(new Dimension(150, 20));
-							jbEcoutezAlbum.setMargin(new Insets(0, 14, 2, 14));
-							jpLectureMenu.add(jbEcoutezAlbum);
+							//---- jbAddSelectedAlbum ----
+							jbAddSelectedAlbum.setBackground(new Color(245, 245, 245));
+							jbAddSelectedAlbum.setBorderPainted(false);
+							jbAddSelectedAlbum.setBorder(new EmptyBorder(0, 5, 0, 15));
+							jbAddSelectedAlbum.setForeground(new Color(65, 72, 80));
+							jbAddSelectedAlbum.setContentAreaFilled(false);
+							jbAddSelectedAlbum.setFocusPainted(false);
+							jbAddSelectedAlbum.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
+							jbAddSelectedAlbum.setMaximumSize(new Dimension(200, 20));
+							jbAddSelectedAlbum.setMinimumSize(new Dimension(100, 20));
+							jbAddSelectedAlbum.setPreferredSize(new Dimension(150, 20));
+							jbAddSelectedAlbum.setMargin(new Insets(0, 14, 2, 14));
+							jpLectureMenu.add(jbAddSelectedAlbum);
 						}
 						jpSelectedTrackMenu.add(jpLectureMenu, BorderLayout.WEST);
 
@@ -1321,6 +1320,8 @@ public class ContentContainerMain extends JPanel {
 						jtTracks.setShowHorizontalLines(false);
 						jtTracks.setFillsViewportHeight(true);
 						jtTracks.setShowVerticalLines(false);
+						jtTracks.setAutoCreateRowSorter(true);
+						jtTracks.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 						jspTracks.setViewportView(jtTracks);
 					}
 					jpTrackContainer.add(jspTracks, BorderLayout.CENTER);
@@ -1441,8 +1442,8 @@ public class ContentContainerMain extends JPanel {
 	private JPanel jpTrackContainer;
 	private JPanel jpSelectedTrackMenu;
 	private JPanel jpLectureMenu;
-	private JButton jbEcoutezArtist;
-	private JButton jbEcoutezAlbum;
+	private JButton jbAddSelectedArtist;
+	private JButton jbAddSelectedAlbum;
 	private JPanel jpDisplayMenu;
 	private JScrollPane jspTracks;
 	public JTable jtTracks;

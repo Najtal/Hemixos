@@ -62,6 +62,8 @@ public class AbstractImages {
 	
 	public Image GUI_SONG_JT_LOGO;
 
+	public ImageIcon GIF_SPINNING_LOADER;
+
 
 	
 	
@@ -85,6 +87,11 @@ public class AbstractImages {
 			
 			ICON_COIN_GAUCHE = new ImageIcon(ImageIO.read(this.getClass()
 					.getResourceAsStream("/images/ico_coinGauche2.png")));
+			
+			
+			GIF_SPINNING_LOADER = new ImageIcon(ImageIO.read(this.getClass()
+					.getResourceAsStream("/images/gif_Loader.gif")));
+			
 			
 			
 			

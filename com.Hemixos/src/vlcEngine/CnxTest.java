@@ -1,4 +1,4 @@
-package com.Hemixos;
+package vlcEngine;
 
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;

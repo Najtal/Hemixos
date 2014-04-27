@@ -82,7 +82,7 @@ public class Gmm_Playlist extends JPanel {
 		jpContent.add(label1);
 		
 		//---- label 2 ----
-		label2.setText("Total time : " + model.getMp().getQueue().getTotalTime());
+		label2.setText("Time remaining : " + StringTransform.milliSecToString(model.getMp().getQueue().getTotalTime()));
 		label2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		label2.setForeground(new Color(0, 11, 42));
 		jpContent.add(label2);
@@ -96,6 +96,7 @@ public class Gmm_Playlist extends JPanel {
 		/*
 		 *  Add all songs		
 		 */
+		int ic = 0;
 		for (Song s : model.getMp().getQueue().getQueue()) {
 		
 			JPanel PlayingListElement = new JPanel();
@@ -122,23 +123,28 @@ public class Gmm_Playlist extends JPanel {
 	
 			//---- label5 ----
 			label5.setText(s.getArtist().getArtistName() + " - " + s.getTitle());
-			if (model.getMp().getPlayingSong() != null && s.getId() == model.getMp().getPlayingSong().getId()) {
-				label5.setFont(new Font("Segoe UI Light", Font.BOLD, 15));
+			if (model.getMp().getPlayingSong() != null 
+					&& s.getId() == model.getMp().getPlayingSong().getId() 
+					&& ic == model.getMp().getQueue().getPlayingSongIndex()) {
+
+				label5.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
 			} else {
-				label5.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
+				label5.setFont(new Font("Segoe UI Light", Font.PLAIN, 13));
 			}
-			label5.setForeground(new Color(0, 11, 42));
+			label5.setForeground(new Color(65, 72, 80));
+			
 			PlayingListElement.add(label5, BorderLayout.CENTER);
 	
 			//---- label4 ----
 			label4.setText(StringTransform.milliSecToString(s.getDurationMillis()));
 			//label4.setBorder(new EmptyBorder(5, 10, 5, 10));
-			label4.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-			label4.setForeground(new Color(0, 11, 42));
+			label4.setFont(new Font("Segoe UI Light", Font.PLAIN, 11));
+			label4.setForeground(new Color(65, 72, 80));
 			PlayingListElement.add(label4, BorderLayout.EAST);
 			
 			plContainer.add(PlayingListElement);	
 
+			ic++;
 		}
 		
 		plContainer.revalidate();

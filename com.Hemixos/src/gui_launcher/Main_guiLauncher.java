@@ -1,17 +1,21 @@
 package gui_launcher;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.ConnectException;
 import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,54 +62,52 @@ public class Main_guiLauncher extends JFrame {
 	/*
 	 * Elements de la fenetre
 	 */
-	private static final int JF_WIDTH = 410;
-	private static final int JF_HEIGHT = 140;
+	private static final int JF_WIDTH = 175;
+	private static final int JF_HEIGHT = 175;
 	
 	private static final int PROGRESS_BAR_HEIGHT = 7;
 	private int progress_bar_evo = 0;
 	
 	private static final String APP_NAME = "HEMIXOS";
 
+	private int nbrElemACharger = 6;
 	private JProgressBar progressBar;
 	private JLabel jlInfo;
 	private JLabel titre;
+	private Color background;
 	
 	
 	/*
 	 * Elements de data
-	 */
-	private int nbrElemACharger = 6;
-	
+	 */	
 	private Model model;
 	private JFrame musicManager;
 	private PropertiesLoader pl;
 
-
-	private NewLib newLib;
-	
-	
-	
+	private JDialog newLib;
+		
 	/**
 	 * Constructor, generate loading window and load components
 	 * @throws Exception 
 	 */
 	public Main_guiLauncher() throws Exception {
 
+		this.background = new Color(52, 56, 59);
+		
 		// On génère la fenêtre de chargement
 		this.setSize(new Dimension(JF_WIDTH, JF_HEIGHT));
 		this.setResizable(false);
-		this.getContentPane().setBackground(AbstractColors.BACKGROUND_LAUNCHER);
+		this.getContentPane().setBackground(this.background);
 		this.setUndecorated(true);
 
-		// TODO
+		// Imge de la splash screen
 		Image icg = new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("/images/ico_coinGauche.png"))).getImage();
 		this.setIconImage(icg);
-		
 		
 		// ajoute tout le contenu de la fenetre de chargement
 		addContentToFrame();
 		
-		
+		// Finalisation des vues de la page
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
@@ -126,6 +128,74 @@ public class Main_guiLauncher extends JFrame {
 			
 		//endProcess();
 	}
+	
+	
+	
+	
+	/**
+	 * Génère le contenu de la fenêtre de chargement
+	 */
+	private void addContentToFrame() {
+		
+		// Structure JPANELS
+		JPanel jpNorth = new JPanel(new BorderLayout());
+		JPanel jpCenter = new JPanel(new BorderLayout());
+		JPanel jpSouth = new JPanel(new BorderLayout());
+		
+		jpNorth.setBackground(this.background);
+		jpCenter.setBackground(this.background);
+		jpSouth.setBackground(this.background);
+		
+		this.add(jpNorth, BorderLayout.NORTH);
+		this.add(jpCenter);
+		this.add(jpSouth, BorderLayout.SOUTH);
+		
+		
+		// TITRE
+		titre = new JLabel(APP_NAME);
+		titre.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		titre.setForeground(new Color(73, 73, 73));
+		//titre.setHorizontalAlignment(SwingConstants.RIGHT );
+		titre.setBorder(BorderFactory.createEmptyBorder(10, 20, 0, 0));
+
+		jpNorth.add(titre, BorderLayout.WEST);
+
+		
+		// ICON
+		ImageIcon ii = null;
+		try {
+			ii = new ImageIcon(ImageIO.read(this.getClass().getResourceAsStream("/images/ico_splash_icon.png")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JLabel jlIcon = new JLabel(ii);
+		jlIcon.setPreferredSize(new Dimension(100, 100));
+		
+		jpCenter.add(jlIcon);
+		
+		
+		// Chargement
+
+		jlInfo = new JLabel();
+		jlInfo.setFont(new Font("Segoe UI", Font.BOLD, 10));
+		jlInfo.setForeground(new Color(73, 73, 73));
+		
+		// Ajout barre de chargement et texte		
+		progressBar = new JProgressBar(0, nbrElemACharger);
+		progressBar.setBackground(this.background);
+		progressBar.setValue(0);
+		progressBar.setBorderPainted(false);
+		progressBar.setStringPainted(false);
+		progressBar.setForeground(new Color(255, 0, 100));
+		progressBar.setPreferredSize(new Dimension(JF_WIDTH, PROGRESS_BAR_HEIGHT));
+		
+		jpSouth.add(jlInfo);
+		jpSouth.add(progressBar, BorderLayout.SOUTH);
+		
+	}
+
+	
+	
 
 	
 	/**
@@ -155,6 +225,9 @@ public class Main_guiLauncher extends JFrame {
 		AbstractImages.initialize();
 		progressBar.setValue(progress_bar_evo++);		
 	}
+
+	
+	
 	
 	/**
 	 * Instantiate the media manager (vlc)
@@ -165,14 +238,10 @@ public class Main_guiLauncher extends JFrame {
 					
 			if (Hemixos_Launcher.DEBUG) {
 				// en prod
-				// TODO	
 				System.out.println(model.getMw().getMainProperty("load media manager from : C:\\Program Files\\VideoLAN\\VLC"));
 				model.getMp().setPm(new PlayerManager("C:\\Program Files\\VideoLAN\\VLC", model));	
-				//System.out.println(model.getMp().getPm().toString());
 			} else {
-				// pour du vrai
-				// TODO	
-				System.out.println(model.getMw().getMainProperty("load media manager from : " + AbstractPropKey.pmSourceFolder));
+				// pour du vrai	
 				model.getMp().setPm(new PlayerManager(model.getMw().getMainProperty(AbstractPropKey.pmSourceFolder), model));			
 			}
 			
@@ -182,20 +251,25 @@ public class Main_guiLauncher extends JFrame {
 		progressBar.setValue(progress_bar_evo++);			
 	}
 
+	
+	
 	/**
 	 * Load library if already exist, otherwise, open welcome manager
 	 */
 	private void loadLibrary() {
-
-
+		
 		// On charge la librairie dans le model
 		jlInfo.setText("Loading library");
-		
 		Library l = LibraryManager.loadLibrary(model);
-
-		System.out.println("library = " + l);
 		
 		if (l != null) {
+			
+			ApiManager a = new ApiManager(l.getUserName(), l.getPassword());
+			model.getMd().setGm(a);
+			
+			newLibraryConnected(l.getLibraryName(), l.getUserName(), l.getPassword());
+			
+			/*
 			progressBar.setValue(progress_bar_evo++);
 			// Librairie existe
 			model.getMd().addLib(l);
@@ -208,22 +282,18 @@ public class Main_guiLauncher extends JFrame {
 			} catch (ConnectException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}*/			
 
 			progressBar.setValue(progress_bar_evo++);
-			
-			endProcess();
+			//endProcess();
 			
 		} else {
 			// Librairie n'existe pas
-			System.out.println("New Library");
 			jlInfo.setText("New library");
 			
 			// on va créer une nouvelle librairie
 			newLibrary();
-			
 			progressBar.setValue(progress_bar_evo++);
-
 		}
 	}
 
@@ -250,103 +320,25 @@ public class Main_guiLauncher extends JFrame {
 	
 
 	/**
-	 * Affiche les éléments pour enregistrer une nouvelle librairie
+	 * Affiche la Jdialog pour enregistrer une nouvelle librairie
 	 */
 	private void newLibrary() {
-		
-		// On agrandi joliment la frame
-		for (int i = 0; i < AbstractValues.NEW_LIB_FRAME_HEIGHT; i++) {
-			this.setSize(this.getWidth(), this.getHeight()+1);
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				this.setSize(this.getWidth(), JF_HEIGHT+AbstractValues.NEW_LIB_FRAME_HEIGHT);
-				break;
-			}
-		}
-		
-		titre.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
-		
-		
+				
 		/*
 		 * JPanel d'input
 		 */
-		newLib = new NewLib(model, this);
-				
-		this.add(newLib, BorderLayout.CENTER);
-		this.revalidate();
+		//newLib = new NewLib(model, this);
+		//newLib.setVisible(true);
+			
+		InitProgram.showSimpleDialog(this, model, this);
+		
+		///this.add(newLib, BorderLayout.CENTER);
+		//this.revalidate();
 	}
 
 
+	/*public void createNewLib(String nom, String user, String mdp) {
 
-	
-	/*
-	 * Connect to Google music account
-	 
-	private void connectToGM() {
-		try {
-			model.getMd().connectToGM();
-		} catch (ConnectException e) {
-			JOptionPane.showMessageDialog(null, model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_UNABLE_TO_CONNECT));
-		}		
-	}*/
-
-	/*
-	 * Login to the Google music account
-	 
-	private void loginToGM() {
-		try {
-			model.getMd().getGm().login();
-		} catch (UndefineGoogleManagerAPI e) {
-			JOptionPane.showMessageDialog(null, model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_UNABLE_TO_CONNECT));
-		}
-	}*/
-
-	/**
-	 * Génère le contenu de la fenêtre de chargement
-	 */
-	private void addContentToFrame() {
-		
-		// Ajout texte
-		titre = new JLabel(APP_NAME);
-		titre.setFont(new Font("Segoe UI", Font.BOLD, 50));
-		titre.setForeground(AbstractColors.MAIN_TITLE);
-		titre.setHorizontalAlignment(SwingConstants.CENTER );
-		titre.setBorder(BorderFactory.createEmptyBorder(30, 0, 50, 0));
-
-		
-		this.add(titre, BorderLayout.NORTH);
-		
-		JPanel jpEvo = new JPanel(new BorderLayout());
-
-		jlInfo = new JLabel();
-		jlInfo.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		jlInfo.setForeground(AbstractColors.LAUNCHER_INFO_EVO);
-		
-		// Ajout barre de chargement et texte		
-		progressBar = new JProgressBar(0, nbrElemACharger);
-		progressBar.setValue(0);
-		progressBar.setBorderPainted(false);
-		progressBar.setStringPainted(false);
-		progressBar.setForeground(AbstractColors.MAIN_TITLE);
-		progressBar.setPreferredSize(new Dimension(JF_WIDTH, PROGRESS_BAR_HEIGHT));
-		
-		jpEvo.add(jlInfo);
-		jpEvo.add(progressBar, BorderLayout.SOUTH);
-		
-		this.add(jpEvo, BorderLayout.SOUTH);
-	}
-
-
-
-	public void createNewLib(String nom, String user, String mdp) {
-
-		// TODO
-		System.out.println("Cree une nouvelle lib");
-		
-		// On masque les éléments
-		newLib.logMessage.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_CONNECTING));
-				
 		// On se connecte
 		try {
 			ApiManager a = new ApiManager(user, mdp);
@@ -354,39 +346,18 @@ public class Main_guiLauncher extends JFrame {
 			//model.getMd().getGm().login();
 		} catch (Exception e) {
 			System.out.println("ERROR : impossible de se connecter");
-			newLib.logMessage.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_UNABLE_TO_CONNECT));
+			//newLib.logMessage.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_UNABLE_TO_CONNECT));
 			e.printStackTrace();
-
 			return;
 		}
 		
 		newLibraryConnected(nom, user, mdp);
 				
-	}
+	}*/
 	
 	
-	private void newLibraryConnected(String nom, String user, String mdp) {
+	void newLibraryConnected(String nom, String user, String mdp) {
 		
-		// TODO
-		System.out.println("newLib");
-		
-		/* On referme joliment la frame
-		this.getContentPane().removeAll();
-		this.repaint();
-		
-		
-		for (int i = 0; i < AbstractValues.NEW_LIB_FRAME_HEIGHT; i++) {
-			this.setSize(this.getWidth(), this.getHeight()-1);
-			
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				this.setSize(this.getWidth(), JF_HEIGHT);
-				break;
-			}
-			
-		}*/
-
 		
 		jlInfo.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_GET_LIB));
 		
@@ -404,6 +375,7 @@ public class Main_guiLauncher extends JFrame {
 			songs = model.getMd().getGm().getAllSongs();
 			System.out.println("tracks \tok");
 
+			// TODO Récupérer les playlists
 			//playlist = model.getMd().getGm().getAllplaylist();
 			//System.out.println("playlists \tok");
 		
@@ -423,13 +395,15 @@ public class Main_guiLauncher extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		// On ajoute les playlists
-		// TODO
+		
+		// TODO ajouter les playlists
 		//lib.addPlaylists(playlist);
 				
-		
 		jlInfo.setText(model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_SAVE_LIB));
 		
+		/*
+		 * SAVE FILE
+		 */
 		try {
 			LibraryManager.saveLibrary(model, model.getMd().getLib());
 			System.out.println("library saved");
@@ -441,16 +415,14 @@ public class Main_guiLauncher extends JFrame {
 			e.printStackTrace();
 		}
 		
-		// TODO
-		System.out.println("File saved");
-		
+
+		/*
 		try {
 			JOptionPane.showMessageDialog(null, model.getMd().getLib().getNbrTitres() + " " + model.getMw().getLangProperty(AbstractPropKey.NEW_LIBRARY_HAS_BEEN_ADDED));
 		} catch (HeadlessException | UnselectedLibraryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}*/
 		
 		System.out.println("end process");
 		

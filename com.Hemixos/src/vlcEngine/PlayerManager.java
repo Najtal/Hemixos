@@ -141,9 +141,9 @@ public class PlayerManager implements MediaPlayerEventListener {
 		
 	}
 
-	public void buffering(MediaPlayer arg0, float arg1) {
-		// TODO Auto-generated method stub
-		
+	public void buffering(MediaPlayer arg0, float per) {
+    	model.getMp().setBuffering(true);
+    	model.getMp().setBuffered(per);
 	}
 
 	public void endOfSubItems(MediaPlayer arg0) {
@@ -152,9 +152,8 @@ public class PlayerManager implements MediaPlayerEventListener {
 	}
 
 	public void error(MediaPlayer mpe) {
-		// TODO Auto-generated method stub
+    	model.getMp().setEnLecture(false);
 		System.out.println("error");
-		System.out.println(mpe.toString());
 	}
 
 	public void finished(MediaPlayer arg0) {
@@ -179,7 +178,8 @@ public class PlayerManager implements MediaPlayerEventListener {
             // Your own application would not exit, but would instead probably set some
             // state flag or fire some sort of signal or whatever that the media actually
             // finished
-            
+        	model.getMp().setBuffering(false);
+        	model.getMp().setEnLecture(false);
         	model.getMp().actionNext();
         	
         	//System.exit(0);
@@ -206,7 +206,7 @@ public class PlayerManager implements MediaPlayerEventListener {
 
 	public void mediaDurationChanged(MediaPlayer arg0, long arg1) {
 		// TODO Auto-generated method stub
-		
+		model.getMp().getQueue().getCurrentSong().setDurationMillis(arg1);
 	}
 
 	public void mediaFreed(MediaPlayer arg0) {
@@ -230,7 +230,7 @@ public class PlayerManager implements MediaPlayerEventListener {
 	}
 
 	public void mediaSubItemAdded(MediaPlayer arg0, libvlc_media_t arg1) {
-		System.out.println("mediaSubItemAdded: " + mediaPlayer.mrl(arg1));
+		//System.out.println("mediaSubItemAdded: " + mediaPlayer.mrl(arg1));
 	}
 
 	public void newMedia(MediaPlayer arg0) {
@@ -249,11 +249,12 @@ public class PlayerManager implements MediaPlayerEventListener {
 
 	public void paused(MediaPlayer arg0) {
 		// TODO Auto-generated method stub
-		
+		model.getMp().setEnLecture(false);
 	}
 
 	public void playing(MediaPlayer arg0) {
-		System.out.println("playing");
+    	model.getMp().setEnLecture(true);
+    	model.getMp().setBuffering(false);
 	}
 
 	public void positionChanged(MediaPlayer arg0, float arg1) {
@@ -272,8 +273,8 @@ public class PlayerManager implements MediaPlayerEventListener {
 	}
 
 	public void stopped(MediaPlayer arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("stopped");
+    	model.getMp().setEnLecture(false);
+    	model.getMp().setBuffering(false);
 	}
 
 	public void subItemFinished(MediaPlayer arg0, int arg1) {

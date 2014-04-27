@@ -89,6 +89,9 @@ public class Model_comp {
 
 	public BirdTempo jpTrackContainer;
 
+	public JButton jbAddSelectedArtist;
+	public JButton jbAddSelectedAlbum;
+
 
 	
 	/**
@@ -285,5 +288,13 @@ public class Model_comp {
 
 	public void regjpTrackContainer(BirdTempo jpTrackContainer) {
 		this.jpTrackContainer = jpTrackContainer;
+	}
+
+	public void regJbAddSelectedArtist(JButton jbAddSelectedArtist) {
+		this.jbAddSelectedArtist = jbAddSelectedArtist;
+	}
+
+	public void regJbAddSelectedAlbum(JButton jbAddSelectedAlbum) {
+		this.jbAddSelectedAlbum = jbAddSelectedAlbum;
 	}
 }

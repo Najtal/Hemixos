@@ -24,15 +24,15 @@ public class AbstractValues {
 	/*
 	 * Generic int values
 	 */
-	public static final int FRAME_MIN_WIDTH = 1000;
+	public static final int FRAME_MIN_WIDTH = 1200;
 	public static final int FRAME_MIN_HEIGHT = 400;
 	
-	public static final int OPTION_FRAME_TITLE_SIZE = 20;
+	public static final int OPTION_FRAME_TITLE_SIZE = 25;
 
 
 	// New library
 	public static final int NEW_LIB_FRAME_HEIGHT = 200;
-	public static final int CONTAINER_BORDER = 20;
+	public static final int CONTAINER_BORDER = 60;
 
 	
 	/*

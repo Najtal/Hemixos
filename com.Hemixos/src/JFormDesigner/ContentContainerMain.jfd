@@ -339,7 +339,7 @@ new FormModel {
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
 									name: "jbViewOneC"
-									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/vue2_48.png" )
+									"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/vue2_selected_48.png" )
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 									"borderPainted": false
 									"background": new java.awt.Color( 229, 229, 229, 255 )
@@ -843,7 +843,7 @@ new FormModel {
 									"text": "Artistes"
 									"background": &Color13 new java.awt.Color( 245, 245, 245, 255 )
 									"font": new java.awt.Font( "Segoe UI Light", 0, 16 )
-									"border": &EmptyBorder2 new javax.swing.border.EmptyBorder( 2, 5, 2, 5 )
+									"border": new javax.swing.border.EmptyBorder( 2, 20, 2, 5 )
 									"foreground": &Color14 new java.awt.Color( 65, 72, 80, 255 )
 									"borderPainted": false
 									"contentAreaFilled": false
@@ -855,7 +855,7 @@ new FormModel {
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "label9"
 									"text": "(1236)"
-									"border": &EmptyBorder3 new javax.swing.border.EmptyBorder( 1, 0, 0, 0 )
+									"border": &EmptyBorder2 new javax.swing.border.EmptyBorder( 1, 0, 0, 0 )
 									"foreground": &Color15 new java.awt.Color( 81, 72, 73, 255 )
 									"font": new java.awt.Font( "Segoe UI Light", 0, 15 )
 								} )
@@ -918,7 +918,7 @@ new FormModel {
 									"text": "Albums"
 									"background": #Color13
 									"font": new java.awt.Font( "Segoe UI Light", 0, 16 )
-									"border": #EmptyBorder2
+									"border": new javax.swing.border.EmptyBorder( 2, 20, 2, 5 )
 									"foreground": #Color14
 									"borderPainted": false
 									"contentAreaFilled": false
@@ -930,7 +930,7 @@ new FormModel {
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "label11"
 									"text": "(2311)"
-									"border": #EmptyBorder3
+									"border": #EmptyBorder2
 									"foreground": #Color15
 									"font": new java.awt.Font( "Segoe UI Light", 0, 16 )
 								} )
@@ -991,26 +991,27 @@ new FormModel {
 								"border": new javax.swing.border.EmptyBorder( 0, 25, 0, 0 )
 								"background": new java.awt.Color( 245, 245, 245, 255 )
 								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "jbEcoutezArtist"
-									"text": "Ecoutez Daft Punk"
+									name: "jbAddSelectedArtist"
 									"background": &Color18 new java.awt.Color( 245, 245, 245, 255 )
 									"borderPainted": false
-									"border": &EmptyBorder4 new javax.swing.border.EmptyBorder( 0, 5, 0, 15 )
+									"border": &EmptyBorder3 new javax.swing.border.EmptyBorder( 0, 5, 0, 15 )
 									"foreground": new java.awt.Color( 65, 72, 80, 255 )
 									"contentAreaFilled": false
 									"focusPainted": false
 									"font": new java.awt.Font( "Segoe UI Light", 0, 16 )
 									"margin": new java.awt.Insets( 0, 14, 2, 14 )
 									"preferredSize": new java.awt.Dimension( 150, 20 )
-									"maximumSize": new java.awt.Dimension( 200, 20 )
+									"maximumSize": new java.awt.Dimension( 300, 20 )
 									"minimumSize": new java.awt.Dimension( 100, 20 )
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "jbEcoutezAlbum"
-									"text": "Ecoutez Discovery"
+									name: "jbAddSelectedAlbum"
 									"background": #Color18
 									"borderPainted": false
-									"border": #EmptyBorder4
+									"border": #EmptyBorder3
 									"foreground": new java.awt.Color( 65, 72, 80, 255 )
 									"contentAreaFilled": false
 									"focusPainted": false
@@ -1019,6 +1020,9 @@ new FormModel {
 									"minimumSize": new java.awt.Dimension( 100, 20 )
 									"preferredSize": new java.awt.Dimension( 150, 20 )
 									"margin": new java.awt.Insets( 0, 14, 2, 14 )
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+									}
 								} )
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "West"
@@ -1055,6 +1059,8 @@ new FormModel {
 								"showHorizontalLines": false
 								"fillsViewportHeight": true
 								"showVerticalLines": false
+								"autoCreateRowSorter": true
+								"autoResizeMode": 4
 								auxiliary() {
 									"JavaCodeGenerator.variableGetter": true
 									"JavaCodeGenerator.variableModifiers": 1
